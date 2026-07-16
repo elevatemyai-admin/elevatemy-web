@@ -1,0 +1,224 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- HubSpot include removed during Vercel migration -->
+<link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/general-favicon.png"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>elevatemy.ai — AI Solutions for Growing Businesses</title>
+<meta name="description" content="Find out how AI-ready your business is. Free assessment, personalized results, and a clear action plan — in 5 minutes."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --navy:#1B3A6B;--navy-light:#2A4E8C;--navy-dark:#0f2347;
+    --teal:#00A99D;--teal-light:#5BC8C0;--teal-pale:#E1F5F4;
+    --amber:#C4773B;--cream:#F8F6F2;--cream-dark:#EDE9E1;
+    --sand:#8B7355;--white:#ffffff;
+    --text-dark:#1a1a1a;--text-muted:#5a5a5a;--border:#ddd9d0;
+    --radius:14px;--radius-sm:8px;--radius-lg:24px;
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+
+  /* ——— NAV ——— */
+  nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo-icon{width:38px;height:38px;background:var(--navy);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;flex-shrink:0;}
+  .nav-logo-icon span{display:block;height:3px;border-radius:2px;background:var(--teal);}
+  .nav-logo-icon span:nth-child(2){width:14px;background:var(--teal-light);}
+  .nav-logo-icon span:nth-child(1),.nav-logo-icon span:nth-child(3){width:20px;}
+  .wordmark{font-family:'Bricolage Grotesque',Georgia,serif;font-size:22px;font-weight:700;letter-spacing:-0.03em;line-height:1;}
+  .wordmark .elevate{color:var(--navy);}.wordmark .my{color:var(--teal);}
+  .wordmark .dot{color:var(--amber);font-weight:300;font-family:'Inter',sans-serif;}
+  .wordmark .ai{color:var(--navy);font-family:'JetBrains Mono',monospace;font-weight:400;font-size:20px;}
+  .nav-tagline{font-size:9px;letter-spacing:0.13em;color:var(--sand);text-transform:uppercase;margin-top:2px;}
+  .nav-contact{font-size:13px;color:var(--sand);text-decoration:none;}
+  .nav-contact:hover{color:var(--teal);}
+
+  /* ——— HERO ——— */
+  .hero{
+    background:var(--navy);
+    padding:5rem 2rem 4rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:radial-gradient(circle,rgba(255,255,255,0.03) 1px,transparent 1px);
+    background-size:28px 28px;pointer-events:none;
+  }
+  .hero::after{
+    content:'';position:absolute;
+    top:-40%;left:50%;transform:translateX(-50%);
+    width:800px;height:800px;
+    background:radial-gradient(circle,rgba(0,169,157,0.12) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+  .hero-eyebrow{display:inline-block;background:rgba(0,169,157,0.15);color:var(--teal-light);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:1.5rem;border:1px solid rgba(0,169,157,0.2);}
+  .hero h1{font-family:'Bricolage Grotesque',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;color:var(--white);line-height:1.15;letter-spacing:-0.02em;margin-bottom:1.25rem;}
+  .hero h1 em{font-style:normal;color:var(--teal);}
+  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);max-width:520px;margin:0 auto 0;line-height:1.75;}
+
+  /* ——— STATS ——— */
+  .stats-row{display:flex;gap:0;justify-content:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.1);flex-wrap:wrap;}
+  .stat{text-align:center;padding:0 2rem;}
+  .stat+.stat{border-left:1px solid rgba(255,255,255,0.1);}
+  .stat-num{font-family:'Bricolage Grotesque',serif;font-size:1.8rem;font-weight:700;color:var(--white);display:block;line-height:1;}
+  .stat-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;display:block;}
+
+  /* ——— CHOOSER ——— */
+  .chooser-section{flex:1;padding:4rem 1.5rem 5rem;background:var(--cream);}
+  .chooser-header{text-align:center;margin-bottom:2.5rem;}
+  .chooser-header h2{font-family:'Bricolage Grotesque',serif;font-size:1.6rem;font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:0.5rem;}
+  .chooser-header p{font-size:15px;color:var(--text-muted);}
+
+  .chooser-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:860px;margin:0 auto;}
+  @media(max-width:640px){.chooser-grid{grid-template-columns:1fr;}}
+
+  .path-card{
+    background:var(--white);
+    border:1.5px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:2.5rem 2rem;
+    text-decoration:none;
+    display:flex;flex-direction:column;
+    transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;
+    position:relative;overflow:hidden;
+  }
+  .path-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(27,58,107,0.14);}
+  .path-card.general{border-color:var(--border);}
+  .path-card.general:hover{border-color:var(--teal);}
+  .path-card.financial{border-color:var(--border);}
+  .path-card.financial:hover{border-color:var(--navy);}
+
+  .path-icon{font-size:2.5rem;margin-bottom:1.25rem;display:block;}
+  .path-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px;}
+  .path-label.general{color:var(--teal);}
+  .path-label.financial{color:var(--navy);}
+  .path-title{font-family:'Bricolage Grotesque',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;line-height:1.2;letter-spacing:-0.01em;}
+  .path-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:1.75rem;flex:1;}
+
+  .path-includes{list-style:none;margin-bottom:2rem;display:flex;flex-direction:column;gap:8px;}
+  .path-includes li{font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+  .pi-check{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;margin-top:1px;}
+  .pi-check.general{background:var(--teal-pale);color:var(--teal);}
+  .pi-check.financial{background:#EEF3FB;color:var(--navy);}
+
+  .path-btn{display:block;text-align:center;padding:13px;border-radius:var(--radius-sm);font-size:14px;font-weight:700;font-family:'Inter',sans-serif;transition:background 0.2s,color 0.2s;text-decoration:none;margin-top:auto;}
+  .path-btn.general{background:var(--teal);color:var(--white);}
+  .path-btn.general:hover{background:#009590;}
+  .path-btn.financial{background:var(--navy);color:var(--white);}
+  .path-btn.financial:hover{background:var(--navy-light);}
+
+  /* ——— NOT SURE ——— */
+  .not-sure{max-width:860px;margin:2rem auto 0;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+  .not-sure-text{font-size:14px;color:var(--text-muted);}
+  .not-sure-text strong{color:var(--navy);}
+  .not-sure-link{font-size:14px;font-weight:600;color:var(--teal);text-decoration:none;white-space:nowrap;}
+  .not-sure-link:hover{text-decoration:underline;}
+
+  /* ——— FOOTER ——— */
+  footer{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+  footer p{font-size:13px;color:var(--sand);}
+  footer a{color:var(--teal);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+
+  @media(max-width:600px){
+    .stats-row{gap:1rem;}
+    .stat+.stat{border-left:none;border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;}
+    .not-sure{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">
+      <span style="width:20px"></span><span></span><span style="width:20px"></span>
+    </div>
+    <div>
+      <div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+      <div class="nav-tagline">AI Solutions for Growing Businesses</div>
+    </div>
+  </div>
+  <a class="nav-contact" href="mailto:tracy@elevatemy.ai">Contact us</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Free AI Readiness Assessment</div>
+    <h1>Find out how <em>AI-ready</em><br>your business really is</h1>
+    <p class="hero-sub">Answer 20 questions and get a personalized report — your score, your biggest opportunity, and three specific moves to make right now. Free, takes 5 minutes.</p>
+    <div class="stats-row">
+      <div class="stat"><span class="stat-num">5 min</span><span class="stat-label">to complete</span></div>
+      <div class="stat"><span class="stat-num">20</span><span class="stat-label">questions</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">free</span></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="chooser-section">
+  <div class="chooser-header">
+    <h2>Which best describes your business?</h2>
+    <p>Choose your path — the assessment and results are tailored to your industry.</p>
+  </div>
+
+  <div class="chooser-grid">
+
+    <!-- General Business -->
+    <a class="path-card general" href="/general/assessment.html">
+      <span class="path-icon">🏢</span>
+      <div class="path-label general">Any Industry</div>
+      <div class="path-title">Growing Business<br>(Non-Financial Services)</div>
+      <p class="path-desc">For retail, healthcare, construction, legal, hospitality, technology, real estate, professional services, and any other growing business ready to explore AI.</p>
+      <ul class="path-includes">
+        <li><span class="pi-check general">✓</span>AI readiness score across 5 dimensions</li>
+        <li><span class="pi-check general">✓</span>Personalized action plan for your business type</li>
+        <li><span class="pi-check general">✓</span>Curated AI tool recommendations</li>
+        <li><span class="pi-check general">✓</span>Free 30-minute strategy consultation</li>
+      </ul>
+      <span class="path-btn general">Start the general assessment →</span>
+    </a>
+
+    <!-- Financial Services -->
+    <a class="path-card financial" href="/financial/assessment.html">
+      <span class="path-icon">📈</span>
+      <div class="path-label financial">Financial Services</div>
+      <div class="path-title">Financial Services<br>Business</div>
+      <p class="path-desc">Purpose-built for financial advisors, RIAs, wealth managers, insurance professionals, accountants, and other financial services businesses.</p>
+      <ul class="path-includes">
+        <li><span class="pi-check financial">✓</span>AI readiness score built for financial services</li>
+        <li><span class="pi-check financial">✓</span>Compliance-aware recommendations</li>
+        <li><span class="pi-check financial">✓</span>Practice-specific AI tool shortlist</li>
+        <li><span class="pi-check financial">✓</span>Free 30-minute strategy consultation</li>
+      </ul>
+      <span class="path-btn financial">Start the financial services assessment →</span>
+    </a>
+
+  </div>
+
+  <div class="not-sure">
+    <p class="not-sure-text"><strong>Not sure which to choose?</strong> If your business provides financial advice, manages investments, or sells financial products — choose Financial Services. Everything else, choose Growing Business.</p>
+    <a class="not-sure-link" href="mailto:tracy@elevatemy.ai">Ask Tracy →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wordmark" style="font-size:17px"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+  <p>© 2025 elevatemy.ai · Questions? Email <a href="mailto:tracy@elevatemy.ai">tracy@elevatemy.ai</a></p>
+</footer>
+
+<!-- HubSpot include removed during Vercel migration -->
+</body>
+</html>
