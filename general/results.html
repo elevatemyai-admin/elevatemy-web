@@ -1,0 +1,491 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- HubSpot include removed during Vercel migration -->
+<link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/general-favicon.png"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your AI Readiness Results — elevatemy.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1B3A6B;--navy-light:#2A4E8C;
+  --teal:#00A99D;--teal-light:#5BC8C0;--teal-pale:#E1F5F4;
+  --amber:#C4773B;--cream:#F8F6F2;--cream-dark:#EDE9E1;
+  --sand:#8B7355;--white:#ffffff;
+  --text-dark:#1a1a1a;--text-muted:#5a5a5a;--border:#ddd9d0;
+  --radius:12px;--radius-sm:8px;--radius-lg:20px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.6;font-size:16px;min-height:100vh;display:flex;flex-direction:column;}
+
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-icon{width:38px;height:38px;background:var(--navy);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;flex-shrink:0;}
+.nav-logo-icon span{display:block;height:3px;border-radius:2px;background:var(--teal);}
+.nav-logo-icon span:nth-child(2){width:14px;background:var(--teal-light);}
+.nav-logo-icon span:nth-child(1),.nav-logo-icon span:nth-child(3){width:20px;}
+.wordmark{font-family:'Bricolage Grotesque',Georgia,serif;font-size:22px;font-weight:700;letter-spacing:-0.03em;line-height:1;}
+.wordmark .elevate{color:var(--navy);}.wordmark .my{color:var(--teal);}
+.wordmark .dot{color:var(--amber);font-weight:300;font-family:'Inter',sans-serif;}
+.wordmark .ai{color:var(--navy);font-family:'JetBrains Mono',monospace;font-weight:400;font-size:20px;}
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-link{font-size:14px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
+.nav-link:hover{color:var(--navy);}
+.nav-cta{background:var(--navy);color:var(--white);border:none;padding:9px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;white-space:nowrap;}
+.nav-cta:hover{background:var(--navy-light);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:1rem 2rem 1.5rem;flex-direction:column;z-index:190;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.nav-drawer.open{display:flex;}
+.nav-drawer .nav-link{display:block;padding:14px 0;border-bottom:1px solid var(--border);font-size:16px;}
+.nav-drawer .nav-cta{display:block;margin-top:1rem;text-align:center;padding:12px;font-size:15px;border-radius:var(--radius-sm);}
+@media(max-width:720px){.nav-links{display:none;}.nav-hamburger{display:flex;}}
+
+/* WRAP */
+.wrap{flex:1;padding:3rem 1.5rem 5rem;display:flex;flex-direction:column;align-items:center;}
+
+/* HERO — always visible */
+.hero-card{background:var(--navy);border-radius:var(--radius-lg);padding:3rem 2.5rem;width:100%;max-width:860px;margin-bottom:2rem;text-align:center;}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-light);margin-bottom:0.5rem;}
+.hero-score{font-family:'Bricolage Grotesque',serif;font-size:4.5rem;font-weight:700;color:var(--white);line-height:1;}
+.hero-score-label{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:1rem;}
+.tier-badge{display:inline-block;padding:8px 22px;border-radius:20px;font-size:15px;font-weight:700;margin-bottom:1.25rem;}
+.hero-desc{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:560px;margin:0 auto;background:rgba(255,255,255,0.06);border-radius:10px;padding:1.25rem 1.5rem;text-align:left;}
+
+/* SCORE BREAKDOWN — always visible */
+.section-wrap{width:100%;max-width:860px;margin-bottom:1.75rem;}
+.section-lbl{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);margin-bottom:1rem;}
+.breakdown-bar{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;overflow-x:auto;}
+.bc{flex:1;min-width:120px;padding:0 1rem;border-right:1px solid var(--border);}
+.bc:last-child{border-right:none;}
+.bc-name{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:6px;line-height:1.3;}
+.bc-bg{height:4px;background:var(--cream-dark);border-radius:2px;margin-bottom:6px;overflow:hidden;}
+.bc-fill{height:100%;border-radius:2px;}
+.bc-score{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--sand);}
+
+/* BLURRED LOCKED SECTION */
+.locked-section{width:100%;max-width:860px;position:relative;margin-bottom:0;}
+.locked-content{filter:blur(5px);user-select:none;pointer-events:none;opacity:0.6;}
+.lock-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;}
+.lock-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem 2rem;max-width:520px;width:90%;box-shadow:0 8px 40px rgba(27,58,107,0.18);text-align:center;}
+.lock-icon{font-size:2rem;margin-bottom:0.75rem;}
+.lock-title{font-family:'Bricolage Grotesque',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;letter-spacing:-0.01em;line-height:1.25;}
+.lock-sub{font-size:14px;color:var(--text-muted);line-height:1.65;margin-bottom:1.5rem;}
+.lock-unlocks{list-style:none;text-align:left;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:8px;}
+.lock-unlocks li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);line-height:1.45;}
+.lock-check{width:18px;height:18px;background:var(--teal-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:var(--teal);font-weight:700;margin-top:1px;}
+.lock-check strong{color:var(--text-dark);}
+.lock-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:12px;text-align:left;}
+.lock-input{width:100%;padding:12px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--cream);color:var(--text-dark);font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.15s;}
+.lock-input:focus{border-color:var(--teal);background:var(--white);}
+.lock-btn{width:100%;background:var(--teal);color:var(--white);border:none;padding:14px;border-radius:var(--radius-sm);font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.2s;}
+.lock-btn:hover{background:#009590;}
+.lock-error{font-size:13px;color:#c0392b;margin-top:6px;display:none;text-align:center;}
+.lock-privacy{font-size:11px;color:var(--sand);margin-top:8px;}
+
+/* UNLOCKED FULL RESULTS */
+.opp-card{background:var(--white);border:1.5px solid var(--amber);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:14px;}
+.opp-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.opp-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:4px;}
+.opp-title{font-family:'Bricolage Grotesque',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.opp-body{font-size:13px;color:var(--text-muted);line-height:1.55;}
+.meaning-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+@media(max-width:580px){.meaning-grid{grid-template-columns:1fr;}}
+.mc{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.5rem;}
+.mc.strength{border-top:3px solid var(--teal);}
+.mc.focus{border-top:3px solid var(--amber);}
+.mc-lbl{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;margin-bottom:6px;}
+.mc-lbl.strength{color:var(--teal);}.mc-lbl.focus{color:var(--amber);}
+.mc-title{font-family:'Bricolage Grotesque',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.mc-body{font-size:13px;color:var(--text-muted);line-height:1.6;}
+.move-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:14px;margin-bottom:12px;}
+.move-num{width:28px;height:28px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.move-title{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;}
+.move-body{font-size:13px;color:var(--text-muted);line-height:1.55;}
+.move-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-top:6px;}
+.move-tag.quick{background:#E1F5EE;color:#0F6E56;}
+.move-tag.medium{background:#FAEEDA;color:#854F0B;}
+.move-tag.strategic{background:#E6F1FB;color:#185FA5;}
+.consult-strip{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:2rem 2.5rem;width:100%;max-width:860px;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.consult-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--teal);margin-bottom:0.4rem;}
+.consult-title{font-family:'Bricolage Grotesque',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:0.35rem;}
+.consult-sub{font-size:13px;color:var(--text-muted);line-height:1.5;}
+.consult-btn{background:var(--navy);color:var(--white);border:none;padding:13px 28px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;text-decoration:none;display:inline-block;}
+.consult-btn:hover{background:var(--navy-light);}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;width:100%;max-width:860px;}
+.btn-primary{background:var(--navy);color:var(--white);border:none;padding:14px 32px;border-radius:var(--radius-sm);font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--navy-light);}
+.btn-secondary{background:transparent;color:var(--navy);border:1.5px solid var(--navy);padding:13px 28px;border-radius:var(--radius-sm);font-size:15px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;}
+.btn-secondary:hover{background:var(--cream-dark);}
+
+.error-state{max-width:500px;margin:6rem auto;text-align:center;padding:2rem;}
+.error-title{font-family:'Bricolage Grotesque',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:1rem;}
+.error-body{font-size:15px;color:var(--text-muted);line-height:1.6;}
+footer{background:var(--white);border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:13px;color:var(--sand);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/general/assessment.html">
+    <div class="nav-logo-icon"><span style="width:20px"></span><span></span><span style="width:20px"></span></div>
+    <div><div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div></div>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="/general/assessment.html">Home</a>
+    <a class="nav-link" href="/general/assessment.html">Assessment</a>
+    <a class="nav-link" href="/general/pricing.html">Pricing</a>
+    <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
+    <a class="nav-cta" href="/general/pricing.html">View Plans</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="nav-drawer">
+  <a class="nav-link" href="/general/assessment.html">Home</a>
+  <a class="nav-link" href="/general/assessment.html">Assessment</a>
+  <a class="nav-link" href="/general/pricing.html">Pricing</a>
+  <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
+  <a class="nav-cta" href="/general/pricing.html">View Plans</a>
+</div>
+
+<div class="wrap" id="app">
+  <!-- Rendered by JS -->
+</div>
+
+<footer>
+  <p>Results are based on your responses and indicative only.</p>
+  <p>© 2025 elevatemy.ai · Questions? Email <a href="mailto:tracy@elevatemy.ai" style="color:var(--teal);text-decoration:none;">tracy@elevatemy.ai</a></p>
+</footer>
+
+<!-- HubSpot include removed during Vercel migration -->
+<script>
+var HS_PORTAL_ID='23625222';
+var HS_FORM_GUID='691300bc-04ec-4dde-91f0-a4dc8c0ea910';
+
+function sc(s){return s>=70?'var(--teal)':s>=45?'var(--amber)':'#e07070';}
+
+function getParams(){
+  var p=new URLSearchParams(window.location.search);
+  return{
+    score:parseInt(p.get('score'))||0,
+    tier:decodeURIComponent(p.get('tier')||''),
+    bf:parseInt(p.get('bf'))||0,
+    dt:parseInt(p.get('dt'))||0,
+    oa:parseInt(p.get('oa'))||0,
+    cg:parseInt(p.get('cg'))||0,
+    air:parseInt(p.get('air'))||0,
+    opp:decodeURIComponent(p.get('opp')||''),
+    q18:decodeURIComponent(p.get('q18')||''),
+    q19:decodeURIComponent(p.get('q19')||'')
+  };
+}
+
+var OPP={
+  'Business Foundations':'Getting your operational foundations right before adding more AI tools will save you significant time and money. This is the area with the most leverage right now.',
+  'Data & Technology':"Clean, connected data is the fuel for every AI tool you'll ever use. Investing here first multiplies the value of everything else you do.",
+  'Operations & Automation':'This is the area with the most room to grow — and the most opportunity to create visible time savings quickly. Small automation wins here compound fast.',
+  'Customer & Growth':"Understanding and reaching your customers better is where AI delivers some of its fastest commercial returns. This is a high-impact area to prioritize.",
+  'AI Readiness':"Building team confidence and a clear AI strategy will unlock adoption across every other area of your business. This is your foundational next step."
+};
+var STRENGTH={
+  'Business Foundations':{title:'Your operational foundation',body:"Your team's size and digital comfort give you a strong base. You have the infrastructure to layer AI onto existing workflows without major disruption."},
+  'Data & Technology':{title:'Your data infrastructure',body:"You have cleaner, more connected data than most businesses at your stage. AI tools will work better for you than for businesses that haven't done this groundwork."},
+  'Operations & Automation':{title:'Your process efficiency',body:"You've already built some automation muscle. You know what works and you're ahead of most in reducing manual overhead."},
+  'Customer & Growth':{title:'Your customer understanding',body:"You have a solid foundation for knowing your customers. AI tools that personalize, predict, and re-engage will work well for you."},
+  'AI Readiness':{title:"Your team's AI appetite",body:"Your people are already curious about AI, and some are actively using it. That internal proof of concept is invaluable — you have champions to build from."}
+};
+var FOCUS={
+  'Business Foundations':{title:'The foundation to fix first',body:"Before adding new AI tools, clarify your core workflows and team digital confidence. The businesses that struggle with AI adoption almost always have a process or people gap underneath — not a technology gap."},
+  'Data & Technology':{title:'The data gap to close',body:"Scattered or unreliable data limits every AI tool you'll use. A focused effort to centralize your customer and operational data — even just one dataset — will create immediate returns."},
+  'Operations & Automation':{title:'The manual work to replace',body:"Your team is likely spending hours each week on work that AI can handle in minutes. Identifying your top three repetitive tasks and automating them is typically the fastest way to create visible, measurable impact."},
+  'Customer & Growth':{title:'The revenue gap to close',body:"The gap between 'some marketing activity' and 'marketing that compounds' is usually a measurement and personalization problem. AI tools can close this once you have a clearer picture of what's actually working."},
+  'AI Readiness':{title:'The strategy to define',body:"Tool access isn't the bottleneck. What's missing is a clear owner, a defined starting use case, and a way to measure success. That structure is what separates businesses that gain from AI from those that plateau."}
+};
+var NARRATIVES={
+  'AI-Ready':"you're in a strong position. Your business has real AI infrastructure, engaged team members, and usable data. The challenge at this stage isn't getting started — it's getting strategic. A focused playbook will help you move from ad-hoc tool use to AI that genuinely compounds your competitive advantage.",
+  'Emerging':"you've got real momentum — which puts you ahead of most. The gap between 'exploring AI' and 'AI that moves the business' is usually a strategy and prioritization problem, not a technology one. A few focused moves will unlock significantly more value from what you already have.",
+  'Building':"your foundations are solid. You have the team and the intent — now it's about connecting the dots. Most businesses at your stage find that one well-chosen AI use case, done properly, creates enough proof to build buy-in for everything that follows.",
+  'Exploring':"every business starts somewhere — and completing this assessment puts you ahead of most. The businesses that move fastest from here aren't the ones with the most budget; they're the ones who start with a clear, narrow focus. Your report identifies exactly where that focus should be."
+};
+var MOVES=[
+  {k:'ops_low', title:'Map your top 3 manual tasks this week',      body:"Write down the three things your team does manually at least weekly. For each, estimate how long it takes. This single exercise — done in 30 minutes — is the starting point for every meaningful automation win.",                                                                           tag:'quick'},
+  {k:'data_low',title:'Audit your customer data in one afternoon',  body:"Pick your most important customer dataset and ask: Is it complete? Consistent? In one place? A half-day audit almost always reveals the specific gap that's limiting your AI options.",                                                                                                         tag:'quick'},
+  {k:'ai_low',  title:'Run a team AI experiment this month',        body:"Pick one specific, low-risk task — writing a first draft, summarizing a document, creating a FAQ — and have your team use an AI tool for it for two weeks. A small, structured experiment builds more confidence than any training session.",                                                        tag:'quick'},
+  {k:'cust_low',title:'Set up one customer feedback loop',          body:"Start with a single post-interaction email asking: 'What could we have done better?' Route responses to one person and review weekly. AI can analyze patterns once you have 20+ responses.",                                                                                                        tag:'medium'},
+  {k:'ops_mid', title:'Automate your most predictable workflow',    body:"Look for a workflow with a clear trigger and a consistent outcome — a new inquiry, a completed job, a monthly report. Tools like Zapier or Make can typically automate these in an afternoon with no code.",                                                                                         tag:'medium'},
+  {k:'data_mid',title:'Connect your tools into one view',           body:"If your CRM, email, and project tools don't talk to each other, you're making decisions on incomplete information. A single integration between your most-used platforms will immediately improve visibility.",                                                                                       tag:'medium'},
+  {k:'ai_mid',  title:'Define who owns AI in your business',        body:"Even a part-time internal AI champion changes outcomes dramatically. Assign someone to own your AI adoption: evaluating tools, running experiments, sharing wins. Without ownership, initiatives stall.",                                                                                             tag:'strategic'},
+  {k:'cust_mid',title:'Build a simple lead scoring process',        body:"Define what a high-value lead looks like — industry, size, inquiry type, source. AI tools can then prioritize your pipeline automatically. This typically takes one afternoon and saves weeks of follow-up time.",                                                                                   tag:'strategic'},
+  {k:'poc',     title:'Identify your AI proof-of-concept project',  body:"Pick one business process — reporting, customer service, content, lead qualification — and design a proper AI-assisted workflow. Document before and after. This becomes your internal business case for expanding AI further.",                                                                      tag:'strategic'},
+  {k:'gov',     title:'Build your internal AI governance framework', body:"Establish simple guidelines: which tools are approved, how data is handled, what outputs need human review. A one-page AI policy prevents the quality and compliance issues that slow businesses that have moved fast.",                                                                             tag:'strategic'}
+];
+
+function pickMoves(d){
+  var pool=[];
+  if(d.oa<55)pool.push('ops_low');if(d.dt<55)pool.push('data_low');
+  if(d.air<55)pool.push('ai_low');if(d.cg<55)pool.push('cust_low');
+  if(d.oa<70)pool.push('ops_mid');if(d.dt<70)pool.push('data_mid');
+  if(d.air<70)pool.push('ai_mid');if(d.cg<70)pool.push('cust_mid');
+  if(d.score>=65)pool.push('poc');if(d.score>=75)pool.push('gov');
+  var seen={},chosen=[];
+  pool.forEach(function(k){if(!seen[k]&&chosen.length<3){seen[k]=true;chosen.push(k);}});
+  MOVES.forEach(function(m){if(chosen.length<3&&!seen[m.k]){chosen.push(m.k);seen[m.k]=true;}});
+  return chosen.slice(0,3).map(function(k){return MOVES.filter(function(m){return m.k===k;})[0];});
+}
+
+function render(d, skipGate){
+  if(!d.tier||!d.score){renderError();return;}
+  var dims=[
+    {name:'Business Foundations',score:d.bf},
+    {name:'Data & Technology',score:d.dt},
+    {name:'Operations & Automation',score:d.oa},
+    {name:'Customer & Growth',score:d.cg},
+    {name:'AI Readiness',score:d.air}
+  ];
+  var weakest=dims.slice().sort(function(a,b){return a.score-b.score;})[0];
+  var strongest=dims.slice().sort(function(a,b){return b.score-a.score;})[0];
+  var oppName=d.opp||weakest.name;
+
+  var tierBg,tierColor,tierLabel;
+  if(d.tier==='AI-Ready'){tierBg='#E1F5EE';tierColor='#0F6E56';tierLabel='🚀 AI-Ready';}
+  else if(d.tier==='Emerging'){tierBg='#E6F1FB';tierColor='#185FA5';tierLabel='📈 Emerging';}
+  else if(d.tier==='Building'){tierBg='#FAEEDA';tierColor='#854F0B';tierLabel='🌱 Building';}
+  else{tierBg='#FAECE7';tierColor='#993C1D';tierLabel='🔍 Exploring';}
+
+  var bc=dims.map(function(dim){
+    return '<div class="bc"><div class="bc-name">'+dim.name+'</div>'
+      +'<div class="bc-bg"><div class="bc-fill" style="width:'+dim.score+'%;background:'+sc(dim.score)+'"></div></div>'
+      +'<div class="bc-score">'+dim.score+'/100</div></div>';
+  }).join('');
+
+  var sm=STRENGTH[strongest.name]||{title:'Your foundation',body:'You have strengths to build from.'};
+  var fm=FOCUS[oppName]||FOCUS[weakest.name]||{title:'Your focus area',body:'Improvement here will have the most impact.'};
+  var moves=pickMoves(d);
+  var tagLabels={quick:'Quick win',medium:'This month',strategic:'Strategic move'};
+  var moveHtml=moves.map(function(m,i){
+    return '<div class="move-card"><div class="move-num">'+(i+1)+'</div><div>'
+      +'<div class="move-title">'+m.title+'</div><div class="move-body">'+m.body+'</div>'
+      +'<span class="move-tag '+m.tag+'">'+tagLabels[m.tag]+'</span></div></div>';
+  }).join('');
+
+  // One free ungated tip based on lowest-scoring dimension
+  var FREE_TIPS={
+    'Business Foundations':'Start by writing down every task your team does more than once a week. Just a list — no solutions yet. That inventory is the foundation of every AI and automation decision you\'ll make. Most businesses that do this exercise find at least one task they can eliminate or automate in under a day.',
+    'Data & Technology':'Pick your single most important customer dataset — even if it\'s just a spreadsheet — and spend 30 minutes asking: Is every row complete? Are the fields consistent? Is it in one place? A quick data audit almost always reveals the specific gap that\'s quietly limiting what AI can do for your business.',
+    'Operations & Automation':'Time one task this week. Pick the most repetitive thing your team does — responding to a standard inquiry, generating a report, updating a record — and measure how long it actually takes. That number is your baseline. Businesses that track this before automating consistently get better results than those that don\'t.',
+    'Customer & Growth':'Send one question to your last 10 customers this week: "What\'s one thing we could have made easier for you?" That\'s it. The responses will tell you more about where AI can help your customer experience than any internal discussion. One question, sent today, is worth more than a strategy session next month.',
+    'AI Readiness':'Before you pick any AI tool, write down one sentence: "We\'ll know AI is working when ___." Fill in a specific, measurable outcome. Time saved, leads generated, support tickets reduced — anything concrete. Businesses with a clear success definition get there faster and waste far less money along the way.'
+  };
+  var freeTip=FREE_TIPS[oppName]||FREE_TIPS[weakest.name];
+
+  // Blurred teaser content (what's locked)
+  var lockedHTML='<div class="section-wrap" style="margin-top:0;">'
+    +'<div class="opp-card"><span class="opp-icon">⚡</span><div>'
+    +'<div class="opp-eyebrow">Biggest Opportunity</div>'
+    +'<div class="opp-title">'+oppName+'</div>'
+    +'<div class="opp-body">'+(OPP[oppName]||OPP[weakest.name])+'</div>'
+    +'</div></div></div>'
+    +'<div class="section-wrap"><div class="section-lbl">What this means for you</div>'
+    +'<div class="meaning-grid">'
+    +'<div class="mc strength"><div class="mc-lbl strength">Where you\'re strong</div><div class="mc-title">'+sm.title+'</div><div class="mc-body">'+sm.body+'</div></div>'
+    +'<div class="mc focus"><div class="mc-lbl focus">Where to focus</div><div class="mc-title">'+fm.title+'</div><div class="mc-body">'+fm.body+'</div></div>'
+    +'</div></div>'
+    +'<div class="section-wrap"><div class="section-lbl">Your next three moves</div>'+moveHtml+'</div>';
+
+  document.getElementById('app').innerHTML=
+    // HERO — score + tier always visible
+    '<div class="hero-card">'
+    +'<div class="hero-eyebrow">Your AI Readiness Report</div>'
+    +'<div class="hero-score">'+d.score+'</div>'
+    +'<div class="hero-score-label">out of 100</div>'
+    +'<span class="tier-badge" style="background:'+tierBg+';color:'+tierColor+'">'+tierLabel+'</span>'
+    +'<div class="hero-desc">'+(NARRATIVES[d.tier]||NARRATIVES['Exploring'])+'</div>'
+    +'</div>'
+
+    // SCORE BREAKDOWN — always visible
+    +'<div class="section-wrap"><div class="section-lbl">Score Breakdown</div>'
+    +'<div class="breakdown-bar">'+bc+'</div></div>'
+
+    // FREE TIP — ungated, based on lowest dimension
+    +'<div class="section-wrap">'
+    +'<div style="background:var(--white);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:var(--radius);padding:1.5rem 1.75rem;">'
+    +'<div style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">💡 One thing you can do today</div>'
+    +'<div style="font-size:14px;color:var(--text-dark);line-height:1.7;">'+freeTip+'</div>'
+    +'</div></div>'
+
+    // LOCKED SECTION — blurred with capture overlay, OR fully open if skipGate=true
+    +(skipGate
+      ? '<div class="section-wrap" id="locked-section">'+lockedHTML+'</div>'
+      : '<div class="locked-section" id="locked-section">'
+        +'<div class="locked-content" id="locked-content">'+lockedHTML+'</div>'
+        +'<div class="lock-overlay" id="lock-overlay">'
+        +'<div class="lock-card">'
+        +'<div class="lock-icon">🔓</div>'
+        +'<div class="lock-title">You\'ve done the hard part.<br>Now get the full picture.</div>'
+        +'<div class="lock-sub">Enter your details to unlock your personalized action plan, biggest opportunity, and three specific next moves for your business.</div>'
+        +'<ul class="lock-unlocks">'
+        +'<li><span class="lock-check">✓</span><span><strong>Your personalized action plan</strong> — the 3 highest-impact AI moves for your specific business</span></li>'
+        +'<li><span class="lock-check">✓</span><span><strong>Your biggest opportunity area</strong> — where focused effort will move the needle fastest</span></li>'
+        +'<li><span class="lock-check">✓</span><span><strong>Where you\'re strong & where to focus</strong> — what your scores actually mean in practice</span></li>'
+        +'<li><span class="lock-check">✓</span><span><strong>A free 30-minute consultation</strong> with an elevatemy.ai specialist</span></li>'
+        +'</ul>'
+        +'<div class="lock-fields">'
+        +'<input class="lock-input" type="text" id="cap-name" placeholder="Your first name" autocomplete="given-name"/>'
+        +'<input class="lock-input" type="email" id="cap-email" placeholder="Work email address" autocomplete="email"/>'
+        +'<input class="lock-input" type="text" id="cap-company" placeholder="Company name" autocomplete="organization"/>'
+        +'<input class="lock-input" type="tel" id="cap-phone" placeholder="Phone number (optional)" autocomplete="tel"/>'
+        +'</div>'
+        +'<button class="lock-btn" onclick="unlock()">Unlock my full report →</button>'
+        +'<div class="lock-error" id="cap-error">Please enter your name, a valid email, and company name.</div>'
+        +'<div class="lock-privacy">No spam. Your details are kept confidential and never shared.</div>'
+        +'</div></div></div>'
+    )
+
+    // Consult strip and CTAs — always show when coming from email
+    +(skipGate
+      ? '<div class="consult-strip">'
+        +'<div><div class="consult-eyebrow">🎯 Included with your report</div>'
+        +'<div class="consult-title">Book your free 30-minute AI strategy consultation</div>'
+        +'<div class="consult-sub">Sit down (virtually) with an elevatemy.ai specialist to walk through your results and map out your first AI implementation steps — no obligation, no sales pitch.</div></div>'
+        +'<a class="consult-btn" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Book my free consultation →</a>'
+        +'</div>'
+        +'<div class="cta-row">'
+        +'<a class="btn-primary" href="/general/pricing.html">See recommended plans →</a>'
+        +'<a class="btn-secondary" href="/general/assessment.html">Retake assessment</a>'
+        +'</div>'
+      : ''
+    );
+
+  // Store d for use in unlock()
+  window._d = d;
+}
+
+function unlock(){
+  var name=document.getElementById('cap-name').value.trim();
+  var email=document.getElementById('cap-email').value.trim();
+  var company=document.getElementById('cap-company').value.trim();
+  var phone=document.getElementById('cap-phone').value.trim();
+  var errEl=document.getElementById('cap-error');
+  if(!name||!email||!email.includes('@')||!company){errEl.style.display='block';return;}
+  errEl.style.display='none';
+
+  // Remove overlay, unblur content
+  var overlay=document.getElementById('lock-overlay');
+  var content=document.getElementById('locked-content');
+  if(overlay)overlay.remove();
+  if(content){content.style.filter='none';content.style.opacity='1';content.style.pointerEvents='auto';content.style.userSelect='auto';}
+
+  // Add consult strip and CTA after unlocked content
+  var app=document.getElementById('app');
+  var consultDiv=document.createElement('div');
+  consultDiv.innerHTML='<div class="consult-strip">'
+    +'<div><div class="consult-eyebrow">🎯 Included with your report</div>'
+    +'<div class="consult-title">Book your free 30-minute AI strategy consultation</div>'
+    +'<div class="consult-sub">Sit down (virtually) with an elevatemy.ai specialist to walk through your results and map out your first AI implementation steps — no obligation, no sales pitch.</div></div>'
+    +'<a class="consult-btn" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Book my free consultation →</a>'
+    +'</div>'
+    +'<div class="cta-row">'
+    +'<a class="btn-primary" href="/general/pricing.html">See recommended plans →</a>'
+    +'<a class="btn-secondary" href="/general/assessment.html">Retake assessment</a>'
+    +'</div>';
+  app.appendChild(consultDiv);
+
+  // Scroll to revealed content
+  document.getElementById('locked-section').scrollIntoView({behavior:'smooth',block:'start'});
+
+  // Submit to HubSpot
+  submitToHubSpot(name, email, company, phone);
+}
+
+function submitToHubSpot(name, email, company, phone){
+  var stored=sessionStorage.getItem('eai_answers');
+  var answerTexts=[];
+  var resultData=window._d;
+  if(stored){try{var obj=JSON.parse(stored);answerTexts=obj.a||[];}catch(e){}}
+
+  var nameParts=name.split(' ');
+  var firstName=nameParts[0];
+  var lastName=nameParts.slice(1).join(' ');
+  var d=window._d||{};
+
+  // Build full results URL for email
+  var p=[];
+  p.push('name='+encodeURIComponent(firstName));
+  p.push('score='+(d.score||0));
+  p.push('tier='+encodeURIComponent(d.tier||''));
+  p.push('bf='+(d.bf||0));p.push('dt='+(d.dt||0));p.push('oa='+(d.oa||0));
+  p.push('cg='+(d.cg||0));p.push('air='+(d.air||0));
+  p.push('opp='+encodeURIComponent(d.opp||''));
+  p.push('q18='+encodeURIComponent(d.q18||''));
+  p.push('q19='+encodeURIComponent(d.q19||''));
+  var resultsURL='https://23625222.hs-sites.com/elevatemy.ai-result-nfp?'+p.join('&');
+
+  var qNames=['ai_assessment__business_stage','ai_assessment__team_size','ai_assessment__digital_tool_comfort',
+    'ai_assessment__most_timeconsuming_area','ai_assessment__customer_contact_management','ai_assessment__business_reporting',
+    'ai_assessment__technology_stack','ai_assessment__data_quality_confidence','ai_assessment__manual_work_volume',
+    'ai_assessment__automation_tool_experience','ai_assessment__customer_inquiry_handling','ai_assessment__content_creation_frequency',
+    'ai_assessment__customer_acquisition_method','ai_assessment__communication_personalization','ai_assessment__marketing_attribution',
+    'ai_assessment__customer_feedback_collection','ai_assessment__current_ai_tool_usage','ai_assessment__biggest_ai_adoption_blocker',
+    'ai_assessment__most_desired_ai_outcome','ai_assessment__leadership_time_commitment'];
+
+  var fields=[
+    {name:'firstname',value:firstName},{name:'lastname',value:lastName},
+    {name:'email',value:email},{name:'company',value:company},{name:'phone',value:phone||''},
+    {name:'ai_readiness_tier',value:d.tier||''},
+    {name:'ai_assessment__biggest_opportunity_area',value:d.opp||''},
+    {name:'ai_results_url_general',value:resultsURL},
+    {name:'ai_assessment_completion_date_nonfp',value:new Date().toISOString().split('T')[0]}
+  ];
+
+  // Add all 20 question answers if we have them
+  qNames.forEach(function(qName,i){
+    if(answerTexts[i]){fields.push({name:qName,value:answerTexts[i]});}
+  });
+
+  fields=fields.filter(function(f){return f.value!=='';});
+  console.log('Submitting to HubSpot...',fields.length,'fields');
+
+  fetch(/* TODO: replace with Matt's CRM endpoint once contract is confirmed */ 'https://api.hsforms.com/submissions/v3/integration/submit/'+HS_PORTAL_ID+'/'+HS_FORM_GUID,{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({fields:fields,context:{pageUri:window.location.href,pageName:'elevatemy.ai General Business Assessment Results'}})
+  }).then(function(res){console.log(res.ok?'✅ HubSpot OK':'❌ HubSpot error:',res.status);})
+    .catch(function(err){console.error('❌ HubSpot error:',err);});
+}
+
+function renderError(){
+  document.getElementById('app').innerHTML='<div class="error-state">'
+    +'<div class="error-title">Results not found</div>'
+    +'<div class="error-body">This link may be incomplete or expired. Please <a href="/general/assessment.html" style="color:var(--teal)">take the assessment</a> to generate your results, or check your email for your personalized results link.</div>'
+    +'</div>';
+}
+
+(function(){
+  var d=getParams();
+  if(!d.tier||!d.score){
+    // Demo mode for previewing — swap for renderError() when live
+    render({score:69,tier:'Emerging',bf:75,dt:67,oa:67,cg:67,air:67,opp:'Data & Technology',q18:'Cost or budget uncertainty',q19:'Saving time on admin and repetitive tasks'}, true);
+    return;
+  }
+  render(d, true); // true = skip gate, show everything
+})();
+
+(function(){
+  var btn=document.getElementById('nav-hamburger');var drawer=document.getElementById('nav-drawer');
+  if(!btn||!drawer)return;
+  btn.addEventListener('click',function(e){e.stopPropagation();btn.classList.toggle('open');drawer.classList.toggle('open');});
+  document.addEventListener('click',function(e){if(drawer.classList.contains('open')&&!drawer.contains(e.target)&&e.target!==btn){btn.classList.remove('open');drawer.classList.remove('open');}});
+})();
+</script>
+</body>
+</html>
