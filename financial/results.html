@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/finance-favicon.png"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your AI Readiness Results — elevatemy.ai</title>
+<!-- HubSpot include removed during Vercel migration -->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0B1120;
+  --bg2:#141E30;
+  --bg3:#1C2A3F;
+  --border:rgba(255,255,255,0.08);
+  --indigo:#6366F1;
+  --indigo2:#818CF8;
+  --coral:#F97316;
+  --emerald:#10B981;
+  --amber:#F59E0B;
+  --red:#EF4444;
+  --text:#F1F5F9;
+  --text2:#CBD5E1;
+  --muted:#64748B;
+  --light:#94A3B8;
+  --d:'Bricolage Grotesque',sans-serif;
+  --b:'Inter',sans-serif;
+  --m:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--b);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,17,32,0.92);backdrop-filter:blur(12px);z-index:50;}
+.nav-logo{font-family:var(--d);font-size:1rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;}
+.nav-logo span{color:var(--indigo2);}
+.nav-cta{font-size:0.8rem;font-weight:600;color:var(--indigo2);background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);padding:0.5rem 1rem;border-radius:5px;text-decoration:none;transition:all 0.15s;}
+.nav-cta:hover{background:rgba(99,102,241,0.2);}
+
+/* HERO */
+.hero{max-width:780px;margin:0 auto;padding:4rem 2rem 2rem;text-align:center;}
+.hero-eyebrow{font-family:var(--m);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--indigo2);margin-bottom:1.25rem;}
+.hero-name{font-family:var(--d);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--text);line-height:1.15;letter-spacing:-0.02em;margin-bottom:0.5rem;}
+.hero-sub{font-size:0.95rem;font-weight:300;color:var(--light);line-height:1.7;}
+
+/* TIER CARD */
+.tier-wrap{max-width:780px;margin:2.5rem auto 0;padding:0 2rem;}
+.tier-card{border-radius:12px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;}
+.tier-card::before{content:'';position:absolute;inset:0;opacity:0.04;background:radial-gradient(ellipse at 80% 50%,#fff 0%,transparent 70%);}
+.tier-left{display:flex;align-items:center;gap:1.25rem;}
+.tier-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;}
+.tier-info{}
+.tier-label{font-family:var(--m);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.2rem;}
+.tier-name{font-family:var(--d);font-size:2rem;font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1;}
+.tier-right{text-align:right;}
+.tier-score-num{font-family:var(--d);font-size:2.5rem;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.03em;}
+.tier-score-label{font-family:var(--m);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.2rem;}
+
+/* TIER DESCRIPTION */
+.tier-desc-wrap{max-width:780px;margin:1rem auto 0;padding:0 2rem;}
+.tier-desc{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;font-size:0.85rem;font-weight:300;color:var(--text2);line-height:1.75;}
+
+/* SCORES */
+.scores-wrap{max-width:780px;margin:2.5rem auto 0;padding:0 2rem;}
+.section-label{font-family:var(--m);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.scores-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;}
+.score-cell{background:var(--bg2);padding:1.25rem 1rem;}
+.score-cell-name{font-family:var(--d);font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.75rem;line-height:1.3;}
+.score-track{height:3px;background:rgba(255,255,255,0.07);border-radius:2px;margin-bottom:0.5rem;}
+.score-fill{height:100%;border-radius:2px;transition:width 1s cubic-bezier(0.4,0,0.2,1);}
+.score-num{font-family:var(--m);font-size:0.68rem;color:var(--light);}
+
+/* GAP CALLOUT */
+.gap-wrap{max-width:780px;margin:1.5rem auto 0;padding:0 2rem;}
+.gap-card{background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-left:3px solid var(--amber);border-radius:8px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;}
+.gap-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.gap-content{}
+.gap-eyebrow{font-family:var(--m);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);margin-bottom:0.25rem;}
+.gap-title{font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;}
+.gap-body{font-size:0.8rem;font-weight:300;color:var(--text2);line-height:1.65;}
+
+/* WHAT THIS MEANS */
+.means-wrap{max-width:780px;margin:2.5rem auto 0;padding:0 2rem;}
+.means-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.means-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;}
+.means-eyebrow{font-family:var(--m);font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
+.means-title{font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:0.5rem;}
+.means-body{font-size:0.78rem;font-weight:300;color:var(--text2);line-height:1.65;}
+.means-card.highlight{border-color:rgba(99,102,241,0.25);border-left:2px solid var(--indigo);}
+.means-card.highlight .means-eyebrow{color:var(--indigo2);}
+
+/* NEXT STEPS */
+.next-wrap{max-width:780px;margin:2.5rem auto 0;padding:0 2rem;}
+.next-steps{display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem;}
+.next-step{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;}
+.step-num{font-family:var(--m);font-size:0.65rem;color:var(--indigo2);background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.step-text{}
+.step-title{font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;}
+.step-body{font-size:0.78rem;font-weight:300;color:var(--text2);line-height:1.6;}
+
+/* CTA */
+.cta-wrap{max-width:780px;margin:3rem auto 0;padding:0 2rem 5rem;}
+.cta-card{background:linear-gradient(135deg,rgba(99,102,241,0.12) 0%,rgba(168,85,247,0.08) 100%);border:1px solid rgba(99,102,241,0.2);border-radius:12px;padding:2.5rem;text-align:center;}
+.cta-title{font-family:var(--d);font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;letter-spacing:-0.02em;}
+.cta-body{font-size:0.88rem;font-weight:300;color:var(--light);margin-bottom:1.75rem;line-height:1.7;max-width:480px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-block;padding:0.9rem 2rem;background:var(--indigo);color:#fff;font-family:var(--b);font-size:0.88rem;font-weight:600;border-radius:6px;text-decoration:none;transition:all 0.15s;letter-spacing:0.01em;}
+.cta-btn:hover{filter:brightness(1.12);transform:translateY(-1px);}
+.cta-note{font-size:0.72rem;color:var(--muted);margin-top:1rem;}
+
+/* ERROR */
+.error-state{max-width:500px;margin:8rem auto;padding:2rem;text-align:center;}
+.error-title{font-family:var(--d);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;}
+.error-body{font-size:0.85rem;color:var(--light);font-weight:300;line-height:1.7;}
+
+/* LOADING */
+.loading-state{display:flex;align-items:center;justify-content:center;min-height:60vh;flex-direction:column;gap:1rem;}
+.loading-dots{display:flex;gap:6px;}
+.loading-dots span{width:7px;height:7px;border-radius:50%;background:var(--indigo2);animation:pulse 1.2s ease-in-out infinite;}
+.loading-dots span:nth-child(2){animation-delay:0.2s;}
+.loading-dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes pulse{0%,80%,100%{opacity:0.2;transform:scale(0.8);}40%{opacity:1;transform:scale(1);}}
+
+@media(max-width:640px){
+  .nav{padding:1rem 1.25rem;}
+  .hero{padding:2.5rem 1.25rem 1.5rem;}
+  .tier-wrap,.tier-desc-wrap,.scores-wrap,.gap-wrap,.means-wrap,.next-wrap,.cta-wrap{padding-left:1.25rem;padding-right:1.25rem;}
+  .scores-grid{grid-template-columns:1fr 1fr;}
+  .means-grid{grid-template-columns:1fr;}
+  .tier-card{padding:1.5rem;}
+  .tier-name{font-size:1.5rem;}
+  .tier-score-num{font-size:2rem;}
+}
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    background: none;
+    border: none;
+    z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--offwhite, #F1F5F9);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  @media(max-width:768px){
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none !important;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(11,17,32,0.98);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 150;
+    }
+    .nav-links.mobile-open {
+      display: flex !important;
+    }
+    .nav-links a {
+      font-size: 1.2rem !important;
+      padding: 0.5rem 1rem;
+    }
+    .nav-cta {
+      font-size: 1rem !important;
+      padding: 0.9rem 2rem !important;
+    }
+  }
+
+  @media(max-width:768px){
+    .nav-hamburger { display: flex !important; }
+    .nav-links { display: none; }
+    .nav-links.mobile-open {
+      display: flex;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(11,17,32,0.97);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 500;
+    }
+    .nav-links.mobile-open a {
+      font-size: 1.25rem;
+      color: #F1F5F9;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links.mobile-open .nav-cta {
+      background: #e8b84b;
+      color: #0d1f35;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai" style="display:flex;align-items:center;text-decoration:none;">
+    <svg height="32" viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(16,13)">
+        <rect width="54" height="54" rx="9" fill="#141E30" stroke="#6366F1" stroke-width="1.5"/>
+        <rect x="13" y="14" width="28" height="5" rx="2" fill="#3D4E8A"/>
+        <rect x="13" y="25" width="17" height="5" rx="2" fill="#2DD4C8" opacity="0.92"/>
+        <rect x="13" y="36" width="28" height="5" rx="2" fill="#3D4E8A"/>
+      </g>
+      <text y="58" font-family="'Bricolage Grotesque','Georgia',serif" font-size="38" font-weight="700" letter-spacing="-0.03em">
+        <tspan x="84" fill="#F1F5F9">elevate</tspan><tspan fill="#6366F1">my</tspan><tspan fill="#475569" font-weight="300" font-family="'Inter',sans-serif" font-size="32">.</tspan><tspan fill="#818CF8" font-family="'JetBrains Mono','Courier New',monospace" font-weight="400" font-size="32">ai</tspan>
+      </text>
+    </svg>
+  </a>
+  <div style="display:flex;align-items:center;gap:1.5rem;">
+    <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai" style="font-size:0.8rem;color:var(--light);text-decoration:none;font-weight:500;">Home</a>
+    <a href="/financial/assessment.html" style="font-size:0.8rem;color:var(--light);text-decoration:none;font-weight:500;">Assessment</a>
+    <a href="/financial/pricing.html" style="font-size:0.8rem;color:var(--light);text-decoration:none;font-weight:500;">Pricing</a>
+    <a class="nav-cta" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank">Book a call →</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="app">
+  <div class="loading-state">
+    <div class="loading-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<script>
+// ── Tier config ───────────────────────────────────────────────
+const TIERS = {
+  early_stage: {
+    display: 'Early Stage',
+    color: '#EF4444',
+    description: "You're at the starting line — and that's a completely legitimate place to be. Most organizations in your position have heard a lot about AI but haven't found a clear, safe way in. The biggest risk right now isn't moving too slow, it's moving without a plan and wasting momentum on the wrong things.",
+    strength: "You have a clean slate. No legacy AI debt, no conflicting tool sprawl to untangle. That's actually an advantage — you can build the right foundation from day one.",
+    challenge: "Without a defined strategy and some early wins, it's easy for AI interest to stall. The goal in the next 30–60 days is one visible, measurable win that builds internal confidence.",
+    steps: [
+      { title: "Map your biggest time cost", body: "Identify the one workflow in your business that consumes the most hours per week. That's almost always the right place to start." },
+      { title: "Get leadership aligned", body: "AI initiatives stall without a visible sponsor. A 2-hour strategy session with decision-makers is usually enough to unlock real momentum." },
+      { title: "Run one focused pilot", body: "Pick a single, contained use case and prove it out in 30 days. A small win changes the internal conversation entirely." }
+    ]
+  },
+  developing: {
+    display: 'Developing',
+    color: '#F59E0B',
+    description: "You've got real activity happening — which puts you ahead of most. The challenge at this stage isn't getting started, it's getting consistent. Scattered pilots and ad-hoc tool usage don't compound. A focused playbook will.",
+    strength: "You've already done the hardest part: breaking inertia. There are people in your organization using AI, which means you have internal proof points to build on.",
+    challenge: "The gap between 'some AI activity' and 'AI that actually moves the business' is usually a strategy and governance problem, not a technology problem. That's very fixable.",
+    steps: [
+      { title: "Pick your anchor use case", body: "Of everything you've piloted, what showed the most promise? Double down there before expanding. Depth beats breadth at this stage." },
+      { title: "Address your biggest gap first", body: "Your lowest-scoring category is where momentum stalls. A focused 30-day sprint on that one area will unlock the rest." },
+      { title: "Define who owns AI in your org", body: "Even a part-time internal champion changes outcomes dramatically. Assign ownership before adding more tools." }
+    ]
+  },
+  intermediate: {
+    display: 'Intermediate',
+    color: '#6366F1',
+    description: "You're further along than most organizations your size. AI is working in parts of your business — now the challenge is expanding it systematically without creating governance gaps or burnout in the teams carrying it.",
+    strength: "You have proof it works. That makes internal selling easier and gives you a template to replicate across other departments or use cases.",
+    challenge: "Scaling AI is a different skill than starting it. The organizations that do it well invest in governance, change management, and measurement before they scale — not after.",
+    steps: [
+      { title: "Formalize what's working", body: "Document your best-performing AI workflows so they can be replicated by other teams without starting from scratch." },
+      { title: "Close the governance gap", body: "Your risk and policy foundation needs to keep up with your usage. An AI policy and approved tool list is a one-time investment that protects everything else." },
+      { title: "Build your measurement layer", body: "Connect AI activity to business outcomes — time saved, cost reduced, revenue influenced. That's what unlocks the next round of investment." }
+    ]
+  },
+  advanced: {
+    display: 'Advanced',
+    color: '#10B981',
+    description: "You're operating at a level most organizations won't reach for years. AI is embedded in how you work, not bolted on. The challenge now is staying ahead — differentiation, not just adoption.",
+    strength: "You have institutional knowledge about what AI actually looks like inside an organization. That's rare and valuable, and it's compounding.",
+    challenge: "At this level, the risk is complacency. Competitors are catching up, models are improving fast, and the strategies that got you here may not be the ones that keep you ahead.",
+    steps: [
+      { title: "Audit for competitive differentiation", body: "Where are you using AI in ways your competitors can't easily copy? That's where to invest next." },
+      { title: "Evaluate custom and fine-tuned models", body: "Off-the-shelf tools will take you far — but proprietary AI built on your data is where durable advantage lives." },
+      { title: "Publish your AI strategy internally", body: "An annual AI review — what you built, what worked, what's next — keeps your team aligned and ahead." }
+    ]
+  }
+};
+
+const GAP_DESCRIPTIONS = {
+  'Risk & Ethics': "You have meaningful AI activity happening, but the policies, data rules, and incident processes to govern it safely aren't in place yet. As usage grows, this gap grows faster — and the consequences become more visible.",
+  'Data & Infrastructure': "Your data is the fuel for any AI initiative. Right now it's either siloed, inconsistently structured, or hard to access — which means even good AI tools will underperform until this is addressed.",
+  'Strategy & Roadmap': "Activity without strategy is expensive. You need a clear picture of where AI fits in your business, who owns it, and how you'll measure it — before adding more tools or projects.",
+  'People & Culture': "Technology is the easy part. The organizations that win with AI invest heavily in people: training, ownership, and a culture that treats experimentation as progress. This is your biggest unlock.",
+  'AI Usage & Adoption': "You have some capability, but adoption is thin or inconsistent. The goal is depth in a few workflows, not breadth across many. One workflow running at 10x is worth more than ten at 1.1x.",
+  'Strategy': "Activity without strategy is expensive. You need a clear picture of where AI fits in your business, who owns it, and how you'll measure it — before adding more tools or projects.",
+  'Data': "Your data is the fuel for any AI initiative. Right now it's either siloed, inconsistently structured, or hard to access — which means even good AI tools will underperform until this is addressed.",
+  'People': "Technology is the easy part. The organizations that win with AI invest heavily in people: training, ownership, and a culture that treats experimentation as progress. This is your biggest unlock.",
+  'Usage': "You have some capability, but adoption is thin or inconsistent. The goal is depth in a few workflows, not breadth across many. One workflow running at 10x is worth more than ten at 1.1x.",
+  'Risk': "You have meaningful AI activity happening, but the policies, data rules, and incident processes to govern it safely aren't in place yet. As usage grows, this gap grows faster."
+};
+
+// ── Read URL params ───────────────────────────────────────────
+function getParams() {
+  const p = new URLSearchParams(window.location.search);
+  return {
+    name:    decodeURIComponent(p.get('name') || ''),
+    tier:    decodeURIComponent(p.get('tier') || ''),
+    score:   p.get('score') || '0',
+    pct:     p.get('pct') || '0',
+    gap:     decodeURIComponent(p.get('gap') || ''),
+    gap2:    decodeURIComponent(p.get('gap2') || ''),
+    s_score: p.get('s_score') || '0',
+    s_pct:   p.get('s_pct') || '0',
+    d_score: p.get('d_score') || '0',
+    d_pct:   p.get('d_pct') || '0',
+    p_score: p.get('p_score') || '0',
+    p_pct:   p.get('p_pct') || '0',
+    u_score: p.get('u_score') || '0',
+    u_pct:   p.get('u_pct') || '0',
+    r_score: p.get('r_score') || '0',
+    r_pct:   p.get('r_pct') || '0',
+  };
+}
+
+function hexToRgb(hex){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return r+','+g+','+b;
+}
+
+function scoreColor(pct){
+  const n = parseInt(pct);
+  if(n >= 75) return '#10B981';
+  if(n >= 50) return '#6366F1';
+  if(n >= 25) return '#F59E0B';
+  return '#EF4444';
+}
+
+// ── Render ────────────────────────────────────────────────────
+function render(d) {
+  const tierCfg = TIERS[d.tier] || TIERS['developing'];
+  const tc = tierCfg.color;
+  const rgb = hexToRgb(tc);
+  const firstName = d.name ? d.name.split(' ')[0] : null;
+  const gapDesc = GAP_DESCRIPTIONS[d.gap] || "This is the area with the most room to grow — and the most opportunity to create visible impact quickly.";
+  const cats = [
+    { label: 'Practice Profile', score: d.s_score, pct: d.s_pct, max: 13 },
+    { label: 'Technology & Data', score: d.d_score, pct: d.d_pct, max: 16 },
+    { label: 'Operations & Admin', score: d.p_score, pct: d.p_pct, max: 16 },
+    { label: 'Marketing & Growth', score: d.u_score, pct: d.u_pct, max: 14 },
+    { label: 'AI Readiness',      score: d.r_score, pct: d.r_pct, max: 22 },
+  ];
+
+  const html = `
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">AI Readiness Assessment — Your Results</div>
+      <h1 class="hero-name">${firstName ? `Here's where you stand, ${firstName}.` : 'Here are your results.'}</h1>
+      <p class="hero-sub">Your personalized AI readiness report — scores, gaps, and a clear path forward.</p>
+    </div>
+
+    <!-- TIER -->
+    <div class="tier-wrap">
+      <div class="tier-card" style="background:rgba(${rgb},0.08);border:1px solid rgba(${rgb},0.2);">
+        <div class="tier-left">
+          <div class="tier-dot" style="background:${tc};box-shadow:0 0 10px ${tc}88;"></div>
+          <div class="tier-info">
+            <div class="tier-label">Your tier</div>
+            <div class="tier-name">${tierCfg.display || d.tier}</div>
+          </div>
+        </div>
+        <div class="tier-right">
+          <div class="tier-score-num">${d.score}<span style="font-size:1.2rem;opacity:0.4;">/84</span></div>
+          <div class="tier-score-label">${d.pct}% overall readiness</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER DESC -->
+    <div class="tier-desc-wrap">
+      <div class="tier-desc">${tierCfg.description}</div>
+    </div>
+
+    <!-- SCORES -->
+    <div class="scores-wrap">
+      <div class="section-label">Score breakdown</div>
+      <div class="scores-grid">
+        ${cats.map(c => `
+          <div class="score-cell">
+            <div class="score-cell-name">${c.label}</div>
+            <div class="score-track"><div class="score-fill" style="width:${c.pct}%;background:${scoreColor(c.pct)};height:3px;border-radius:2px;"></div></div>
+            <div class="score-num">${c.score}/${c.max} &nbsp;·&nbsp; ${c.pct}%</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- GAP -->
+    ${d.gap ? `
+    <div class="gap-wrap">
+      <div class="gap-card">
+        <div class="gap-icon">⚡</div>
+        <div class="gap-content">
+          <div class="gap-eyebrow">Biggest opportunity</div>
+          <div class="gap-title">${d.gap}</div>
+          <div class="gap-body">${gapDesc}</div>
+        </div>
+      </div>
+    </div>` : ''}
+
+    <!-- WHAT THIS MEANS -->
+    <div class="means-wrap">
+      <div class="section-label">What this means for you</div>
+      <div class="means-grid">
+        <div class="means-card highlight">
+          <div class="means-eyebrow">Where you're strong</div>
+          <div class="means-title">Your foundation</div>
+          <div class="means-body">${tierCfg.strength}</div>
+        </div>
+        <div class="means-card">
+          <div class="means-eyebrow">Where to focus</div>
+          <div class="means-title">The gap to close</div>
+          <div class="means-body">${tierCfg.challenge}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="next-wrap">
+      <div class="section-label">Your next three moves</div>
+      <div class="next-steps">
+        ${tierCfg.steps.map((s, i) => `
+          <div class="next-step">
+            <div class="step-num">${i + 1}</div>
+            <div class="step-text">
+              <div class="step-title">${s.title}</div>
+              <div class="step-body">${s.body}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <div class="cta-card">
+        <div class="cta-title">Ready to turn this into a plan?</div>
+        <div class="cta-body">A 30-minute call with our team is enough to map out your highest-value AI opportunity and what it would take to get there.</div>
+        <a class="cta-btn" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank">Book a free strategy call →</a>
+        <div class="cta-note">No pitch. Just a clear picture of what's possible for your business.</div>
+        <div class="cta-note" style="margin-top:0.5rem;">Questions? <a href="mailto:tracy@elevatemy.ai" style="color:var(--indigo2);">tracy@elevatemy.ai</a></div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('app').innerHTML = html;
+}
+
+function renderError() {
+  document.getElementById('app').innerHTML = `
+    <div class="error-state">
+      <div class="error-title">Results not found</div>
+      <div class="error-body">This link may be incomplete or expired. If you completed the assessment, check your email for your results link or <a href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" style="color:var(--indigo2)">reach out to our team</a>.</div>
+    </div>`;
+}
+
+// ── Init ──────────────────────────────────────────────────────
+(function init(){
+  const d = getParams();
+  if(!d.tier || !d.score){
+    // If no params, load demo so you can preview the page
+    const demo = {
+      name:'Jennifer Torres', tier:'developing', score:'31', pct:'40', gap:'Operations & Admin',
+      s_score:'5', s_pct:'38', d_score:'7', d_pct:'44', p_score:'6', p_pct:'38',
+      u_score:'7', u_pct:'50', r_score:'6', r_pct:'27'
+    };
+    // Comment out the line below and uncomment renderError() when live
+    render(demo);
+    // renderError();
+    return;
+  }
+  render(d);
+})();
+</script>
+<!-- HubSpot include removed during Vercel migration -->
+<script>
+(function(){
+  var btn = document.getElementById('nav-hamburger');
+  var links = document.querySelector('.nav-links');
+  if(!btn) return;
+  if(!links) {
+    // assessment page — find the header sibling div with links
+    links = document.querySelector('.site-header > div');
+  }
+  if(!links) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    btn.classList.toggle('open');
+    links.classList.toggle('mobile-open');
+  });
+  document.addEventListener('click', function(e){
+    if(links.classList.contains('mobile-open') && !links.contains(e.target) && e.target !== btn){
+      btn.classList.remove('open');
+      links.classList.remove('mobile-open');
+    }
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      btn.classList.remove('open');
+      links.classList.remove('mobile-open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
