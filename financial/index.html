@@ -1,0 +1,705 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- HubSpot include removed during Vercel migration -->
+<link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/finance-favicon.png"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>elevatemy.ai - Why are you still doing that manually?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:    #0d1f35;
+    --navy2:   #132840;
+    --ink:     #1a2f4e;
+    --sky:     #3b8ee8;
+    --sky2:    #5ba4f0;
+    --gold:    #e8b84b;
+    --gold2:   #f5d07a;
+    --cream:   #f7f3ee;
+    --offwhite:#faf8f5;
+    --mist:    #dce6f0;
+    --mid:     #8499b0;
+    --light:   #c4d2e2;
+    --serif:   'Instrument Serif', Georgia, serif;
+    --sans:    'DM Sans', sans-serif;
+    --mono:    'DM Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--navy); color: var(--offwhite); overflow-x: hidden; cursor: none; }
+  .cursor { position: fixed; top: 0; left: 0; z-index: 9999; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; mix-blend-mode: difference; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: transparent; transition: background 0.4s, backdrop-filter 0.4s; }
+  nav.scrolled { background: rgba(13,31,53,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(255,255,255,0.07); }
+  .logo { display: flex; align-items: center; text-decoration: none; }
+  .logo svg { height: 38px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--light); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy) !important; background: var(--gold); padding: 0.55rem 1.4rem; border-radius: 2px; text-decoration: none; transition: background 0.2s, transform 0.15s !important; }
+  .nav-cta:hover { background: var(--gold2) !important; transform: translateY(-1px); }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 3rem; padding: 9rem 3rem 5rem; position: relative; overflow: hidden; }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-video-col { position: relative; z-index: 1; padding-top: 1rem; min-width: 0; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(59,142,232,0.12) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(232,184,75,0.07) 0%, transparent 50%), var(--navy); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+  .orb1 { width: 500px; height: 500px; background: rgba(59,142,232,0.15); top: -100px; right: -100px; animation: drift1 12s ease-in-out infinite; }
+  .orb2 { width: 300px; height: 300px; background: rgba(232,184,75,0.1); bottom: 100px; left: 5%; animation: drift2 15s ease-in-out infinite; }
+  @keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,40px)} }
+  @keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-30px)} }
+  .hero-content { position: relative; z-index: 1; max-width: 820px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--mono); font-size: 0.72rem; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.7s 0.2s forwards; }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+  .hero-h1 { font-family: var(--serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: var(--offwhite); margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.8s 0.35s forwards; }
+  .hero-h1 em { font-style: italic; color: var(--sky2); }
+  .hero-h1 .gold { color: var(--gold); }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 300; color: var(--light); line-height: 1.7; max-width: 560px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.5s forwards; }
+  .hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.65s forwards; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--sans); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em; color: var(--navy); background: var(--gold); padding: 1rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: none; }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(232,184,75,0.3); }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; font-weight: 500; color: var(--light); text-decoration: none; border-bottom: 1px solid rgba(196,210,226,0.3); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; cursor: none; }
+  .btn-ghost:hover { color: var(--offwhite); border-color: var(--offwhite); }
+  .hero-stat-row { opacity: 1 !important; transform: none !important; display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid rgba(255,255,255,0.08); opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+  .stat-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--offwhite); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-num span { color: var(--gold); }
+  .stat-label { font-size: 0.78rem; font-weight: 400; color: var(--mid); letter-spacing: 0.03em; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .marquee-section { background: var(--gold); padding: 0.9rem 0; overflow: hidden; }
+  .marquee-track { display: flex; gap: 3rem; animation: marquee 25s linear infinite; white-space: nowrap; }
+  .marquee-item { display: flex; align-items: center; gap: 1rem; font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); flex-shrink: 0; }
+  .marquee-dot { width: 4px; height: 4px; background: var(--navy); border-radius: 50%; opacity: 0.4; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .problem-section { padding: 7rem 3rem; background: var(--offwhite); color: var(--navy); position: relative; overflow: hidden; }
+  .section-tag { font-family: var(--mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sky); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .section-tag::before { content:''; display:block; width:20px; height:1px; background:var(--sky); }
+  .problem-h2 { font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 400; line-height: 1.12; letter-spacing: -0.02em; max-width: 680px; margin-bottom: 4rem; color: var(--navy); }
+  .problem-h2 em { font-style: italic; color: var(--sky); }
+  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+  .problem-card { background: var(--cream); padding: 2.5rem 2rem; position: relative; transition: background 0.25s; }
+  .problem-card:hover { background: white; }
+  .problem-num { font-family: var(--serif); font-size: 3.5rem; font-weight: 400; color: var(--mist); line-height: 1; margin-bottom: 1.2rem; }
+  .problem-title { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; line-height: 1.3; }
+  .problem-body { font-size: 0.88rem; color: #4a6070; line-height: 1.7; font-weight: 300; }
+  .services-section { padding: 7rem 3rem; background: var(--navy2); }
+  .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+  .services-h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--offwhite); }
+  .services-h2 em { font-style: italic; color: var(--gold); }
+  .services-intro { font-size: 0.95rem; font-weight: 300; color: var(--light); line-height: 1.8; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); }
+  .svc-card { background: var(--navy2); padding: 2.5rem 2rem 2rem; transition: background 0.25s; position: relative; overflow: hidden; }
+  .svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.25s; }
+  .svc-card:hover { background: rgba(255,255,255,0.03); }
+  .svc-card:hover::before { opacity: 1; }
+  .svc-icon { width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(59,142,232,0.12); margin-bottom: 1.5rem; font-size: 1.3rem; }
+  .svc-title { font-size: 1rem; font-weight: 600; color: var(--offwhite); margin-bottom: 0.6rem; }
+  .svc-body { font-size: 0.85rem; font-weight: 300; color: var(--light); line-height: 1.7; margin-bottom: 1.2rem; }
+  .svc-price { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; color: var(--gold); letter-spacing: 0.06em; }
+  .how-section { padding: 7rem 3rem; background: var(--cream); color: var(--navy); }
+  .how-h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 4rem; color: var(--navy); max-width: 500px; }
+  .how-h2 em { font-style: italic; color: var(--sky); }
+  .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .how-steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 14px); right: calc(12.5% + 14px); height: 1px; background: var(--mist); z-index: 0; }
+  .how-step { padding: 0 1.5rem 0 0; position: relative; z-index: 1; }
+  .how-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--gold); font-family: var(--mono); font-size: 0.7rem; font-weight: 500; margin-bottom: 1.5rem; }
+  .how-title { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
+  .how-body { font-size: 0.85rem; font-weight: 300; color: #4a6070; line-height: 1.7; }
+  .proof-section { padding: 7rem 3rem; background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .proof-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+  .proof-h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--offwhite); margin-bottom: 1.5rem; }
+  .proof-h2 em { font-style: italic; color: var(--gold); }
+  .proof-body { font-size: 0.95rem; font-weight: 300; color: var(--light); line-height: 1.8; margin-bottom: 1.5rem; }
+  .proof-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .proof-stat { border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 1.5rem; background: rgba(255,255,255,0.02); }
+  .proof-stat-num { font-family: var(--serif); font-size: 2rem; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+  .proof-stat-label { font-size: 0.78rem; font-weight: 300; color: var(--mid); }
+  .proof-visual { position: relative; background: linear-gradient(135deg, var(--navy2) 0%, rgba(59,142,232,0.08) 100%); border: 0.5px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 2.5rem; overflow: hidden; }
+  .proof-visual::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--sky), var(--gold)); }
+  .dash-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-bottom: 1.5rem; }
+  .dash-metric { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+  .dash-metric:last-of-type { border-bottom: none; margin-bottom: 0; }
+  .dash-metric-label { font-size: 0.82rem; font-weight: 300; color: var(--light); }
+  .dash-metric-val { font-family: var(--serif); font-size: 1.6rem; color: var(--offwhite); }
+  .dash-metric-delta { font-family: var(--mono); font-size: 0.7rem; color: #4ade80; }
+  .dash-bar-wrap { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-top: 0.5rem; width: 100%; }
+  .dash-bar { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--sky), var(--gold)); }
+  .pricing-section { padding: 7rem 3rem; background: var(--offwhite); color: var(--navy); }
+  .pricing-h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--navy); text-align: center; }
+  .pricing-h2 em { font-style: italic; color: var(--sky); }
+  .pricing-sub { font-size: 0.95rem; font-weight: 300; color: #4a6070; text-align: center; margin-bottom: 4rem; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--mist); max-width: 900px; margin: 0 auto; }
+  .price-card { background: var(--offwhite); padding: 2.5rem 2rem; position: relative; }
+  .price-card.featured { background: var(--navy); color: var(--offwhite); }
+  .price-tier { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+  .price-card:not(.featured) .price-tier { color: var(--sky); }
+  .price-card.featured .price-tier { color: var(--gold); }
+  .price-amount { font-family: var(--serif); font-size: 2.8rem; font-weight: 400; color: var(--navy); line-height: 1; margin-bottom: 0.3rem; }
+  .price-card.featured .price-amount { color: var(--offwhite); }
+  .price-period { font-size: 0.78rem; font-weight: 300; color: var(--mid); margin-bottom: 1.5rem; }
+  .price-card.featured .price-period { color: var(--light); }
+  .price-features { list-style: none; margin-bottom: 2rem; }
+  .price-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; font-weight: 300; line-height: 1.5; padding: 0.4rem 0; color: #4a6070; border-bottom: 0.5px solid var(--mist); }
+  .price-card.featured .price-features li { color: var(--light); border-bottom-color: rgba(255,255,255,0.07); }
+  .price-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+  .price-btn { display: block; text-align: center; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.85rem 1.5rem; border-radius: 2px; text-decoration: none; transition: all 0.2s; cursor: none; }
+  .price-btn-outline { border: 1.5px solid var(--mist); color: var(--navy); }
+  .price-btn-outline:hover { border-color: var(--navy); }
+  .price-btn-solid { background: var(--gold); color: var(--navy); }
+  .price-btn-solid:hover { background: var(--gold2); }
+  .cta-section { padding: 7rem 3rem; background: var(--navy); text-align: center; position: relative; overflow: hidden; }
+  .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(59,142,232,0.1) 0%, transparent 70%); }
+  .cta-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--offwhite); margin-bottom: 1.2rem; }
+  .cta-h2 em { font-style: italic; color: var(--gold); }
+  .cta-sub { font-size: 1rem; font-weight: 300; color: var(--light); margin-bottom: 2.5rem; line-height: 1.7; }
+  .cta-form { display: flex; gap: 0; max-width: 440px; margin: 0 auto 1rem; }
+  .cta-input { flex: 1; padding: 1rem 1.2rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-right: none; border-radius: 2px 0 0 2px; color: var(--offwhite); font-family: var(--sans); font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+  .cta-input::placeholder { color: var(--mid); }
+  .cta-input:focus { border-color: rgba(59,142,232,0.5); }
+  .cta-submit { padding: 1rem 1.6rem; background: var(--gold); color: var(--navy); font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; border: none; border-radius: 0 2px 2px 0; cursor: none; transition: background 0.2s; }
+  .cta-submit:hover { background: var(--gold2); }
+  .cta-fine { font-size: 0.75rem; color: var(--mid); }
+  footer { padding: 2.5rem 3rem; background: var(--navy); border-top: 0.5px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--offwhite); }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; font-weight: 300; color: var(--mid); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.75rem; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  /* Assessment CTA banner */
+  .assessment-banner { background: linear-gradient(135deg, rgba(59,142,232,0.12) 0%, rgba(232,184,75,0.08) 100%); border-top: 0.5px solid rgba(59,142,232,0.2); border-bottom: 0.5px solid rgba(59,142,232,0.2); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .assessment-banner-text {}
+  .assessment-banner-eyebrow { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sky2); margin-bottom: 0.3rem; }
+  .assessment-banner-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--offwhite); line-height: 1.2; }
+  .assessment-banner-title em { font-style: italic; color: var(--gold); }
+  .assessment-banner-sub { font-size: 0.85rem; font-weight: 300; color: var(--light); margin-top: 0.3rem; }
+  .assessment-banner-btn { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--navy); background: var(--gold); padding: 0.9rem 1.8rem; border-radius: 2px; text-decoration: none; white-space: nowrap; transition: background 0.2s, transform 0.15s; flex-shrink: 0; }
+  .assessment-banner-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+  @media(max-width:768px){
+    nav { padding: 1rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-stat-row { opacity: 1 !important; transform: none !important; gap: 1.5rem; flex-wrap: wrap; }
+    .problem-grid, .services-grid, .how-steps, .pricing-grid { grid-template-columns: 1fr; gap: 1px; }
+    .services-header, .proof-section { grid-template-columns: 1fr; gap: 2rem; }
+    section, .problem-section, .services-section, .how-section, .proof-section, .pricing-section, .cta-section { padding: 4rem 1.5rem; }
+    .how-steps::before { display: none; }
+    .cta-form { flex-direction: column; }
+    .cta-input, .cta-submit { border-radius: 2px; border: 1px solid rgba(255,255,255,0.12); }
+    .cta-submit { border-top: none; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    body { cursor: auto; }
+    .cursor { display: none; }
+    .assessment-banner { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    background: none;
+    border: none;
+    z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--offwhite, #F1F5F9);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media(max-width:768px){
+    .nav-hamburger { display: flex !important; }
+    .nav-links { display: none; }
+    .nav-links.mobile-open {
+      display: flex !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: rgba(10,15,28,0.99) !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 2.5rem !important;
+      z-index: 99999 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .nav-links.mobile-open a {
+      font-size: 1.3rem !important;
+      color: #F1F5F9 !important;
+      text-decoration: none !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.02em !important;
+    }
+    .nav-links.mobile-open .nav-cta {
+      background: #e8b84b !important;
+      color: #0d1f35 !important;
+      padding: 0.85rem 2rem !important;
+      border-radius: 4px !important;
+      font-weight: 700 !important;
+    }
+    .hero { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .hero-video-col { padding-top: 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai" class="logo">
+    <svg height="32" viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(16,13)">
+        <rect width="54" height="54" rx="9" fill="#141E30" stroke="#6366F1" stroke-width="1.5"/>
+        <rect x="13" y="14" width="28" height="5" rx="2" fill="#3D4E8A"/>
+        <rect x="13" y="25" width="17" height="5" rx="2" fill="#2DD4C8" opacity="0.92"/>
+        <rect x="13" y="36" width="28" height="5" rx="2" fill="#3D4E8A"/>
+      </g>
+      <text y="58" font-family="'Bricolage Grotesque','Georgia',serif" font-size="38" font-weight="700" letter-spacing="-0.03em">
+        <tspan x="84" fill="#F1F5F9">elevate</tspan><tspan fill="#6366F1">my</tspan><tspan fill="#475569" font-weight="300" font-family="'Inter',sans-serif" font-size="32">.</tspan><tspan fill="#818CF8" font-family="'JetBrains Mono','Courier New',monospace" font-weight="400" font-size="32">ai</tspan>
+      </text>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai#services">Services</a>
+    <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai#how">How it works</a>
+    <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai#about">About</a>
+    <a href="/financial/pricing.html">Pricing</a>
+    <a href="https://meetings.hubspot.com/matt-barnhart/eai-meeting">Book a call</a>
+    <a href="/financial/assessment.html" class="nav-cta">Free Assessment</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+
+  <!-- LEFT COLUMN -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI consulting for professional practices</div>
+    <h1 class="hero-h1">
+      Why are you still<br>
+      doing that <em>manually?</em>
+    </h1>
+    <p class="hero-sub">
+      elevatemy.ai helps financial advisors replace manual operations with AI systems that run quietly in the background. So you can focus on the work only you can do.
+    </p>
+    <div class="hero-actions">
+      <a href="/financial/assessment.html" class="btn-primary">
+        Take the free assessment
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" class="btn-ghost">Book a free audit →</a>
+    </div>
+    <div class="hero-stat-row">
+      <div class="stat-item">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Hours saved per week</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$<span>0</span></div>
+        <div class="stat-label">Cost for first audit</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Weeks to first results</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">161<span>+</span></div>
+        <div class="stat-label">Contacts automated</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN — YouTube embed -->
+  <div class="hero-video-col">
+    <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.6rem;">Watch the walkthrough</div>
+    <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);border:0.5px solid rgba(255,255,255,0.08);">
+      <iframe src="https://www.youtube.com/embed/sLG8TMkfR7Y?rel=0&modestbranding=1" title="elevatemy.ai dashboard walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    </div>
+    <p style="font-size:0.78rem;font-weight:300;color:var(--mid);margin-top:0.75rem;line-height:1.6;">Most advisors have no idea what their revenue looks like until Friday afternoon. If you&rsquo;ve ever spent a Monday morning copying numbers out of custodian PDFs, watch this first.</p>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Revenue automation<span class="marquee-dot"></span></div>
+    <div class="marquee-item">HubSpot integration<span class="marquee-dot"></span></div>
+    <div class="marquee-item">AI content engine<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Client onboarding<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Statement parsing<span class="marquee-dot"></span></div>
+    <div class="marquee-item">CRM sync<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Practice dashboards<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Meeting notes AI<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Revenue automation<span class="marquee-dot"></span></div>
+    <div class="marquee-item">HubSpot integration<span class="marquee-dot"></span></div>
+    <div class="marquee-item">AI content engine<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Client onboarding<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Statement parsing<span class="marquee-dot"></span></div>
+    <div class="marquee-item">CRM sync<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Practice dashboards<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Meeting notes AI<span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+
+
+<!-- ASSESSMENT BANNER -->
+<div class="assessment-banner">
+  <div class="assessment-banner-text">
+    <div class="assessment-banner-eyebrow">Free · 22 questions · ~8 minutes · Instant results</div>
+    <div class="assessment-banner-title">How <em>AI-ready</em> is your practice?</div>
+    <div class="assessment-banner-sub">Answer 22 questions and get a personalized score, gap analysis, and roadmap - instantly.</div>
+  </div>
+  <a href="/financial/assessment.html" class="assessment-banner-btn">
+    Take the free assessment
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem-section" id="problem">
+  <div class="section-tag">The problem</div>
+  <h2 class="problem-h2">You didn't build a practice to spend your days on <em>admin.</em></h2>
+  <div class="problem-grid">
+    <div class="problem-card reveal">
+      <div class="problem-num">01</div>
+      <div class="problem-title">Revenue tracking is still manual</div>
+      <div class="problem-body">Copying numbers out of custodian PDFs, reconciling spreadsheets, chasing down figures - every week, hours gone. Data that should flow automatically still requires you to touch it.</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">02</div>
+      <div class="problem-title">Marketing falls through the cracks</div>
+      <div class="problem-body">You know you should be posting, writing, staying in front of clients. But between client work and operations, content never makes it out the door. Your competition is.</div>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-num">03</div>
+      <div class="problem-title">Operations are running you</div>
+      <div class="problem-body">Onboarding, follow-ups, compliance checklists, meeting notes - the work of running the business is drowning the work of growing it. The ceiling isn't ambition. It's bandwidth.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-tag" style="color:var(--gold)">What we build</div>
+      <h2 class="services-h2">AI systems that <em>work</em> while you do.</h2>
+    </div>
+    <p class="services-intro">Every service we offer is one we built and run inside our own financial practice first. Nothing theoretical. Everything proven.</p>
+  </div>
+
+  <!-- SIGNATURE SERVICE -->
+  <div style="background:var(--navy);border:1px solid var(--gold);border-radius:16px;padding:2.5rem;margin-bottom:2rem;" class="reveal">
+    <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">&#9733; Signature Service</div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;flex-wrap:wrap;">
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--offwhite);margin-bottom:0.75rem;letter-spacing:-0.02em;">AI-Powered Marketing Plan</h3>
+        <p style="font-size:0.9rem;color:var(--light);line-height:1.7;margin-bottom:1.25rem;max-width:560px;">A comprehensive, advisor-specific marketing strategy built with AI — covering brand positioning, content pillars, lead generation, social media, email campaigns, and a 90-day action calendar. Delivered via a dedicated strategy session.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.25);color:var(--gold);font-size:0.78rem;font-weight:500;padding:4px 12px;border-radius:6px;">Brand positioning audit</span>
+          <span style="background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.25);color:var(--gold);font-size:0.78rem;font-weight:500;padding:4px 12px;border-radius:6px;">Content pillar strategy</span>
+          <span style="background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.25);color:var(--gold);font-size:0.78rem;font-weight:500;padding:4px 12px;border-radius:6px;">Lead gen blueprint</span>
+          <span style="background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.25);color:var(--gold);font-size:0.78rem;font-weight:500;padding:4px 12px;border-radius:6px;">90-day action calendar</span>
+          <span style="background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.25);color:var(--gold);font-size:0.78rem;font-weight:500;padding:4px 12px;border-radius:6px;">Email + social playbook</span>
+          <span style="background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.25);color:var(--gold);font-size:0.78rem;font-weight:500;padding:4px 12px;border-radius:6px;">AI tool recommendations</span>
+        </div>
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-size:0.75rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Flat-rate consult</div>
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:4px;">$2,500</div>
+        <div style="font-size:0.78rem;color:var(--mid);margin-bottom:1rem;">One-time investment</div>
+        <a href="mailto:tracy@elevatemy.ai?subject=AI-Powered Marketing Plan Inquiry" style="display:inline-block;background:var(--gold);color:var(--navy);font-size:0.875rem;font-weight:700;padding:11px 24px;border-radius:8px;text-decoration:none;">Book your consult &#8594;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD-ONS -->
+  <div class="reveal">
+    <div style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sky);margin-bottom:0.5rem;">A la carte</div>
+    <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:400;color:var(--offwhite);margin-bottom:0.5rem;letter-spacing:-0.02em;">Add-on services</h3>
+    <p style="font-size:0.9rem;color:var(--mid);margin-bottom:2rem;">Bolt on exactly what you need — available to any plan or as standalone services.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">&#127919;</div>
+        <div class="svc-title">Extra coaching session</div>
+        <div class="svc-body">One additional 1:1 strategy or coaching session tailored to your practice and current priorities.</div>
+        <div class="svc-price">$297 / session</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#128172;</div>
+        <div class="svc-title">Website AI chat widget</div>
+        <div class="svc-body">Custom AI assistant embedded on your advisor website — answers prospect questions 24/7.</div>
+        <div class="svc-price">$497 setup + $97/mo</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#128737;&#65039;</div>
+        <div class="svc-title">Compliance AI review</div>
+        <div class="svc-body">Quarterly review of your AI content workflows for compliance alignment and risk exposure.</div>
+        <div class="svc-price">$397 / quarter</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#127916;</div>
+        <div class="svc-title">Video content package</div>
+        <div class="svc-body">Monthly short-form video scripts, hooks, and editing guidance — built for advisor audiences.</div>
+        <div class="svc-price">$597 / month</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#127979;</div>
+        <div class="svc-title">Staff training session</div>
+        <div class="svc-body">Standalone Zoom training session for your team on AI tools, prompts, and daily workflows.</div>
+        <div class="svc-price">$397 / session</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#10133;</div>
+        <div class="svc-title">Additional advisor seat</div>
+        <div class="svc-body">Add another advisor to any existing plan at a reduced rate — scales with your firm.</div>
+        <div class="svc-price">+$197/mo per advisor</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="/financial/pricing.html" style="font-family:var(--mono);font-size:0.78rem;color:var(--sky);letter-spacing:0.08em;text-decoration:none;border-bottom:1px solid rgba(59,142,232,0.3);padding-bottom:2px;">View full pricing — DIY, Done With You, Done For You plans &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-tag" style="color:var(--sky)">How it works</div>
+  <h2 class="how-h2">From audit to <em>automated</em> in six weeks.</h2>
+  <div class="how-steps">
+    <div class="how-step reveal">
+      <div class="how-num">01</div>
+      <div class="how-title">Free practice audit</div>
+      <div class="how-body">A 30-minute call to map your current tech stack, data sources, and biggest time drains. You leave with a clear picture of where AI saves you the most - whether you work with us or not.</div>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num">02</div>
+      <div class="how-title">Quick wins first</div>
+      <div class="how-body">We start with the highest-impact fixes - usually statement automation and meeting notes. Most clients see results within two weeks of kickoff.</div>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num">03</div>
+      <div class="how-title">Build and automate</div>
+      <div class="how-body">Dashboards, email sequences, onboarding flows, CRM sync. We build the infrastructure and train your team to run it confidently.</div>
+    </div>
+    <div class="how-step reveal">
+      <div class="how-num">04</div>
+      <div class="how-title">Scale on your terms</div>
+      <div class="how-body">Ongoing coaching, new tool rollout, and growth strategy. We stay involved as long as you need - or hand it over once you're running independently.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-section" id="about">
+  <div class="proof-left reveal">
+    <div class="proof-label">Built inside a real practice, for real practices</div>
+    <h2 class="proof-h2">We didn't read about this in a blog post. We <em>built it</em> inside a real practice.</h2>
+    <p class="proof-body">Matt Barnhart (Financial Planner) and Tracy Siri (CMO) are the team behind Concierge Wealth Management in San Diego. Every tool we offer at elevatemy.ai was built, tested, and refined inside their own practice first - on real client data, real custodian statements, and real compliance requirements.</p>
+    <p class="proof-body">Working with AI - thoughtfully, practically, and inside a real practice - is how they've changed how the business runs. And it's how they help other advisors do the same.</p>
+    <div class="proof-stats">
+      <div class="proof-stat"><div class="proof-stat-num">161+</div><div class="proof-stat-label">Contacts automated in one push</div></div>
+      <div class="proof-stat"><div class="proof-stat-num">17mo</div><div class="proof-stat-label">Of data backfilled, 0 failures</div></div>
+      <div class="proof-stat"><div class="proof-stat-num">10+</div><div class="proof-stat-label">Hours saved per week</div></div>
+      <div class="proof-stat"><div class="proof-stat-num">$0</div><div class="proof-stat-label">Cost for your first audit</div></div>
+    </div>
+  </div>
+    <div class="proof-visual reveal" style="border-radius:8px;border:0.5px solid rgba(255,255,255,0.07);padding:2.5rem;display:flex;flex-direction:column;justify-content:center;gap:1.5rem;">
+    <div>
+      <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:0.5rem;">Built inside a real practice</div>
+      <div style="font-family:var(--serif);font-size:1.1rem;color:var(--offwhite);line-height:1.5;">Every tool we offer was running inside Concierge Wealth Management before we offered it to anyone else.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div style="background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.07);border-radius:6px;padding:1rem;">
+        <div style="font-family:var(--serif);font-size:1.8rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;">161+</div>
+        <div style="font-size:0.75rem;color:var(--mid);">Contacts automated in one push</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.07);border-radius:6px;padding:1rem;">
+        <div style="font-family:var(--serif);font-size:1.8rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;">17mo</div>
+        <div style="font-size:0.75rem;color:var(--mid);">Of data backfilled, 0 failures</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.07);border-radius:6px;padding:1rem;">
+        <div style="font-family:var(--serif);font-size:1.8rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;">10+</div>
+        <div style="font-size:0.75rem;color:var(--mid);">Hours saved per week</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.07);border-radius:6px;padding:1rem;">
+        <div style="font-family:var(--serif);font-size:1.8rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;">$0</div>
+        <div style="font-size:0.75rem;color:var(--mid);">Cost for your first audit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-tag" style="color:var(--sky);justify-content:center;margin-bottom:1rem">Pricing</div>
+  <h2 class="pricing-h2">Simple, <em>transparent</em> pricing.</h2>
+  <p class="pricing-sub">Start with a free audit. No contract required until you're ready.</p>
+  <div class="pricing-grid reveal">
+    <div class="price-card">
+      <div class="price-tier">DIY</div>
+      <div class="price-amount">$197</div>
+      <div class="price-period">per advisor / month</div>
+      <ul class="price-features">
+        <li>AI readiness assessment + roadmap</li>
+        <li>Curated AI tool stack guide</li>
+        <li>Pre-built prompt library</li>
+        <li>Self-paced video training vault</li>
+        <li>Monthly group Q&amp;A</li>
+      </ul>
+      <a href="/financial/pricing.html" class="price-btn price-btn-outline">See full plan →</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-tier">Done With You</div>
+      <div class="price-amount" style="color:var(--gold)">$697</div>
+      <div class="price-period">per advisor / month</div>
+      <ul class="price-features">
+        <li>Everything in DIY</li>
+        <li>Bi-weekly 1:1 coaching sessions</li>
+        <li>CRM workflow setup &amp; AI integration</li>
+        <li>Done-with-you marketing plan</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="/financial/pricing.html" class="price-btn price-btn-solid">See full plan →</a>
+    </div>
+    <div class="price-card">
+      <div class="price-tier">Done For You</div>
+      <div class="price-amount">$1,497</div>
+      <div class="price-period">per advisor / month</div>
+      <ul class="price-features">
+        <li>Everything in Done With You</li>
+        <li>Full custom AI ecosystem build</li>
+        <li>Weekly 1:1 executive coaching</li>
+        <li>Done-for-you content production</li>
+        <li>Dedicated account strategist</li>
+      </ul>
+      <a href="/financial/pricing.html" class="price-btn price-btn-outline">See full plan →</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="/financial/pricing.html" style="font-family:var(--mono);font-size:0.78rem;color:var(--sky);letter-spacing:0.08em;text-decoration:none;border-bottom:1px solid rgba(59,142,232,0.3);padding-bottom:2px;">View full pricing - group discounts, add-ons &amp; feature comparison →</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-content reveal">
+    <h2 class="cta-h2">Ready to <em>elevate</em> your practice?</h2>
+    <p class="cta-sub">Book a free 30-minute practice audit. You'll leave with a clear AI roadmap — no obligation, no pitch, just clarity.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.25rem;">
+      <a href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" class="btn-primary" style="font-size:0.9rem;padding:1rem 2.2rem;">
+        Book a free audit
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <p class="cta-fine">Have a question first? Email us at <a href="mailto:tracy@elevatemy.ai?subject=elevatemy.ai inquiry" style="color:var(--gold);text-decoration:none;">tracy@elevatemy.ai</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg height="28" viewBox="16 13 440 62" xmlns="http://www.w3.org/2000/svg">
+      <rect x="16" y="13" width="54" height="54" rx="9" fill="#141E30" stroke="#6366F1" stroke-width="1.5"/>
+      <rect x="30" y="26" width="28" height="4" rx="1.5" fill="#6366F1"/>
+      <rect x="30" y="36" width="20" height="4" rx="1.5" fill="#818CF8"/>
+      <rect x="30" y="46" width="28" height="4" rx="1.5" fill="#6366F1"/>
+      <text y="58" font-family="'Bricolage Grotesque','Georgia',serif" font-size="38" font-weight="700" letter-spacing="-0.03em">
+        <tspan x="84" fill="#F1F5F9">elevate</tspan><tspan fill="#6366F1">my</tspan><tspan fill="#475569" font-weight="300" font-family="'Inter',sans-serif" font-size="32">.</tspan><tspan fill="#818CF8" font-family="'JetBrains Mono','Courier New',monospace" font-weight="400" font-size="32">ai</tspan>
+      </text>
+    </svg>
+  </div>
+  <div class="footer-copy">© 2026 elevatemy.ai · Sovran Advisors LLC · San Diego, CA</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="/financial/pricing.html">Pricing</a>
+    <a href="/financial/assessment.html">Assessment</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX-5}px, ${e.clientY-5}px)`;
+});
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+<!-- HubSpot include removed during Vercel migration -->
+
+<script>
+(function(){
+  var btn = document.getElementById('nav-hamburger');
+  if(!btn) return;
+  var links = document.querySelector('.nav-links');
+  if(!links) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    btn.classList.toggle('open');
+    links.classList.toggle('mobile-open');
+    document.body.style.overflow = links.classList.contains('mobile-open') ? 'hidden' : '';
+  });
+  document.addEventListener('click', function(e){
+    if(links.classList.contains('mobile-open') && !links.contains(e.target) && e.target !== btn){
+      btn.classList.remove('open');
+      links.classList.remove('mobile-open');
+      document.body.style.overflow = '';
+    }
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      btn.classList.remove('open');
+      links.classList.remove('mobile-open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>
