@@ -1,0 +1,246 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- HubSpot include removed during Vercel migration -->
+<link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/general-favicon.png"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pricing &amp; Plans — elevatemy.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1B3A6B; --navy-light: #2A4E8C;
+    --teal: #00A99D; --teal-light: #5BC8C0; --teal-pale: #E1F5F4;
+    --amber: #C4773B; --cream: #F8F6F2; --cream-dark: #EDE9E1;
+    --sand: #8B7355; --white: #ffffff;
+    --text-dark: #1a1a1a; --text-muted: #5a5a5a; --border: #ddd9d0;
+    --radius: 12px; --radius-sm: 8px; --radius-lg: 20px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; font-size: 16px; min-height: 100vh; display: flex; flex-direction: column; }
+
+  nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 68px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 8px; flex-shrink: 0; }
+  .nav-logo-icon span { display: block; height: 3px; border-radius: 2px; background: var(--teal); }
+  .nav-logo-icon span:nth-child(2) { width: 14px; background: var(--teal-light); }
+  .nav-logo-icon span:nth-child(1), .nav-logo-icon span:nth-child(3) { width: 20px; }
+  .wordmark { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .wordmark .elevate { color: var(--navy); } .wordmark .my { color: var(--teal); }
+  .wordmark .dot { color: var(--amber); font-weight: 300; font-family: 'Inter', sans-serif; }
+  .wordmark .ai { color: var(--navy); font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 20px; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-link { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .nav-link:hover, .nav-link.active { color: var(--navy); font-weight: 600; }
+  .nav-cta { background: var(--navy); color: var(--white); border: none; padding: 9px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; text-decoration: none; white-space: nowrap; }
+  .nav-cta:hover { background: var(--navy-light); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 1px; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 2rem 1.5rem; flex-direction: column; z-index: 190; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer .nav-link { display: block; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 16px; }
+  .nav-drawer .nav-cta { display: block; margin-top: 1rem; text-align: center; padding: 12px; font-size: 15px; border-radius: var(--radius-sm); }
+  @media (max-width: 720px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
+
+  .pricing-wrap { flex: 1; background: var(--cream); padding: 3rem 1.5rem 4rem; display: flex; flex-direction: column; align-items: center; }
+  .pricing-header { text-align: center; max-width: 600px; margin-bottom: 3rem; }
+  .section-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sand); margin-bottom: 0.75rem; text-align: center; }
+  .pricing-header h1 { font-family: 'Bricolage Grotesque', serif; font-size: 2rem; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .pricing-header p { color: var(--text-muted); font-size: 15px; }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; width: 100%; max-width: 980px; margin-bottom: 3rem; align-items: stretch; }
+  .pricing-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; display: flex; flex-direction: column; position: relative; }
+  .pricing-card.featured { border: 2px solid var(--teal); }
+  .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--teal); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+  .plan-icon-wrap { width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 20px; }
+  .plan-name { font-family: 'Bricolage Grotesque', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 0.35rem; }
+  .plan-tagline { font-size: 13px; color: var(--text-muted); margin-bottom: 1.25rem; }
+  .plan-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+  .price-currency { font-size: 1.1rem; font-weight: 600; color: var(--navy); }
+  .price-amount { font-family: 'Bricolage Grotesque', serif; font-size: 2.4rem; font-weight: 700; color: var(--navy); line-height: 1; }
+  .price-period { font-size: 13px; color: var(--sand); }
+  .price-starting { font-size: 12px; color: var(--sand); margin-top: 2px; }
+  .plan-features { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.75rem; }
+  .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+  .check-icon { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 10px; color: var(--teal); font-weight: 700; }
+  .plan-btn { width: 100%; padding: 12px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; border: none; transition: all 0.2s; margin-top: auto; text-align: center; display: block; text-decoration: none; }
+  .plan-btn-primary { background: var(--navy); color: var(--white); }
+  .plan-btn-primary:hover { background: var(--navy-light); }
+  .plan-btn-teal { background: var(--teal); color: var(--white); }
+  .plan-btn-teal:hover { background: #009590; }
+  .plan-btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+  .plan-btn-outline:hover { background: var(--cream-dark); }
+  .pricing-note { max-width: 560px; text-align: center; font-size: 13px; color: var(--sand); line-height: 1.6; }
+  .guarantee-row { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); max-width: 900px; width: 100%; }
+  .guarantee-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+
+  .cta-band { background: var(--navy); color: var(--white); padding: 4.5rem 2rem; text-align: center; }
+  .cta-band h2 { font-family: 'Bricolage Grotesque', serif; font-size: 2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+  .cta-band p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .btn-teal { background: var(--teal); color: var(--white); border: none; padding: 14px 36px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; text-decoration: none; display: inline-block; }
+  .btn-teal:hover { background: #009590; }
+
+  footer { background: var(--white); border-top: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer p { font-size: 13px; color: var(--sand); }
+
+  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--navy); color: var(--white); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/general/assessment.html">
+    <div class="nav-logo-icon">
+      <span style="width:20px"></span><span></span><span style="width:20px"></span>
+    </div>
+    <div><div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div></div>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="/general/assessment.html">Home</a>
+    <a class="nav-link" href="/general/assessment.html">Assessment</a>
+    <a class="nav-link active" href="/general/pricing.html">Pricing</a>
+    <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
+    <a class="nav-cta" href="/general/assessment.html">Take Assessment</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="nav-drawer">
+  <a class="nav-link" href="/general/assessment.html">Home</a>
+  <a class="nav-link" href="/general/assessment.html">Assessment</a>
+  <a class="nav-link active" href="/general/pricing.html">Pricing</a>
+  <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
+    <a class="nav-cta" href="/general/assessment.html">Take Assessment</a>
+</div>
+
+<div class="pricing-wrap">
+  <div class="pricing-header">
+    <div class="section-tag">Pricing &amp; Plans</div>
+    <h1>Start small. Scale as you grow.</h1>
+    <p>Every plan starts with your AI readiness report. Pick the level of support that matches where your business is right now.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- Essentials -->
+    <div class="pricing-card">
+      <div class="plan-icon-wrap" style="background:#F0FBF9;">🌱</div>
+      <div class="plan-name">Essentials</div>
+      <div class="plan-tagline">Get started with AI — guided and supported</div>
+      <div class="plan-price">
+        <span class="price-currency">$</span>
+        <span class="price-amount">199</span>
+        <span class="price-period">/ month</span>
+      </div>
+      <ul class="plan-features">
+        <li><span class="check-icon">✓</span>Full AI readiness assessment &amp; report</li>
+        <li><span class="check-icon">✓</span>Personalized 30-day AI action plan</li>
+        <li><span class="check-icon">✓</span>1× monthly strategy call (45 min)</li>
+        <li><span class="check-icon">✓</span>Curated AI tool recommendations for your industry</li>
+        <li><span class="check-icon">✓</span>Workflow automation starter templates</li>
+        <li><span class="check-icon">✓</span>Email support (2 business day response)</li>
+      </ul>
+      <a class="plan-btn plan-btn-outline" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Get started</a>
+    </div>
+
+    <!-- Growth -->
+    <div class="pricing-card featured">
+      <div class="popular-badge">Most Popular</div>
+      <div class="plan-icon-wrap" style="background:#E1F5F4;">📈</div>
+      <div class="plan-name">Growth</div>
+      <div class="plan-tagline">Guided implementation &amp; ongoing support</div>
+      <div class="plan-price">
+        <span class="price-currency">$</span>
+        <span class="price-amount">490</span>
+        <span class="price-period">/ month</span>
+      </div>
+      <ul class="plan-features">
+        <li><span class="check-icon">✓</span>Everything in Essentials</li>
+        <li><span class="check-icon">✓</span>Personalized AI roadmap (90 days)</li>
+        <li><span class="check-icon">✓</span>2× monthly strategy calls (60 min each)</li>
+        <li><span class="check-icon">✓</span>AI tool setup &amp; integrations support</li>
+        <li><span class="check-icon">✓</span>Team training sessions (up to 5 staff)</li>
+        <li><span class="check-icon">✓</span>Priority email &amp; chat support</li>
+        <li><span class="check-icon">✓</span>Monthly progress report</li>
+      </ul>
+      <a class="plan-btn plan-btn-teal" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Get started</a>
+    </div>
+
+    <!-- Scale -->
+    <div class="pricing-card">
+      <div class="plan-icon-wrap" style="background:#EEF3FB;">🏢</div>
+      <div class="plan-name">Scale</div>
+      <div class="plan-tagline">Full-service AI transformation</div>
+      <div class="plan-price" style="flex-direction:column;align-items:flex-start;gap:4px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--sand);margin-bottom:2px;">Starting at</div>
+        <div style="display:flex;align-items:baseline;gap:4px;">
+          <span class="price-currency">$</span>
+          <span class="price-amount">999</span>
+          <span class="price-period">/ month</span>
+        </div>
+        <span class="price-starting">Custom scope &amp; team size — let's talk</span>
+      </div>
+      <ul class="plan-features">
+        <li><span class="check-icon">✓</span>Everything in Growth</li>
+        <li><span class="check-icon">✓</span>Dedicated AI implementation consultant</li>
+        <li><span class="check-icon">✓</span>Custom AI solution development</li>
+        <li><span class="check-icon">✓</span>Unlimited staff training</li>
+        <li><span class="check-icon">✓</span>Integration with existing systems</li>
+        <li><span class="check-icon">✓</span>Quarterly business impact reviews</li>
+        <li><span class="check-icon">✓</span>SLA-backed support</li>
+        <li><span class="check-icon">✓</span>Executive AI briefings</li>
+      </ul>
+      <a class="plan-btn plan-btn-primary" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Talk to us</a>
+    </div>
+  </div>
+
+  <p class="pricing-note">All prices in USD. Plans billed monthly, cancel anytime. Scale pricing depends on team size and project scope. GST/VAT may apply.</p>
+
+  <div class="guarantee-row">
+    <div class="guarantee-item">✅ Cancel anytime, no lock-in</div>
+    <div class="guarantee-item">💬 Free 30-min discovery call available</div>
+    <div class="guarantee-item">🏆 30-day satisfaction guarantee</div>
+    <div class="guarantee-item">🔒 Your data is always confidential</div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>Not sure which plan is right for you?</h2>
+  <p>Take the free assessment first — your results will tell you exactly which level of support your business needs.</p>
+  <a class="btn-teal" href="/general/assessment.html">Take the free assessment →</a>
+</div>
+
+<footer>
+  <div class="wordmark" style="font-size:17px"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+  <p>© 2025 elevatemy.ai · AI Solutions for Growing Businesses · Questions? Email <a href="mailto:tracy@elevatemy.ai" style="color:var(--teal);text-decoration:none;">tracy@elevatemy.ai</a></p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- HubSpot include removed during Vercel migration -->
+<script>
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
+(function(){
+  var btn=document.getElementById('nav-hamburger'); var drawer=document.getElementById('nav-drawer');
+  if(!btn||!drawer) return;
+  btn.addEventListener('click',function(e){ e.stopPropagation(); btn.classList.toggle('open'); drawer.classList.toggle('open'); });
+  document.addEventListener('click',function(e){ if(drawer.classList.contains('open')&&!drawer.contains(e.target)&&e.target!==btn){ btn.classList.remove('open'); drawer.classList.remove('open'); } });
+})();
+</script>
+</body>
+</html>
