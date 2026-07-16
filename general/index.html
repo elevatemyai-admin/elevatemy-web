@@ -1,0 +1,243 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- HubSpot include removed during Vercel migration -->
+<link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/general-favicon.png"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>elevatemy.ai — AI Readiness Assessment for Growing Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1B3A6B; --navy-light: #2A4E8C;
+    --teal: #00A99D; --teal-light: #5BC8C0; --teal-pale: #E1F5F4;
+    --amber: #C4773B; --cream: #F8F6F2; --cream-dark: #EDE9E1;
+    --sand: #8B7355; --white: #ffffff;
+    --text-dark: #1a1a1a; --text-muted: #5a5a5a; --border: #ddd9d0;
+    --radius: 12px; --radius-sm: 8px; --radius-lg: 20px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; font-size: 16px; }
+
+  nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 68px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 8px; flex-shrink: 0; }
+  .nav-logo-icon span { display: block; height: 3px; border-radius: 2px; background: var(--teal); }
+  .nav-logo-icon span:nth-child(2) { width: 14px; background: var(--teal-light); }
+  .nav-logo-icon span:nth-child(1), .nav-logo-icon span:nth-child(3) { width: 20px; }
+  .wordmark { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .wordmark .elevate { color: var(--navy); } .wordmark .my { color: var(--teal); }
+  .wordmark .dot { color: var(--amber); font-weight: 300; font-family: 'Inter', sans-serif; }
+  .wordmark .ai { color: var(--navy); font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 20px; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-link { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .nav-link:hover, .nav-link.active { color: var(--navy); font-weight: 600; }
+  .nav-cta { background: var(--navy); color: var(--white); border: none; padding: 9px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; text-decoration: none; white-space: nowrap; }
+  .nav-cta:hover { background: var(--navy-light); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: var(--radius-sm); }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 1px; transition: all 0.25s; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 2rem 1.5rem; flex-direction: column; gap: 0; z-index: 190; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer .nav-link { display: block; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 16px; }
+  .nav-drawer .nav-cta { display: block; margin-top: 1rem; text-align: center; padding: 12px; font-size: 15px; border-radius: var(--radius-sm); }
+  @media (max-width: 720px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
+
+  .hero { display: flex; align-items: center; justify-content: center; padding: 5rem 2rem 4rem; background: var(--cream); position: relative; overflow: hidden; min-height: 80vh; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle, rgba(27,58,107,0.04) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  .hero-accent-left { position: absolute; left: 60px; top: 30%; display: flex; flex-direction: column; gap: 6px; }
+  .hero-accent-right { position: absolute; right: 60px; top: 40%; display: flex; flex-direction: column; gap: 6px; }
+  .accent-bar { width: 4px; border-radius: 2px; }
+  .hero-content { max-width: 780px; text-align: center; position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-block; background: var(--teal-pale); color: var(--teal); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700; color: var(--navy); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+  .hero h1 em { font-style: normal; color: var(--teal); }
+  .hero-sub { font-size: 1.1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--navy); color: var(--white); border: none; padding: 14px 32px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary:hover { background: var(--navy-light); }
+  .btn-secondary { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); padding: 13px 28px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; text-decoration: none; display: inline-block; }
+  .btn-secondary:hover { background: var(--cream-dark); }
+  .hero-stats { display: flex; gap: 2.5rem; justify-content: center; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Bricolage Grotesque', serif; font-size: 1.9rem; font-weight: 700; color: var(--navy); display: block; }
+  .stat-label { font-size: 12px; color: var(--sand); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sand); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Bricolage Grotesque', serif; font-size: 2rem; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .step-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; position: relative; }
+  .step-icon-wrap { width: 48px; height: 48px; background: var(--teal-pale); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .step-icon { font-size: 22px; }
+  .step-num { position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--teal); background: var(--teal-pale); padding: 2px 8px; border-radius: 20px; }
+  .step-card h3 { font-family: 'Bricolage Grotesque', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+  .step-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+  .biz-section { background: var(--white); padding: 4rem 2rem; }
+  .biz-inner { max-width: 1100px; margin: 0 auto; }
+  .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+  .biz-chip { background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--navy); }
+  .biz-chip-icon { font-size: 18px; }
+
+  .cta-band { background: var(--navy); color: var(--white); padding: 4.5rem 2rem; text-align: center; }
+  .cta-band h2 { font-family: 'Bricolage Grotesque', serif; font-size: 2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+  .cta-band p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .btn-teal { background: var(--teal); color: var(--white); border: none; padding: 14px 36px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; text-decoration: none; display: inline-block; }
+  .btn-teal:hover { background: #009590; }
+
+  footer { background: var(--white); border-top: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer p { font-size: 13px; color: var(--sand); }
+
+  @media (max-width: 600px) { .hero-accent-left, .hero-accent-right { display: none; } .hero-stats { gap: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/general/assessment.html">
+    <div class="nav-logo-icon">
+      <span style="width:20px"></span><span></span><span style="width:20px"></span>
+    </div>
+    <div>
+      <div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+      <div style="font-size:9px;letter-spacing:0.13em;color:var(--sand);text-transform:uppercase;margin-top:1px">AI Solutions for Growing Businesses</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link active" href="/general/assessment.html">Home</a>
+    <a class="nav-link" href="/general/assessment.html">Assessment</a>
+    <a class="nav-link" href="/general/pricing.html">Pricing</a>
+    <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
+    <a class="nav-cta" href="/general/assessment.html">Start Free Assessment</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="nav-drawer">
+  <a class="nav-link active" href="/general/assessment.html">Home</a>
+  <a class="nav-link" href="/general/assessment.html">Assessment</a>
+  <a class="nav-link" href="/general/pricing.html">Pricing</a>
+  <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
+    <a class="nav-cta" href="/general/assessment.html">Start Free Assessment</a>
+</div>
+
+<section class="hero">
+  <div class="hero-accent-left">
+    <div class="accent-bar" style="height:38px;background:var(--amber);opacity:0.5"></div>
+    <div class="accent-bar" style="height:24px;background:var(--teal-light);opacity:0.6"></div>
+  </div>
+  <div class="hero-accent-right">
+    <div class="accent-bar" style="height:28px;background:var(--teal);opacity:0.4"></div>
+    <div class="accent-bar" style="height:44px;background:var(--navy);opacity:0.15"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Free AI Readiness Assessment</div>
+    <h1>Is your business ready to <em>work smarter</em> with AI?</h1>
+    <p class="hero-sub">Answer 20 questions and get a personalized AI readiness report — including where you stand, where the biggest wins are, and what to do next.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="/general/assessment.html">Take the Assessment — it's free →</a>
+      <a class="btn-secondary" href="/general/pricing.html">See plans &amp; pricing</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">5 min</span><span class="stat-label">to complete</span></div>
+      <div class="stat"><span class="stat-num">20</span><span class="stat-label">questions</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">free report</span></div>
+      
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--white);padding:4rem 2rem;">
+  <div class="section-header">
+    <div class="section-tag">How it works</div>
+    <h2 class="section-title">Three steps to clarity</h2>
+  </div>
+  <div class="steps-grid" style="max-width:1000px;margin:0 auto;">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon-wrap"><span class="step-icon">📋</span></div>
+      <h3>Answer 20 questions</h3>
+      <p>Tell us about your team, tools, data habits, customer interactions, and growth goals. No technical knowledge needed.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon-wrap"><span class="step-icon">📊</span></div>
+      <h3>Get your AI readiness score</h3>
+      <p>We score your business across five dimensions and benchmark you against similar businesses in your industry.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon-wrap"><span class="step-icon">🚀</span></div>
+      <h3>Get a clear action plan</h3>
+      <p>Your report tells you exactly where to start, what to prioritize, and which AI tools are the best fit for your business.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-icon-wrap"><span class="step-icon">🤝</span></div>
+      <h3>Talk to an AI specialist</h3>
+      <p>Book a free 30-minute call with our team to walk through your results and map out your implementation roadmap.</p>
+    </div>
+  </div>
+</div>
+
+<div class="biz-section">
+  <div class="biz-inner">
+    <div class="section-header">
+      <div class="section-tag">Who this is for</div>
+      <h2 class="section-title">Built for every type of growing business</h2>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-chip"><span class="biz-chip-icon">🏥</span> Healthcare &amp; Allied Health</div>
+      <div class="biz-chip"><span class="biz-chip-icon">🛍️</span> Retail &amp; E-commerce</div>
+      <div class="biz-chip"><span class="biz-chip-icon">🏗️</span> Construction &amp; Trades</div>
+      <div class="biz-chip"><span class="biz-chip-icon">⚖️</span> Legal &amp; Professional Services</div>
+      <div class="biz-chip"><span class="biz-chip-icon">🍽️</span> Hospitality &amp; Tourism</div>
+      <div class="biz-chip"><span class="biz-chip-icon">🏭</span> Manufacturing &amp; Logistics</div>
+      <div class="biz-chip"><span class="biz-chip-icon">📣</span> Marketing &amp; Media Agencies</div>
+      <div class="biz-chip"><span class="biz-chip-icon">🎓</span> Education &amp; Training</div>
+      <div class="biz-chip"><span class="biz-chip-icon">🧑‍💻</span> Technology &amp; SaaS</div>
+      <div class="biz-chip"><span class="biz-chip-icon">🏠</span> Real Estate &amp; Property</div>
+      <div class="biz-chip"><span class="biz-chip-icon">💼</span> Accounting &amp; Advisory</div>
+      <div class="biz-chip" style="flex-direction:column;align-items:flex-start;gap:3px;">
+        <div style="display:flex;align-items:center;gap:10px;"><span class="biz-chip-icon">🔑</span> Exit Planning</div>
+        <div style="font-size:11px;color:var(--sand);padding-left:28px;">and many more industries</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>Your competitors are already exploring AI.<br>Find out where you stand.</h2>
+  <p>Takes 5 minutes. No sign-up required. Get your full report instantly.</p>
+  <a class="btn-teal" href="/general/assessment.html">Start my free assessment →</a>
+</div>
+
+<footer>
+  <div class="wordmark" style="font-size:17px"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+  <p>© 2025 elevatemy.ai · AI Solutions for Growing Businesses</p>
+  <p>Questions? Email <a href="mailto:tracy@elevatemy.ai" style="color:var(--teal);text-decoration:none;">tracy@elevatemy.ai</a></p>
+</footer>
+
+<!-- HubSpot include removed during Vercel migration -->
+<script>
+(function(){
+  var btn = document.getElementById('nav-hamburger');
+  var drawer = document.getElementById('nav-drawer');
+  if(!btn || !drawer) return;
+  btn.addEventListener('click', function(e){ e.stopPropagation(); btn.classList.toggle('open'); drawer.classList.toggle('open'); });
+  document.addEventListener('click', function(e){ if(drawer.classList.contains('open') && !drawer.contains(e.target) && e.target !== btn){ btn.classList.remove('open'); drawer.classList.remove('open'); } });
+})();
+</script>
+</body>
+</html>
