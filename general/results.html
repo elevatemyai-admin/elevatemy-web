@@ -170,8 +170,8 @@ footer p{font-size:13px;color:var(--sand);}
 
 <!-- HubSpot include removed during Vercel migration -->
 <script>
-var HS_PORTAL_ID='23625222';
-var HS_FORM_GUID='691300bc-04ec-4dde-91f0-a4dc8c0ea910';
+// HubSpot portal/form variables removed — no longer used, since
+// submission now goes to the real CRM (see submitToHubSpot below).
 
 function sc(s){return s>=70?'var(--teal)':s>=45?'var(--amber)':'#e07070';}
 
@@ -409,58 +409,47 @@ function unlock(){
 }
 
 function submitToHubSpot(name, email, company, phone){
-  var stored=sessionStorage.getItem('eai_answers');
-  var answerTexts=[];
-  var resultData=window._d;
-  if(stored){try{var obj=JSON.parse(stored);answerTexts=obj.a||[];}catch(e){}}
-
   var nameParts=name.split(' ');
   var firstName=nameParts[0];
   var lastName=nameParts.slice(1).join(' ');
   var d=window._d||{};
 
-  // Build full results URL for email
-  var p=[];
-  p.push('name='+encodeURIComponent(firstName));
-  p.push('score='+(d.score||0));
-  p.push('tier='+encodeURIComponent(d.tier||''));
-  p.push('bf='+(d.bf||0));p.push('dt='+(d.dt||0));p.push('oa='+(d.oa||0));
-  p.push('cg='+(d.cg||0));p.push('air='+(d.air||0));
-  p.push('opp='+encodeURIComponent(d.opp||''));
-  p.push('q18='+encodeURIComponent(d.q18||''));
-  p.push('q19='+encodeURIComponent(d.q19||''));
-  var resultsURL='https://23625222.hs-sites.com/elevatemy.ai-result-nfp?'+p.join('&');
+  // FIXED: this used to post to HubSpot's raw Forms API (with a literal
+  // "TODO: replace with Matt's CRM endpoint" comment) — meaning anyone who
+  // unlocked their report from a shared results link (e.g. days later, from
+  // a nurture email) never actually reached the CRM or got added to a Zoho
+  // tier list. assessment.html's own direct-submission flow already posted
+  // to the real CRM correctly; this brings the results-page path in line
+  // with it, using the same payload shape.
+  //
+  // resultsUrl is simply this page's own URL — it already IS the person's
+  // permanent, shareable results link (all their scores are in these query
+  // params), so there's no need to build a separate one.
+  var payload={
+    firstName: firstName,
+    lastName: lastName || '',
+    email: email,
+    company: company,
+    phone: phone || '',
+    path: 'general',
+    tier: d.tier || '',
+    overallScore: d.score || 0,
+    categories: { bf: d.bf || 0, dt: d.dt || 0, oa: d.oa || 0, cg: d.cg || 0, air: d.air || 0 },
+    topOpportunity: d.opp || '',
+    resultsUrl: window.location.href,
+    submissionToken: Date.now().toString()
+  };
+  console.log('Submitting payload:', JSON.stringify(payload));
 
-  var qNames=['ai_assessment__business_stage','ai_assessment__team_size','ai_assessment__digital_tool_comfort',
-    'ai_assessment__most_timeconsuming_area','ai_assessment__customer_contact_management','ai_assessment__business_reporting',
-    'ai_assessment__technology_stack','ai_assessment__data_quality_confidence','ai_assessment__manual_work_volume',
-    'ai_assessment__automation_tool_experience','ai_assessment__customer_inquiry_handling','ai_assessment__content_creation_frequency',
-    'ai_assessment__customer_acquisition_method','ai_assessment__communication_personalization','ai_assessment__marketing_attribution',
-    'ai_assessment__customer_feedback_collection','ai_assessment__current_ai_tool_usage','ai_assessment__biggest_ai_adoption_blocker',
-    'ai_assessment__most_desired_ai_outcome','ai_assessment__leadership_time_commitment'];
-
-  var fields=[
-    {name:'firstname',value:firstName},{name:'lastname',value:lastName},
-    {name:'email',value:email},{name:'company',value:company},{name:'phone',value:phone||''},
-    {name:'ai_readiness_tier',value:d.tier||''},
-    {name:'ai_assessment__biggest_opportunity_area',value:d.opp||''},
-    {name:'ai_results_url_general',value:resultsURL},
-    {name:'ai_assessment_completion_date_nonfp',value:new Date().toISOString().split('T')[0]}
-  ];
-
-  // Add all 20 question answers if we have them
-  qNames.forEach(function(qName,i){
-    if(answerTexts[i]){fields.push({name:qName,value:answerTexts[i]});}
-  });
-
-  fields=fields.filter(function(f){return f.value!=='';});
-  console.log('Submitting to HubSpot...',fields.length,'fields');
-
-  fetch(/* TODO: replace with Matt's CRM endpoint once contract is confirmed */ 'https://api.hsforms.com/submissions/v3/integration/submit/'+HS_PORTAL_ID+'/'+HS_FORM_GUID,{
+  fetch('https://elevatemy-integrations.vercel.app/api/assessments/submit',{
     method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({fields:fields,context:{pageUri:window.location.href,pageName:'elevatemy.ai General Business Assessment Results'}})
-  }).then(function(res){console.log(res.ok?'✅ HubSpot OK':'❌ HubSpot error:',res.status);})
-    .catch(function(err){console.error('❌ HubSpot error:',err);});
+    body:JSON.stringify(payload)
+  }).then(function(res){
+    return res.text().then(function(body){
+      if(res.ok){console.log('✅ CRM OK');}
+      else{console.error('❌ CRM error:',res.status,body);}
+    });
+  }).catch(function(err){console.error('❌ CRM error:',err);});
 }
 
 function renderError(){
