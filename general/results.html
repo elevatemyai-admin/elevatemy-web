@@ -257,6 +257,17 @@ function render(d, skipGate){
   var strongest=dims.slice().sort(function(a,b){return b.score-a.score;})[0];
   var oppName=d.opp||weakest.name;
 
+  // Distribute the overall score across the 5 categories (20 pts each) using largest-remainder
+  // rounding, so the breakdown always adds up exactly to the headline score.
+  var fracPts=dims.map(function(dm){return (dm.score/100)*20;});
+  var floors=fracPts.map(Math.floor);
+  var used=floors.reduce(function(a,b){return a+b;},0);
+  var remainder=(parseInt(d.score)||0)-used;
+  var order=dims.map(function(dm,i){return i;}).sort(function(a,b){return (fracPts[b]-floors[b])-(fracPts[a]-floors[a]);});
+  var points=floors.slice();
+  for(var k=0;k<remainder&&k<order.length;k++){points[order[k]]++;}
+  dims.forEach(function(dm,i){dm.points=points[i];});
+
   var tierBg,tierColor,tierLabel;
   if(d.tier==='AI-Ready'){tierBg='#E1F5EE';tierColor='#0F6E56';tierLabel='🚀 AI-Ready';}
   else if(d.tier==='Emerging'){tierBg='#E6F1FB';tierColor='#185FA5';tierLabel='📈 Emerging';}
@@ -266,7 +277,7 @@ function render(d, skipGate){
   var bc=dims.map(function(dim){
     return '<div class="bc"><div class="bc-name">'+dim.name+'</div>'
       +'<div class="bc-bg"><div class="bc-fill" style="width:'+dim.score+'%;background:'+sc(dim.score)+'"></div></div>'
-      +'<div class="bc-score">'+dim.score+'/100</div></div>';
+      +'<div class="bc-score">'+dim.points+'/20</div></div>';
   }).join('');
 
   var sm=STRENGTH[strongest.name]||{title:'Your foundation',body:'You have strengths to build from.'};
