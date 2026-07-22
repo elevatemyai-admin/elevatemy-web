@@ -917,6 +917,30 @@ let gateEmail = '';
 const MAX_SCORES = {profile:13,tech:15,ops:16,marketing:14,ai:19};
 const CATEGORY_WEIGHT = 20; // 100 / 5 categories -- every category counts equally toward the total
 function calcOverall(cats){return Object.keys(MAX_SCORES).reduce(function(sum,key){return sum+Math.round((cats[key].score/MAX_SCORES[key])*CATEGORY_WEIGHT);},0);}
+function buildResultsURL(fname){
+  var r=calcScores();var cats=r.cats,total=r.total;var pct=calcOverall(cats);
+  var catLabels={ops:'Operations',sales:'Sales',marketing:'Marketing',bizdev:'Business Management'};
+  var painPrimary='',painSecondary='';
+  if(answers.q18&&answers.q18.ranked){var ranked=answers.q18.ranked;painPrimary=catLabels[ranked[0].category]||ranked[0].category;if(ranked[1])painSecondary=catLabels[ranked[1].category]||ranked[1].category;}
+  var p=[];
+  p.push('name='+encodeURIComponent(fname||''));
+  p.push('tier='+encodeURIComponent(getScoreGroup(pct)));
+  p.push('score='+total);
+  p.push('pct='+pct);
+  p.push('gap='+encodeURIComponent(painPrimary));
+  p.push('gap2='+encodeURIComponent(painSecondary));
+  p.push('s_score='+cats.profile.score);
+  p.push('s_pct='+Math.round((cats.profile.score/MAX_SCORES.profile)*100));
+  p.push('d_score='+cats.tech.score);
+  p.push('d_pct='+Math.round((cats.tech.score/MAX_SCORES.tech)*100));
+  p.push('p_score='+cats.ops.score);
+  p.push('p_pct='+Math.round((cats.ops.score/MAX_SCORES.ops)*100));
+  p.push('u_score='+cats.marketing.score);
+  p.push('u_pct='+Math.round((cats.marketing.score/MAX_SCORES.marketing)*100));
+  p.push('r_score='+cats.ai.score);
+  p.push('r_pct='+Math.round((cats.ai.score/MAX_SCORES.ai)*100));
+  return 'https://elevatemy-web.vercel.app/financial/results.html?'+p.join('&');
+}
 const SECTION_QUESTIONS = {profile:['q1','q2','q3','q4'],tech:['q5','q6','q7','q8'],ops:['q9','q10','q11','q12'],marketing:['q13','q14','q15','q16'],ai:['q17','q18','q19','q20','q21','q22']};
 const SECTION_LABELS = ['Practice Profile','Technology & Data','Operations & Admin','Marketing & Growth','AI Readiness'];
 
@@ -934,29 +958,7 @@ function startWithEmail(){
   var btn=document.querySelector('.gate-btn');
   if(btn){btn.textContent='Taking you to your results...';btn.disabled=true;}
   submitToHubSpot(false).then(function(){
-    var r=calcScores();var cats=r.cats,total=r.total;
-    var pct=calcOverall(cats);
-    var catLabels={ops:'Operations',sales:'Sales',marketing:'Marketing',bizdev:'Business Management'};
-    var painPrimary='',painSecondary='';
-    if(answers.q18&&answers.q18.ranked){var ranked=answers.q18.ranked;painPrimary=catLabels[ranked[0].category]||ranked[0].category;if(ranked[1])painSecondary=catLabels[ranked[1].category]||ranked[1].category;}
-    var p=[];
-    p.push('name='+encodeURIComponent(fname));
-    p.push('tier='+encodeURIComponent(getScoreGroup(pct)));
-    p.push('score='+total);
-    p.push('pct='+pct);
-    p.push('gap='+encodeURIComponent(painPrimary));
-    p.push('gap2='+encodeURIComponent(painSecondary));
-    p.push('s_score='+cats.profile.score);
-    p.push('s_pct='+Math.round((cats.profile.score/MAX_SCORES.profile)*100));
-    p.push('d_score='+cats.tech.score);
-    p.push('d_pct='+Math.round((cats.tech.score/MAX_SCORES.tech)*100));
-    p.push('p_score='+cats.ops.score);
-    p.push('p_pct='+Math.round((cats.ops.score/MAX_SCORES.ops)*100));
-    p.push('u_score='+cats.marketing.score);
-    p.push('u_pct='+Math.round((cats.marketing.score/MAX_SCORES.marketing)*100));
-    p.push('r_score='+cats.ai.score);
-    p.push('r_pct='+Math.round((cats.ai.score/MAX_SCORES.ai)*100));
-    window.location.href='https://elevatemy-web.vercel.app/financial/results.html?'+p.join('&');
+    window.location.href=buildResultsURL(fname);
   }).catch(function(){
     window.location.href='https://elevatemy-web.vercel.app/financial/results.html';
   });
@@ -1071,7 +1073,7 @@ function toggleRec(card){card.classList.toggle('collapsed');var btn=card.querySe
 function showPopout(id){var overlay=document.getElementById('popoutOverlay');var popout=document.getElementById('popout-'+id);if(!overlay||!popout)return;overlay.classList.add('show');popout.classList.add('show');document.body.style.overflow='hidden';}
 function closePopout(){document.querySelectorAll('.rec-popout').forEach(function(p){p.classList.remove('show');});var overlay=document.getElementById('popoutOverlay');if(overlay)overlay.classList.remove('show');document.body.style.overflow='';}
 
-function sendResultsByEmail(){var emailEl=document.getElementById('er_email');var errEl=document.getElementById('er_error');var sucEl=document.getElementById('er_success');var btn=document.getElementById('er_btn');var email=emailEl?emailEl.value.trim():'';errEl.classList.remove('show');if(!email||!/^[^@]+@[^@]+\.[^@]+$/.test(email)){errEl.classList.add('show');return;}btn.textContent='Sending...';btn.disabled=true;populateHiddenFields();var r=calcScores();var cats=r.cats,total=r.total;var pct=calcOverall(cats);function catPct(key){return Math.round((cats[key].score/MAX_SCORES[key])*100);}var painPrimary=document.getElementById('hf_pain_primary')?document.getElementById('hf_pain_primary').value:'';var payload={firstName:'',lastName:'',email:email,company:'',phone:'',path:'financial',tier:getScoreGroup(pct),overallScore:pct,categories:{profile:catPct('profile'),tech:catPct('tech'),ops:catPct('ops'),marketing:catPct('marketing'),ai:catPct('ai')},topOpportunity:painPrimary||getRecommendedService(cats),resultsUrl:'',submissionToken:Date.now().toString()};fetch('https://elevatemy-integrations.vercel.app/api/assessments/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(res){if(res.ok){sucEl.classList.add('show');emailEl.style.display='none';btn.style.display='none';var fine=document.querySelector('.er-fine');if(fine)fine.style.display='none';}else{throw new Error('Status '+res.status);}}).catch(function(){btn.textContent='Email my results ->';btn.disabled=false;errEl.textContent='Something went wrong. Email us directly at tracy@elevatemy.ai';errEl.classList.add('show');});}
+function sendResultsByEmail(){var emailEl=document.getElementById('er_email');var errEl=document.getElementById('er_error');var sucEl=document.getElementById('er_success');var btn=document.getElementById('er_btn');var email=emailEl?emailEl.value.trim():'';errEl.classList.remove('show');if(!email||!/^[^@]+@[^@]+\.[^@]+$/.test(email)){errEl.classList.add('show');return;}btn.textContent='Sending...';btn.disabled=true;populateHiddenFields();var r=calcScores();var cats=r.cats,total=r.total;var pct=calcOverall(cats);function catPct(key){return Math.round((cats[key].score/MAX_SCORES[key])*100);}var painPrimary=document.getElementById('hf_pain_primary')?document.getElementById('hf_pain_primary').value:'';var payload={firstName:gateFirstName||'',lastName:'',email:email,company:'',phone:'',path:'financial',tier:getScoreGroup(pct),overallScore:pct,categories:{profile:catPct('profile'),tech:catPct('tech'),ops:catPct('ops'),marketing:catPct('marketing'),ai:catPct('ai')},topOpportunity:painPrimary||getRecommendedService(cats),resultsUrl:buildResultsURL(gateFirstName),submissionToken:Date.now().toString()};fetch('https://elevatemy-integrations.vercel.app/api/assessments/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(res){if(res.ok){sucEl.classList.add('show');emailEl.style.display='none';btn.style.display='none';var fine=document.querySelector('.er-fine');if(fine)fine.style.display='none';}else{throw new Error('Status '+res.status);}}).catch(function(){btn.textContent='Email my results ->';btn.disabled=false;errEl.textContent='Something went wrong. Email us directly at tracy@elevatemy.ai';errEl.classList.add('show');});}
 
 function resetAssessment(){location.reload();}
 
@@ -1081,7 +1083,7 @@ function getLabel(q,val){var map=Q_LABELS[q];if(!map)return String(val);return m
 function getScoreGroup(pct){if(pct>=80)return'Advanced';if(pct>=60)return'Intermediate';if(pct>=40)return'Developing';return'Early Stage';}
 function getRecommendedService(cats){var s={tech:Math.round((cats.tech.score/MAX_SCORES.tech)*100),ops:Math.round((cats.ops.score/MAX_SCORES.ops)*100),mkt:Math.round((cats.marketing.score/MAX_SCORES.marketing)*100),ai:Math.round((cats.ai.score/MAX_SCORES.ai)*100)};if(s.tech<40)return'Revenue Intelligence';if(s.ops<40)return'Smart Ops Bundle';if(s.mkt<40)return'AI Content Engine';if(s.ai<40)return'AI Growth Coaching';return'Practice Valuation Optimization';}
 
-function buildCrmPayload(extraFields){var r=calcScores();var cats=r.cats,total=r.total;var pct=calcOverall(cats);var catLabels={ops:'Operations',sales:'Sales',marketing:'Marketing',bizdev:'Business Management'};var painPrimary='',painSecondary='';if(answers.q18&&answers.q18.ranked){var ranked=answers.q18.ranked;painPrimary=catLabels[ranked[0].category]||ranked[0].category;if(ranked[1])painSecondary=catLabels[ranked[1].category]||ranked[1].category;}function extraVal(name){if(!extraFields)return'';var f=extraFields.find(function(x){return x.name===name;});return f?f.value:'';}function catPct(key){return Math.round((cats[key].score/MAX_SCORES[key])*100);}return{firstName:gateFirstName,lastName:extraVal('lastname'),email:gateEmail,company:extraVal('company'),phone:extraVal('phone'),path:'financial',tier:getScoreGroup(pct),overallScore:pct,categories:{profile:catPct('profile'),tech:catPct('tech'),ops:catPct('ops'),marketing:catPct('marketing'),ai:catPct('ai')},topOpportunity:painPrimary||getRecommendedService(cats),resultsUrl:'',submissionToken:Date.now().toString()};}
+function buildCrmPayload(extraFields){var r=calcScores();var cats=r.cats,total=r.total;var pct=calcOverall(cats);var catLabels={ops:'Operations',sales:'Sales',marketing:'Marketing',bizdev:'Business Management'};var painPrimary='',painSecondary='';if(answers.q18&&answers.q18.ranked){var ranked=answers.q18.ranked;painPrimary=catLabels[ranked[0].category]||ranked[0].category;if(ranked[1])painSecondary=catLabels[ranked[1].category]||ranked[1].category;}function extraVal(name){if(!extraFields)return'';var f=extraFields.find(function(x){return x.name===name;});return f?f.value:'';}function catPct(key){return Math.round((cats[key].score/MAX_SCORES[key])*100);}return{firstName:gateFirstName,lastName:extraVal('lastname'),email:gateEmail,company:extraVal('company'),phone:extraVal('phone'),path:'financial',tier:getScoreGroup(pct),overallScore:pct,categories:{profile:catPct('profile'),tech:catPct('tech'),ops:catPct('ops'),marketing:catPct('marketing'),ai:catPct('ai')},topOpportunity:painPrimary||getRecommendedService(cats),resultsUrl:buildResultsURL(gateFirstName),submissionToken:Date.now().toString()};}
 
 function submitToHubSpot(isDetailForm,extraFields){
   // TODO: financial track doesn't currently build a shareable results URL
