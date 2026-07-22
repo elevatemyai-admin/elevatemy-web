@@ -353,10 +353,10 @@ function render(d) {
   const gapDesc = GAP_DESCRIPTIONS[d.gap] || "This is the area with the most room to grow — and the most opportunity to create visible impact quickly.";
   const cats = [
     { label: 'Practice Profile', score: d.s_score, pct: d.s_pct, max: 13 },
-    { label: 'Technology & Data', score: d.d_score, pct: d.d_pct, max: 16 },
+    { label: 'Technology & Data', score: d.d_score, pct: d.d_pct, max: 15 },
     { label: 'Operations & Admin', score: d.p_score, pct: d.p_pct, max: 16 },
     { label: 'Marketing & Growth', score: d.u_score, pct: d.u_pct, max: 14 },
-    { label: 'AI Readiness',      score: d.r_score, pct: d.r_pct, max: 22 },
+    { label: 'AI Readiness',      score: d.r_score, pct: d.r_pct, max: 19 },
   ];
 
   const html = `
@@ -378,8 +378,8 @@ function render(d) {
           </div>
         </div>
         <div class="tier-right">
-          <div class="tier-score-num">${d.score}<span style="font-size:1.2rem;opacity:0.4;">/84</span></div>
-          <div class="tier-score-label">${d.pct}% overall readiness</div>
+          <div class="tier-score-num">${d.pct}<span style="font-size:1.2rem;opacity:0.4;">/100</span></div>
+          <div class="tier-score-label">AI readiness score</div>
         </div>
       </div>
     </div>
@@ -397,7 +397,7 @@ function render(d) {
           <div class="score-cell">
             <div class="score-cell-name">${c.label}</div>
             <div class="score-track"><div class="score-fill" style="width:${c.pct}%;background:${scoreColor(c.pct)};height:3px;border-radius:2px;"></div></div>
-            <div class="score-num">${c.score}/${c.max} &nbsp;·&nbsp; ${c.pct}%</div>
+            <div class="score-num">${c.score}/${c.max}</div>
           </div>
         `).join('')}
       </div>
