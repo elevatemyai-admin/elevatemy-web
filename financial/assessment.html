@@ -434,7 +434,7 @@ body{font-family:var(--sans);background:var(--navy);color:var(--off);min-height:
 <body>
 
 <header class="site-header">
-  <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai" class="logo">
+  <a href="/financial/index.html" class="logo">
     <svg height="32" viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(16,13)">
         <rect width="54" height="54" rx="9" fill="#141E30" stroke="#6366F1" stroke-width="1.5"/>
@@ -448,9 +448,9 @@ body{font-family:var(--sans);background:var(--navy);color:var(--off);min-height:
     </svg>
   </a>
   <div class="nav-links">
-    <a href="https://www.cwmsd.com/ai-consult-elevatemy.ai">Home</a>
-    <a href="https://cwmsd-23625222.hs-sites.com/elevatemy.ai-pricing-page">Pricing</a>
-    <a href="https://cwmsd-23625222.hs-sites.com/elevatemy.ai-assessment">Assessment</a>
+    <a href="/financial/index.html">Home</a>
+    <a href="/financial/pricing.html">Pricing</a>
+    <a href="/financial/assessment.html">Assessment</a>
     <a href="https://meetings.hubspot.com/matt-barnhart/eai-meeting">Book a call</a>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
@@ -787,7 +787,7 @@ body{font-family:var(--sans);background:var(--navy);color:var(--off);min-height:
         </svg>
         <div class="score-ring-label">
           <div class="score-ring-num" id="ringNum">0</div>
-          <div class="score-ring-den" id="ringDen">/ 81</div>
+          <div class="score-ring-den" id="ringDen">/ 100</div>
         </div>
       </div>
       <div class="result-grade" id="resultGrade"></div>
@@ -914,7 +914,7 @@ let currentSection = -1;
 const answers = {};
 let gateFirstName = '';
 let gateEmail = '';
-const MAX_SCORES = {profile:13,tech:16,ops:16,marketing:14,ai:22};
+const MAX_SCORES = {profile:13,tech:15,ops:16,marketing:14,ai:19};
 const TOTAL_MAX = Object.values(MAX_SCORES).reduce((a,b)=>a+b,0);
 const SECTION_QUESTIONS = {profile:['q1','q2','q3','q4'],tech:['q5','q6','q7','q8'],ops:['q9','q10','q11','q12'],marketing:['q13','q14','q15','q16'],ai:['q17','q18','q19','q20','q21','q22']};
 const SECTION_LABELS = ['Practice Profile','Technology & Data','Operations & Admin','Marketing & Growth','AI Readiness'];
@@ -955,9 +955,9 @@ function startWithEmail(){
     p.push('u_pct='+Math.round((cats.marketing.score/MAX_SCORES.marketing)*100));
     p.push('r_score='+cats.ai.score);
     p.push('r_pct='+Math.round((cats.ai.score/MAX_SCORES.ai)*100));
-    window.location.href='https://cwmsd-23625222.hs-sites.com/your-elevatemy.ai-results?'+p.join('&');
+    window.location.href='https://elevatemy-web.vercel.app/financial/results.html?'+p.join('&');
   }).catch(function(){
-    window.location.href='https://cwmsd-23625222.hs-sites.com/your-elevatemy.ai-results';
+    window.location.href='https://elevatemy-web.vercel.app/financial/results.html';
   });
 }
 
@@ -1050,7 +1050,7 @@ function showResults(){
   else if(pct>=40){grade='Developing - Growth Opportunity';gradeStyle='background:rgba(245,158,11,0.15);color:#f59e0b;';title="You're leaving time and money on the <em>table every week.</em>";sub="Manual processes are quietly capping your growth. The good news: practices at this stage typically see the fastest results from AI implementation — often 8-10 hours saved in the first month alone.";ringColor='#f59e0b';}
   else{grade='Early Stage - High Opportunity';gradeStyle='background:rgba(248,113,113,0.15);color:#f87171;';title="Your practice is ready for a <em>complete transformation.</em>";sub="You're currently doing a lot manually that AI can handle automatically. This is actually the most exciting position to be in — there's enormous upside, and we know exactly where to start.";ringColor='#f87171';}
   var circumference=364.4;var offset=circumference-(pct/100)*circumference;var ring=document.getElementById('ringFill');ring.style.stroke=ringColor;setTimeout(function(){ring.style.strokeDashoffset=offset;},100);
-  document.getElementById('ringNum').textContent=total;document.getElementById('ringDen').textContent='/ '+TOTAL_MAX;
+  document.getElementById('ringNum').textContent=pct;document.getElementById('ringDen').textContent='/ 100';
   document.getElementById('resultGrade').textContent=grade;document.getElementById('resultGrade').style.cssText=gradeStyle+'padding:0.3rem 1rem;border-radius:2px;font-family:var(--mono);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:0.9rem;';
   document.getElementById('resultsTitle').innerHTML=title;document.getElementById('resultsSub').textContent=sub;
   var catEl=document.getElementById('catScores');catEl.innerHTML='';
