@@ -373,6 +373,16 @@ function computeResults(){
     return{name:name,score:Math.round((raw/12)*100)};
   });
   var overall=Math.round(dims.reduce(function(s,d){return s+d.score;},0)/dims.length);
+  // Distribute the 100-point total across the 5 categories (20 pts each) using largest-remainder
+  // rounding, so the on-screen breakdown always adds up exactly to the headline score.
+  var fracPts=dims.map(function(d){return (d.score/100)*20;});
+  var floors=fracPts.map(Math.floor);
+  var used=floors.reduce(function(a,b){return a+b;},0);
+  var remainder=overall-used;
+  var order=dims.map(function(d,i){return i;}).sort(function(a,b){return (fracPts[b]-floors[b])-(fracPts[a]-floors[a]);});
+  var points=floors.slice();
+  for(var k=0;k<remainder&&k<order.length;k++){points[order[k]]++;}
+  dims.forEach(function(d,i){d.points=points[i];});
   var weakest=dims.slice().sort(function(a,b){return a.score-b.score;})[0];
   var strongest=dims.slice().sort(function(a,b){return b.score-a.score;})[0];
   var tier=overall>=75?'AI-Ready':overall>=55?'Emerging':overall>=35?'Building':'Exploring';
@@ -460,7 +470,7 @@ function showResults(){
   var bc=dims.map(function(d){
     return '<div class="bc"><div class="bc-name">'+d.name+'</div>'
       +'<div class="bc-bg"><div class="bc-fill" style="width:'+d.score+'%;background:'+sc(d.score)+'"></div></div>'
-      +'<div class="bc-score">'+d.score+'/100</div></div>';
+      +'<div class="bc-score">'+d.points+'/20</div></div>';
   }).join('');
 
   var sm=STRENGTH[strongestName]||{title:'Your foundation',body:'You have strengths to build from.'};
