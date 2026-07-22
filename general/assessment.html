@@ -171,12 +171,12 @@ footer p{font-size:13px;color:var(--sand);}
 </head>
 <body>
 <nav>
-  <a class="nav-logo" href="/general/assessment.html">
+  <a class="nav-logo" href="/general/index.html">
     <div class="nav-logo-icon"><span style="width:20px"></span><span></span><span style="width:20px"></span></div>
     <div><div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div></div>
   </a>
   <div class="nav-links">
-    <a class="nav-link" href="/general/assessment.html">Home</a>
+    <a class="nav-link" href="/general/index.html">Home</a>
     <a class="nav-link active" href="/general/assessment.html">Assessment</a>
     <a class="nav-link" href="/general/pricing.html">Pricing</a>
     <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
@@ -185,7 +185,7 @@ footer p{font-size:13px;color:var(--sand);}
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-drawer" id="nav-drawer">
-  <a class="nav-link" href="/general/assessment.html">Home</a>
+  <a class="nav-link" href="/general/index.html">Home</a>
   <a class="nav-link active" href="/general/assessment.html">Assessment</a>
   <a class="nav-link" href="/general/pricing.html">Pricing</a>
   <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
@@ -583,7 +583,7 @@ function unlock(){
   r.dims.forEach(function(d,i){var keys=['bf','dt','oa','cg','air'];p.push(keys[i]+'='+d.score);});
   p.push('opp='+encodeURIComponent(r.weakest.name));  p.push('q18='+encodeURIComponent(getAnswerText(17)));
   p.push('q19='+encodeURIComponent(getAnswerText(18)));
-  var resultsURL='https://23625222.hs-sites.com/elevatemy.ai-result-nfp?'+p.join('&');
+  var resultsURL='https://elevatemy-web.vercel.app/general/results.html?'+p.join('&');
 
   var qNames=['ai_assessment__business_stage','ai_assessment__team_size','ai_assessment__digital_tool_comfort',
     'ai_assessment__most_timeconsuming_area','ai_assessment__customer_contact_management','ai_assessment__business_reporting',
@@ -624,8 +624,6 @@ function unlock(){
     overallScore: r.overall,
     categories: {bf:r.dims[0].score, dt:r.dims[1].score, oa:r.dims[2].score, cg:r.dims[3].score, air:r.dims[4].score},
     topOpportunity: r.weakest.name,
-    // TODO: update once the results page's final location on the new site is
-    // confirmed — this still points at the old HubSpot-hosted results page.
     resultsUrl: resultsURL,
     submissionToken: submissionToken
   };
@@ -639,7 +637,9 @@ function unlock(){
       if(res.ok){console.log('✅ CRM OK');}
       else{console.error('❌ CRM error:',res.status,body);}
     });
-  }).catch(function(err){console.error('❌ CRM error:',err);});
+  }).catch(function(err){console.error('❌ CRM error:',err);}).finally(function(){
+    window.location.href=resultsURL;
+  });
 }
 
 function retake(){
