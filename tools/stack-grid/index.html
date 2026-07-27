@@ -76,6 +76,9 @@
 
   .best-for { font-size: 12.5px; color: var(--sand); padding: 10px 18px 0; margin-top: -4px; }
 
+  .visit-link { display: block; text-align: center; font-size: 13px; font-weight: 600; color: var(--teal); text-decoration: none; padding: 10px 18px; border-top: 1px solid var(--border); background: var(--white); transition: background .15s; }
+  .visit-link:hover { background: var(--teal-pale); }
+
   .cta-band { background: var(--navy); border-radius: var(--radius-lg); padding: 2.75rem 2.5rem; text-align: center; margin-top: 1rem; }
   .cta-band h2 { font-family: 'Bricolage Grotesque', Georgia, serif; color: var(--white); font-size: 1.5rem; margin-bottom: 0.6rem; }
   .cta-band p { color: rgba(255,255,255,0.8); max-width: 480px; margin: 0 auto 1.4rem; font-size: 14.5px; }
@@ -129,44 +132,44 @@ const CATEGORIES = [
   {
     id:'automation', title:'Automate the Busywork',
     tools:[
-      {tier:'Primary', name:'Make', tagline:"connects your everyday tools so they talk to each other automatically", why:"A visual, drag-and-drop canvas — watch a new form submission create a contact, ping Slack, and update a spreadsheet, all without manual copy-pasting.", setup:'Same day (1–2 hrs)', cost:'Free; from ~$9/mo', bestFor:'Best for: almost any client — strongest live "aha" demo'},
-      {tier:'Alt · budget-conscious', name:'Activepieces', tagline:"open-source, with a self-hosted option that's free with no limits", why:"Closest UX to Zapier of any free tool. A strong fallback for clients who don't want a subscription creeping up over time.", setup:'Same day', cost:'Free (1,000 tasks/mo); self-hosted free', bestFor:'Best for: cost-sensitive or self-host-curious clients'}
+      {tier:'Primary', name:'Make', url:'https://www.make.com/', tagline:"connects your everyday tools so they talk to each other automatically", why:"A visual, drag-and-drop canvas — watch a new form submission create a contact, ping Slack, and update a spreadsheet, all without manual copy-pasting.", setup:'Same day (1–2 hrs)', cost:'Free; from ~$9/mo', bestFor:'Best for: almost any client — strongest live "aha" demo'},
+      {tier:'Alt · budget-conscious', name:'Activepieces', url:'https://www.activepieces.com/', tagline:"open-source, with a self-hosted option that's free with no limits", why:"Closest UX to Zapier of any free tool. A strong fallback for clients who don't want a subscription creeping up over time.", setup:'Same day', cost:'Free (1,000 tasks/mo); self-hosted free', bestFor:'Best for: cost-sensitive or self-host-curious clients'}
     ]
   },
   {
     id:'crm', title:'Track Leads & Customers',
     tools:[
-      {tier:'Primary', name:'Zoho CRM', tagline:"one place to track every contact, lead, and deal", why:"Simple contact/pipeline management with a clear upgrade path into invoicing and project tracking later.", setup:'Half a day', cost:'Free for up to 3 users', bestFor:'Best for: clients who might grow into more later'},
-      {tier:'Alt · scale', name:'HubSpot CRM', tagline:"more capable at scale, once a team gets involved", why:"Team already knows it well — good step-up option, but the free tier locks most useful features behind paid plans quickly.", setup:'Half a day', cost:'Free (2 users / 1,000 contacts)', bestFor:'Best for: clients scaling toward a team or heavier marketing use'}
+      {tier:'Primary', name:'Zoho CRM', url:'https://www.zoho.com/crm/', tagline:"one place to track every contact, lead, and deal", why:"Simple contact/pipeline management with a clear upgrade path into invoicing and project tracking later.", setup:'Half a day', cost:'Free for up to 3 users', bestFor:'Best for: clients who might grow into more later'},
+      {tier:'Alt · scale', name:'HubSpot CRM', url:'https://www.hubspot.com/products/crm', tagline:"more capable at scale, once a team gets involved", why:"Team already knows it well — good step-up option, but the free tier locks most useful features behind paid plans quickly.", setup:'Half a day', cost:'Free (2 users / 1,000 contacts)', bestFor:'Best for: clients scaling toward a team or heavier marketing use'}
     ]
   },
   {
     id:'email', title:'Grow (and Monetize) the List',
     tools:[
-      {tier:'Primary', name:'Beehiiv', tagline:"built-in monetization: ads, paid subscriptions, referral boosts", why:"Hard to find a business owner who'd turn down a legitimate revenue option offered alongside the newsletter itself.", setup:'1–2 hrs (+ migration time)', cost:'Free to start', bestFor:'Best for: almost every client — the monetization hook lands well'},
-      {tier:'Alt · creator-led', name:'Kit', tagline:"built for creators and coaches who'll eventually sell something", why:"Unusually generous free-tier segmentation, built around solo creators and coaches monetizing directly.", setup:'About 1 hr', cost:'Free (1 automation)', bestFor:'Best for: solo coaches / creator-type clients'},
-      {tier:'Alt · simplest', name:'MailerLite', tagline:"just a clean, no-frills newsletter", why:"Easiest drag-and-drop editor of the group — good if Beehiiv's model feels like more than a client needs.", setup:'About 1 hr', cost:'Free up to 1,000 subs', bestFor:'Best for: clients who want newsletters only, nothing else'}
+      {tier:'Primary', name:'Beehiiv', url:'https://www.beehiiv.com/?via=matt-barnhart', tagline:"built-in monetization: ads, paid subscriptions, referral boosts", why:"Hard to find a business owner who'd turn down a legitimate revenue option offered alongside the newsletter itself.", setup:'1–2 hrs (+ migration time)', cost:'Free to start', bestFor:'Best for: almost every client — the monetization hook lands well'},
+      {tier:'Alt · creator-led', name:'Kit', url:'https://kit.com/', tagline:"built for creators and coaches who'll eventually sell something", why:"Unusually generous free-tier segmentation, built around solo creators and coaches monetizing directly.", setup:'About 1 hr', cost:'Free (1 automation)', bestFor:'Best for: solo coaches / creator-type clients'},
+      {tier:'Alt · simplest', name:'MailerLite', url:'https://www.mailerlite.com/', tagline:"just a clean, no-frills newsletter", why:"Easiest drag-and-drop editor of the group — good if Beehiiv's model feels like more than a client needs.", setup:'About 1 hr', cost:'Free up to 1,000 subs', bestFor:'Best for: clients who want newsletters only, nothing else'}
     ]
   },
   {
     id:'website', title:'Build a Real Website',
     tools:[
-      {tier:'Primary', name:'Lovable', tagline:"describe the site in plain English, watch it get built live", why:"The fastest possible demo — nothing else on this list builds a real site faster in a client meeting.", setup:'Under an hour', cost:'Free; from $25/mo', bestFor:'Best for: fastest "wow," lowest learning curve'},
-      {tier:'Alt · self-manage', name:'Wix AI', tagline:"more editing depth once the client takes it over", why:"Most comprehensive free AI builder — good for clients who want to log in and manage their own site going forward.", setup:'Half a day to polish', cost:'Free plan available', bestFor:'Best for: clients who want ongoing self-service control'},
-      {tier:'Alt · design-forward', name:'Framer AI', tagline:"distinctive, non-templated layouts", why:"Genuinely different design output instead of the usual AI-template shape — steeper learning curve, worth it for design-conscious clients.", setup:'A few days', cost:'Free tier available', bestFor:'Best for: clients who care about a unique look'}
+      {tier:'Primary', name:'Lovable', url:'https://lovable.dev/', tagline:"describe the site in plain English, watch it get built live", why:"The fastest possible demo — nothing else on this list builds a real site faster in a client meeting.", setup:'Under an hour', cost:'Free; from $25/mo', bestFor:'Best for: fastest "wow," lowest learning curve'},
+      {tier:'Alt · self-manage', name:'Wix AI', url:'https://www.wix.com/ai-website-builder', tagline:"more editing depth once the client takes it over", why:"Most comprehensive free AI builder — good for clients who want to log in and manage their own site going forward.", setup:'Half a day to polish', cost:'Free plan available', bestFor:'Best for: clients who want ongoing self-service control'},
+      {tier:'Alt · design-forward', name:'Framer AI', url:'https://www.framer.com/ai/', tagline:"distinctive, non-templated layouts", why:"Genuinely different design output instead of the usual AI-template shape — steeper learning curve, worth it for design-conscious clients.", setup:'A few days', cost:'Free tier available', bestFor:'Best for: clients who care about a unique look'}
     ]
   },
   {
     id:'chatbot', title:'AI Assistant for the Site',
     tools:[
-      {tier:'Primary', name:'FastBots', tagline:"trains on the client's own site content", why:"Point it at an existing website and it learns the content, then answers visitor questions instantly — one of the fastest "+"\u201cyou're already using AI\u201d"+" wins available.", setup:'Under an hour', cost:'Free tier available', bestFor:'Best for: almost any client with an existing website'},
-      {tier:'Alt · retail/e-comm', name:'Tidio', tagline:"tuned for order-status and product FAQs", why:"Visual flow builder is about as simple as this category gets — built with stores in mind.", setup:'Under an hour', cost:'Free plan available', bestFor:'Best for: online stores, simple FAQs'}
+      {tier:'Primary', name:'FastBots', url:'https://fastbots.ai/', tagline:"trains on the client's own site content", why:"Point it at an existing website and it learns the content, then answers visitor questions instantly — one of the fastest "+"\u201cyou're already using AI\u201d"+" wins available.", setup:'Under an hour', cost:'Free tier available', bestFor:'Best for: almost any client with an existing website'},
+      {tier:'Alt · retail/e-comm', name:'Tidio', url:'https://www.tidio.com/', tagline:"tuned for order-status and product FAQs", why:"Visual flow builder is about as simple as this category gets — built with stores in mind.", setup:'Under an hour', cost:'Free plan available', bestFor:'Best for: online stores, simple FAQs'}
     ]
   },
   {
     id:'design', title:'Design & Content',
     tools:[
-      {tier:'Primary', name:'Canva', tagline:"the easiest way to make graphics, social posts, marketing materials", why:"No design background needed — open it, pick a template, make something usable within minutes.", setup:'Minutes', cost:'Free; Pro ~$13/mo', bestFor:'Best for: every client, no exceptions'}
+      {tier:'Primary', name:'Canva', url:'https://www.canva.com/', tagline:"the easiest way to make graphics, social posts, marketing materials", why:"No design background needed — open it, pick a template, make something usable within minutes.", setup:'Minutes', cost:'Free; Pro ~$13/mo', bestFor:'Best for: every client, no exceptions'}
     ]
   }
 ];
@@ -231,7 +234,8 @@ function render(){
         '<div class="tmeta">' +
           '<div class="cell"><div class="k">Time to set up</div><div class="v">' + tool.setup + '</div></div>' +
           '<div class="cell"><div class="k">Cost</div><div class="v">' + tool.cost + '</div></div>' +
-        '</div>';
+        '</div>' +
+        '<a class="visit-link" href="' + tool.url + '" target="_blank" rel="noopener">Visit ' + tool.name + ' →</a>';
       grid.appendChild(card);
     });
     block.appendChild(grid);
