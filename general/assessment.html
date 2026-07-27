@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- HubSpot include removed during Vercel migration -->
+{{ standard_header_includes }}
 <link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/general-favicon.png"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -171,25 +171,25 @@ footer p{font-size:13px;color:var(--sand);}
 </head>
 <body>
 <nav>
-  <a class="nav-logo" href="/general/index.html">
+  <a class="nav-logo" href="https://23625222.hs-sites.com/ai-readiness-assessment">
     <div class="nav-logo-icon"><span style="width:20px"></span><span></span><span style="width:20px"></span></div>
     <div><div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div></div>
   </a>
   <div class="nav-links">
-    <a class="nav-link" href="/general/index.html">Home</a>
-    <a class="nav-link active" href="/general/assessment.html">Assessment</a>
-    <a class="nav-link" href="/general/pricing.html">Pricing</a>
+    <a class="nav-link" href="https://23625222.hs-sites.com/ai-readiness-assessment">Home</a>
+    <a class="nav-link active" href="https://23625222.hs-sites.com/elevatemy.ai-assessment-nfp">Assessment</a>
+    <a class="nav-link" href="https://23625222.hs-sites.com/elevatemy.ai-pricing-nfp">Pricing</a>
     <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
-    <a class="nav-cta" href="/general/pricing.html">View Plans</a>
+    <a class="nav-cta" href="https://23625222.hs-sites.com/elevatemy.ai-pricing-nfp">View Plans</a>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-drawer" id="nav-drawer">
-  <a class="nav-link" href="/general/index.html">Home</a>
-  <a class="nav-link active" href="/general/assessment.html">Assessment</a>
-  <a class="nav-link" href="/general/pricing.html">Pricing</a>
+  <a class="nav-link" href="https://23625222.hs-sites.com/ai-readiness-assessment">Home</a>
+  <a class="nav-link active" href="https://23625222.hs-sites.com/elevatemy.ai-assessment-nfp">Assessment</a>
+  <a class="nav-link" href="https://23625222.hs-sites.com/elevatemy.ai-pricing-nfp">Pricing</a>
   <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
-  <a class="nav-cta" href="/general/pricing.html">View Plans</a>
+  <a class="nav-cta" href="https://23625222.hs-sites.com/elevatemy.ai-pricing-nfp">View Plans</a>
 </div>
 
 <!-- ASSESSMENT SCREEN -->
@@ -226,7 +226,7 @@ footer p{font-size:13px;color:var(--sand);}
   <p>© 2025 elevatemy.ai · Questions? Email <a href="mailto:tracy@elevatemy.ai" style="color:var(--teal);text-decoration:none;">tracy@elevatemy.ai</a></p>
 </footer>
 
-<!-- HubSpot include removed during Vercel migration -->
+{{ standard_footer_includes }}
 <script>
 var HS_PORTAL_ID='23625222';
 var HS_FORM_GUID='691300bc-04ec-4dde-91f0-a4dc8c0ea910';
@@ -235,7 +235,7 @@ var questions=[
   {section:'Business Foundations',type:'select',q:'How would you describe your business right now?',opts:['Early-stage startup (less than 2 years old)','Established small business (2–10 years)','Mid-size growing business (10+ years, scaling)','Larger organization with multiple locations or teams']},
   {section:'Business Foundations',type:'select',q:'How many people work in your business (including owners)?',opts:['Just me — solopreneur','2–10 people','11–50 people','More than 50 people']},
   {section:'Business Foundations',type:'select',q:"How would you rate your team's overall comfort with digital tools?",opts:['Low — most of the team prefers manual processes','Somewhat limited — we use basics but avoid complexity','Comfortable — we use standard tools well',"Very comfortable — we're heavy digital tool users"]},
-  {section:'Business Foundations',type:'rank',q:'Use the arrows to rank these business areas from least to most time-consuming to manage — top is least, bottom is most.',opts:['Operations and delivery','Sales and marketing','Admin and back-office tasks','Customer service and communications'],rankLow:'Least time',rankHigh:'Most time'},
+  {section:'Business Foundations',type:'rank',q:'Use the arrows to rank these business areas from most to least time-consuming to manage — top is most, bottom is least.',opts:['Operations and delivery','Sales and marketing','Admin and back-office tasks','Customer service and communications'],rankLow:'Least time',rankHigh:'Most time'},
   {section:'Data & Technology',type:'select',q:'How well do you currently manage your customer contacts and leads?',opts:['No formal system — we rely on memory','We track customers in spreadsheets or email',"We have a CRM but don't use it consistently","We actively use a CRM and it's up to date"]},
   {section:'Data & Technology',type:'select',q:'How do you handle business reporting and performance tracking?',opts:["We don't track business performance metrics regularly",'Ad-hoc — we check numbers when we need to','Regular reports pulled manually each week or month','Live dashboards updated automatically']},
   {section:'Data & Technology',type:'select',q:'Which best describes your current technology stack?',opts:['Minimal systems — mostly spreadsheets and email','Primarily legacy or on-premise systems','A mix of cloud and older software, not always connected','Mostly cloud-based, well-integrated tools']},
@@ -287,7 +287,7 @@ function renderRankQuestion(q,container){
 
   var labels=document.createElement('div');
   labels.style.cssText='display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--sand);margin-bottom:8px;';
-  labels.innerHTML='<span>↑ '+q.rankLow+'</span><span>'+q.rankHigh+' ↓</span>';
+  labels.innerHTML='<span>↑ '+q.rankHigh+'</span><span>'+q.rankLow+' ↓</span>';
   container.appendChild(labels);
 
   var list=document.createElement('div');
@@ -326,7 +326,7 @@ function renderRankQuestion(q,container){
 
   var hint=document.createElement('p');
   hint.style.cssText='font-size:12px;color:var(--sand);text-align:center;margin-top:10px;';
-  hint.textContent='Use the ▲ ▼ arrows to reorder — top is least time-consuming, bottom is most.';
+  hint.textContent='Use the ▲ ▼ arrows to reorder — top is most time-consuming, bottom is least.';
   container.appendChild(hint);
 }
 
@@ -354,7 +354,7 @@ function nextQuestion(){
 function getAnswerText(qi){
   var q=questions[qi],ans=answers[qi];
   if(ans===null||ans===undefined)return'';
-  if(Array.isArray(ans))return q.opts[ans[ans.length-1]];
+  if(Array.isArray(ans))return q.opts[ans[0]];
   return q.opts[ans]||'';
 }
 
@@ -373,16 +373,6 @@ function computeResults(){
     return{name:name,score:Math.round((raw/12)*100)};
   });
   var overall=Math.round(dims.reduce(function(s,d){return s+d.score;},0)/dims.length);
-  // Distribute the 100-point total across the 5 categories (20 pts each) using largest-remainder
-  // rounding, so the on-screen breakdown always adds up exactly to the headline score.
-  var fracPts=dims.map(function(d){return (d.score/100)*20;});
-  var floors=fracPts.map(Math.floor);
-  var used=floors.reduce(function(a,b){return a+b;},0);
-  var remainder=overall-used;
-  var order=dims.map(function(d,i){return i;}).sort(function(a,b){return (fracPts[b]-floors[b])-(fracPts[a]-floors[a]);});
-  var points=floors.slice();
-  for(var k=0;k<remainder&&k<order.length;k++){points[order[k]]++;}
-  dims.forEach(function(d,i){d.points=points[i];});
   var weakest=dims.slice().sort(function(a,b){return a.score-b.score;})[0];
   var strongest=dims.slice().sort(function(a,b){return b.score-a.score;})[0];
   var tier=overall>=75?'AI-Ready':overall>=55?'Emerging':overall>=35?'Building':'Exploring';
@@ -470,7 +460,7 @@ function showResults(){
   var bc=dims.map(function(d){
     return '<div class="bc"><div class="bc-name">'+d.name+'</div>'
       +'<div class="bc-bg"><div class="bc-fill" style="width:'+d.score+'%;background:'+sc(d.score)+'"></div></div>'
-      +'<div class="bc-score">'+d.points+'/20</div></div>';
+      +'<div class="bc-score">'+d.score+'/100</div></div>';
   }).join('');
 
   var sm=STRENGTH[strongestName]||{title:'Your foundation',body:'You have strengths to build from.'};
@@ -572,7 +562,7 @@ function unlock(){
     +'<a class="consult-btn" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Book my free consultation →</a>'
     +'</div>'
     +'<div class="cta-row">'
-    +'<a class="btn-primary" href="/general/pricing.html">See recommended plans →</a>'
+    +'<a class="btn-primary" href="https://23625222.hs-sites.com/elevatemy.ai-pricing-nfp">See recommended plans →</a>'
     +'<button class="btn-secondary" onclick="retake()">Retake assessment</button>'
     +'</div>';
   sr.appendChild(div);
@@ -593,7 +583,7 @@ function unlock(){
   r.dims.forEach(function(d,i){var keys=['bf','dt','oa','cg','air'];p.push(keys[i]+'='+d.score);});
   p.push('opp='+encodeURIComponent(r.weakest.name));  p.push('q18='+encodeURIComponent(getAnswerText(17)));
   p.push('q19='+encodeURIComponent(getAnswerText(18)));
-  var resultsURL='https://elevatemy-web.vercel.app/general/results.html?'+p.join('&');
+  var resultsURL='https://23625222.hs-sites.com/elevatemy.ai-result-nfp?'+p.join('&');
 
   var qNames=['ai_assessment__business_stage','ai_assessment__team_size','ai_assessment__digital_tool_comfort',
     'ai_assessment__most_timeconsuming_area','ai_assessment__customer_contact_management','ai_assessment__business_reporting',
@@ -621,35 +611,36 @@ function unlock(){
   };
   var oppValue=oppValueMap[r.weakest.name]||r.weakest.name;
 
-  var submissionToken = Date.now().toString();
+  var fields=[
+    {name:'firstname',value:firstName},
+    {name:'email',value:email},{name:'company',value:company},{name:'phone',value:phone||''},
+    {name:'ai_readiness_tier',value:tierValue},
+    {name:'ai_readiness_score_overall',value:r.overall},
+    {name:'ai_assessment__biggest_opportunity_area',value:oppValue},
+    {name:'ai_results_url_general',value:resultsURL},
+    {name:'assessment_nonfp_completed_date',value:new Date().toISOString().split('T')[0]},
+    {name:'assessment_submission_token_nonfp',value:Date.now().toString()}
+  ];
+  qNames.forEach(function(qn,i){var t=getAnswerText(i);if(t)fields.push({name:qn,value:t});});
+  fields=fields.filter(function(f){return f.value!==''&&f.value!==null&&f.value!==undefined;});
 
   var payload={
-    firstName: firstName,
-    lastName: lastName || '',
-    email: email,
-    company: company,
-    phone: phone || '',
-    path: 'general',
-    tier: r.tier, // display label ("Emerging" etc.) — matches the CRM's tier field exactly
-    overallScore: r.overall,
-    categories: {bf:r.dims[0].score, dt:r.dims[1].score, oa:r.dims[2].score, cg:r.dims[3].score, air:r.dims[4].score},
-    topOpportunity: r.weakest.name,
-    resultsUrl: resultsURL,
-    submissionToken: submissionToken
+    submittedAt: Date.now().toString(),
+    fields:fields,
+    context:{pageUri:window.location.href,pageName:'elevatemy.ai General Business Assessment'},
+    legalConsentOptions:{consent:{consentToProcess:true,text:'I agree to allow elevatemy.ai to store and process my personal data.'}}
   };
   console.log('Submitting payload:', JSON.stringify(payload));
 
-  fetch('https://elevatemy-integrations.vercel.app/api/assessments/submit',{
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HS_PORTAL_ID+'/'+HS_FORM_GUID,{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify(payload)
   }).then(function(res){
     return res.text().then(function(body){
-      if(res.ok){console.log('✅ CRM OK');}
-      else{console.error('❌ CRM error:',res.status,body);}
+      if(res.ok){console.log('✅ HubSpot OK');}
+      else{console.error('❌ HubSpot error:',res.status,body);}
     });
-  }).catch(function(err){console.error('❌ CRM error:',err);}).finally(function(){
-    window.location.href=resultsURL;
-  });
+  }).catch(function(err){console.error('❌ HubSpot error:',err);});
 }
 
 function retake(){
