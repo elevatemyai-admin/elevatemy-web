@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore the Options — elevatemy.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1B3A6B; --navy-light: #2A4E8C;
+    --teal: #00A99D; --teal-light: #5BC8C0; --teal-pale: #E1F5F4;
+    --amber: #C4773B; --cream: #F8F6F2; --cream-dark: #EDE9E1;
+    --sand: #8B7355; --white: #ffffff;
+    --text-dark: #1a1a1a; --text-muted: #5a5a5a; --border: #ddd9d0;
+    --radius: 12px; --radius-sm: 8px; --radius-lg: 20px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; font-size: 16px; }
+
+  nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 68px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 8px; flex-shrink: 0; }
+  .nav-logo-icon span { display: block; height: 3px; border-radius: 2px; background: var(--teal); }
+  .nav-logo-icon span:nth-child(2) { width: 14px; background: var(--teal-light); }
+  .nav-logo-icon span:nth-child(1), .nav-logo-icon span:nth-child(3) { width: 20px; }
+  .wordmark { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .wordmark .elevate { color: var(--navy); } .wordmark .my { color: var(--teal); }
+  .wordmark .dot { color: var(--amber); font-weight: 300; font-family: 'Inter', sans-serif; }
+  .wordmark .ai { color: var(--navy); font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 20px; }
+  .nav-tag { font-size: 9px; letter-spacing: 0.13em; color: var(--sand); text-transform: uppercase; margin-top: 1px; }
+  .nav-link { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; }
+  .nav-link:hover { color: var(--navy); }
+
+  .hero { padding: 3.25rem 2rem 2.5rem; background: var(--cream); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle, rgba(27,58,107,0.04) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  .hero-inner { max-width: 1080px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-block; background: var(--teal-pale); color: var(--teal); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.25rem; }
+  .hero h1 { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; color: var(--navy); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+  .hero p { font-size: 1.02rem; color: var(--text-muted); max-width: 620px; line-height: 1.7; }
+
+  .filterbar { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.75rem; }
+  .filter-chip { border: 1.5px solid var(--border); background: var(--white); border-radius: 20px; padding: 9px 18px; font-size: 13.5px; font-weight: 500; color: var(--text-dark); cursor: pointer; transition: border-color .15s, background .15s; }
+  .filter-chip:hover { border-color: var(--teal-light); }
+  .filter-chip.active { border-color: var(--navy); background: var(--navy); color: var(--white); }
+
+  .main { max-width: 1080px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+
+  .category-block { margin-bottom: 3rem; scroll-margin-top: 90px; }
+  .category-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--teal); }
+  .category-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--teal); font-weight: 600; }
+  .category-title { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: 1.55rem; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.1rem; align-items: start; }
+
+  .tcard { border-radius: var(--radius); background: var(--white); border: 1.5px solid var(--border); overflow: hidden; transition: box-shadow .15s ease, border-color .15s ease; }
+  .tcard.primary { border-color: var(--teal); box-shadow: 0 4px 14px rgba(0,169,157,0.1); }
+  .tcard:hover { box-shadow: 0 6px 18px rgba(27,58,107,0.09); }
+
+  .tcard .tier-tag { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 9px 18px 0; display: block; }
+  .tcard.primary .tier-tag { color: var(--teal); }
+  .tcard.alt .tier-tag { color: var(--sand); }
+
+  .tcard .tbody { padding: 6px 18px 16px; }
+  .tcard .tname { font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 700; font-size: 19px; color: var(--navy); display: block; margin-bottom: 3px; }
+  .tcard .ttag { font-style: italic; font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 10px; }
+  .tcard .twhy { font-size: 14px; line-height: 1.6; color: var(--text-dark); }
+
+  .tcard .tmeta { display: flex; border-top: 1px solid var(--border); }
+  .tcard .tmeta .cell { flex: 1; padding: 10px 18px; }
+  .tcard .tmeta .cell:first-child { border-right: 1px solid var(--border); }
+  .tcard .tmeta .k { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 2px; }
+  .tcard .tmeta .v { font-weight: 600; color: var(--navy); font-size: 13px; }
+
+  .best-for { font-size: 12.5px; color: var(--sand); padding: 10px 18px 0; margin-top: -4px; }
+
+  .cta-band { background: var(--navy); border-radius: var(--radius-lg); padding: 2.75rem 2.5rem; text-align: center; margin-top: 1rem; }
+  .cta-band h2 { font-family: 'Bricolage Grotesque', Georgia, serif; color: var(--white); font-size: 1.5rem; margin-bottom: 0.6rem; }
+  .cta-band p { color: rgba(255,255,255,0.8); max-width: 480px; margin: 0 auto 1.4rem; font-size: 14.5px; }
+  .btn-white { background: var(--white); color: var(--navy); border: none; padding: 13px 26px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn-white:hover { background: var(--cream); }
+
+  footer { text-align: center; padding: 3rem 1.5rem; color: var(--sand); font-size: 13px; border-top: 1px solid var(--border); background: var(--white); }
+  footer .wordmark { justify-content: center; display: flex; margin-bottom: 0.75rem; }
+  footer p { margin-top: 4px; }
+  footer a { color: var(--teal); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-tag, .nav-link { display: none; }
+    .hero, .main { padding-left: 1.25rem; padding-right: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <div class="nav-logo-icon"><span style="width:20px"></span><span></span><span style="width:20px"></span></div>
+    <div>
+      <div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+      <div class="nav-tag">AI Solutions for Growing Businesses</div>
+    </div>
+  </a>
+  <a class="nav-link" href="mailto:tracy@elevatemy.ai">Questions? Email us</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Starter Tech Stack</div>
+    <h1>Every option, in one place.</h1>
+    <p>The same recommendations from our stack builder, laid out so we can talk through them together. Teal-bordered cards are where we'd usually start — the rest are solid alternatives depending on what fits your business.</p>
+    <div class="filterbar" id="filterbar"></div>
+  </div>
+</div>
+
+<div class="main" id="main"></div>
+
+<footer>
+  <div class="wordmark" style="font-size:17px"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+  <p>© 2026 elevatemy.ai · AI Solutions for Growing Businesses</p>
+  <p>Questions? Email <a href="mailto:tracy@elevatemy.ai">tracy@elevatemy.ai</a></p>
+</footer>
+
+<script>
+const CATEGORIES = [
+  {
+    id:'automation', title:'Automate the Busywork',
+    tools:[
+      {tier:'Primary', name:'Make', tagline:"connects your everyday tools so they talk to each other automatically", why:"A visual, drag-and-drop canvas — watch a new form submission create a contact, ping Slack, and update a spreadsheet, all without manual copy-pasting.", setup:'Same day (1–2 hrs)', cost:'Free; from ~$9/mo', bestFor:'Best for: almost any client — strongest live "aha" demo'},
+      {tier:'Alt · budget-conscious', name:'Activepieces', tagline:"open-source, with a self-hosted option that's free with no limits", why:"Closest UX to Zapier of any free tool. A strong fallback for clients who don't want a subscription creeping up over time.", setup:'Same day', cost:'Free (1,000 tasks/mo); self-hosted free', bestFor:'Best for: cost-sensitive or self-host-curious clients'}
+    ]
+  },
+  {
+    id:'crm', title:'Track Leads & Customers',
+    tools:[
+      {tier:'Primary', name:'Zoho CRM', tagline:"one place to track every contact, lead, and deal", why:"Simple contact/pipeline management with a clear upgrade path into invoicing and project tracking later.", setup:'Half a day', cost:'Free for up to 3 users', bestFor:'Best for: clients who might grow into more later'},
+      {tier:'Alt · scale', name:'HubSpot CRM', tagline:"more capable at scale, once a team gets involved", why:"Team already knows it well — good step-up option, but the free tier locks most useful features behind paid plans quickly.", setup:'Half a day', cost:'Free (2 users / 1,000 contacts)', bestFor:'Best for: clients scaling toward a team or heavier marketing use'}
+    ]
+  },
+  {
+    id:'email', title:'Grow (and Monetize) the List',
+    tools:[
+      {tier:'Primary', name:'Beehiiv', tagline:"built-in monetization: ads, paid subscriptions, referral boosts", why:"Hard to find a business owner who'd turn down a legitimate revenue option offered alongside the newsletter itself.", setup:'1–2 hrs (+ migration time)', cost:'Free to start', bestFor:'Best for: almost every client — the monetization hook lands well'},
+      {tier:'Alt · creator-led', name:'Kit', tagline:"built for creators and coaches who'll eventually sell something", why:"Unusually generous free-tier segmentation, built around solo creators and coaches monetizing directly.", setup:'About 1 hr', cost:'Free (1 automation)', bestFor:'Best for: solo coaches / creator-type clients'},
+      {tier:'Alt · simplest', name:'MailerLite', tagline:"just a clean, no-frills newsletter", why:"Easiest drag-and-drop editor of the group — good if Beehiiv's model feels like more than a client needs.", setup:'About 1 hr', cost:'Free up to 1,000 subs', bestFor:'Best for: clients who want newsletters only, nothing else'}
+    ]
+  },
+  {
+    id:'website', title:'Build a Real Website',
+    tools:[
+      {tier:'Primary', name:'Lovable', tagline:"describe the site in plain English, watch it get built live", why:"The fastest possible demo — nothing else on this list builds a real site faster in a client meeting.", setup:'Under an hour', cost:'Free; from $25/mo', bestFor:'Best for: fastest "wow," lowest learning curve'},
+      {tier:'Alt · self-manage', name:'Wix AI', tagline:"more editing depth once the client takes it over", why:"Most comprehensive free AI builder — good for clients who want to log in and manage their own site going forward.", setup:'Half a day to polish', cost:'Free plan available', bestFor:'Best for: clients who want ongoing self-service control'},
+      {tier:'Alt · design-forward', name:'Framer AI', tagline:"distinctive, non-templated layouts", why:"Genuinely different design output instead of the usual AI-template shape — steeper learning curve, worth it for design-conscious clients.", setup:'A few days', cost:'Free tier available', bestFor:'Best for: clients who care about a unique look'}
+    ]
+  },
+  {
+    id:'chatbot', title:'AI Assistant for the Site',
+    tools:[
+      {tier:'Primary', name:'FastBots', tagline:"trains on the client's own site content", why:"Point it at an existing website and it learns the content, then answers visitor questions instantly — one of the fastest "+"\u201cyou're already using AI\u201d"+" wins available.", setup:'Under an hour', cost:'Free tier available', bestFor:'Best for: almost any client with an existing website'},
+      {tier:'Alt · retail/e-comm', name:'Tidio', tagline:"tuned for order-status and product FAQs", why:"Visual flow builder is about as simple as this category gets — built with stores in mind.", setup:'Under an hour', cost:'Free plan available', bestFor:'Best for: online stores, simple FAQs'}
+    ]
+  },
+  {
+    id:'design', title:'Design & Content',
+    tools:[
+      {tier:'Primary', name:'Canva', tagline:"the easiest way to make graphics, social posts, marketing materials", why:"No design background needed — open it, pick a template, make something usable within minutes.", setup:'Minutes', cost:'Free; Pro ~$13/mo', bestFor:'Best for: every client, no exceptions'}
+    ]
+  }
+];
+
+function buildFilters(){
+  const bar = document.getElementById('filterbar');
+  const allChip = document.createElement('div');
+  allChip.className = 'filter-chip active';
+  allChip.textContent = 'All categories';
+  allChip.onclick = () => { setFilter(null); };
+  bar.appendChild(allChip);
+  CATEGORIES.forEach(cat => {
+    const chip = document.createElement('div');
+    chip.className = 'filter-chip';
+    chip.textContent = cat.title;
+    chip.dataset.cat = cat.id;
+    chip.onclick = () => { setFilter(cat.id); };
+    bar.appendChild(chip);
+  });
+}
+
+function setFilter(catId){
+  document.querySelectorAll('.filter-chip').forEach(c => {
+    const isAll = !c.dataset.cat;
+    c.classList.toggle('active', catId === null ? isAll : c.dataset.cat === catId);
+  });
+  document.querySelectorAll('.category-block').forEach(block => {
+    block.style.display = (catId === null || block.dataset.cat === catId) ? '' : 'none';
+  });
+  if(catId){
+    document.getElementById('cat-' + catId).scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function render(){
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  CATEGORIES.forEach((cat, i) => {
+    const block = document.createElement('div');
+    block.className = 'category-block';
+    block.id = 'cat-' + cat.id;
+    block.dataset.cat = cat.id;
+
+    const head = document.createElement('div');
+    head.className = 'category-head';
+    head.innerHTML = '<span class="category-num">0' + (i+1) + '</span><span class="category-title">' + cat.title + '</span>';
+    block.appendChild(head);
+
+    const grid = document.createElement('div');
+    grid.className = 'tool-grid';
+    cat.tools.forEach(tool => {
+      const card = document.createElement('div');
+      card.className = 'tcard ' + (tool.tier === 'Primary' ? 'primary' : 'alt');
+      card.innerHTML =
+        '<span class="tier-tag">' + tool.tier + '</span>' +
+        '<div class="tbody">' +
+          '<span class="tname">' + tool.name + '</span>' +
+          '<span class="ttag">' + tool.tagline + '</span>' +
+          '<div class="twhy">' + tool.why + '</div>' +
+        '</div>' +
+        '<div class="best-for">' + tool.bestFor + '</div>' +
+        '<div class="tmeta">' +
+          '<div class="cell"><div class="k">Time to set up</div><div class="v">' + tool.setup + '</div></div>' +
+          '<div class="cell"><div class="k">Cost</div><div class="v">' + tool.cost + '</div></div>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+    block.appendChild(grid);
+    main.appendChild(block);
+  });
+
+  const cta = document.createElement('div');
+  cta.className = 'cta-band';
+  cta.innerHTML = "<h2>Want a tailored version instead?</h2><p>Answer four quick questions and we'll narrow this down to just what fits your business.</p><a class='btn-white' href='/tools/stack-builder/'>Take the 4-question version →</a>";
+  main.appendChild(cta);
+}
+
+buildFilters();
+render();
+</script>
+</body>
+</html>
