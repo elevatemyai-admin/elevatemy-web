@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Links Hub — elevatemy.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1B3A6B; --navy-light: #2A4E8C;
+    --teal: #00A99D; --teal-light: #5BC8C0; --teal-pale: #E1F5F4;
+    --amber: #C4773B; --cream: #F8F6F2; --cream-dark: #EDE9E1;
+    --sand: #8B7355; --white: #ffffff;
+    --text-dark: #1a1a1a; --text-muted: #5a5a5a; --border: #ddd9d0;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; }
+  nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 68px; display: flex; align-items: center; gap: 14px; }
+  .nav-logo-icon { width: 36px; height: 36px; background: var(--navy); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 8px; }
+  .nav-logo-icon span { display: block; height: 3px; border-radius: 2px; background: var(--teal); }
+  .nav-logo-icon span:nth-child(2) { width: 14px; background: var(--teal-light); }
+  .nav-logo-icon span:nth-child(1), .nav-logo-icon span:nth-child(3) { width: 20px; }
+  .wordmark { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: 20px; font-weight: 700; letter-spacing: -0.03em; }
+  .wordmark .elevate { color: var(--navy); } .wordmark .my { color: var(--teal); }
+  .wordmark .dot { color: var(--amber); font-weight: 300; font-family: 'Inter', sans-serif; }
+  .wordmark .ai { color: var(--navy); font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 18px; }
+  .nav-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); background: var(--cream-dark); padding: 4px 10px; border-radius: 12px; margin-left: auto; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  .page-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 0.75rem; }
+  h1 { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: 2rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+  .lede { color: var(--text-muted); max-width: 560px; margin-bottom: 2.5rem; font-size: 15.5px; }
+  .lede strong { color: var(--navy); }
+
+  .group-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin: 2rem 0 0.9rem; }
+  .group-title:first-of-type { margin-top: 0; }
+
+  .link-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.3rem; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 1rem; justify-content: space-between; flex-wrap: wrap; }
+  .link-info { flex: 1; min-width: 220px; }
+  .link-title { font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 700; font-size: 17px; color: var(--navy); margin-bottom: 2px; }
+  .link-desc { font-size: 13.5px; color: var(--text-muted); }
+  .link-url { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--teal); margin-top: 6px; word-break: break-all; }
+  .link-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .btn-copy, .btn-open { border: 1.5px solid var(--border); background: var(--white); border-radius: var(--radius-sm); padding: 9px 16px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; color: var(--navy); text-decoration: none; transition: border-color .15s, background .15s; white-space: nowrap; }
+  .btn-copy:hover, .btn-open:hover { border-color: var(--teal); background: var(--teal-pale); }
+  .btn-copy.copied { border-color: var(--teal); background: var(--teal); color: var(--white); }
+
+  footer { text-align: center; padding: 2.5rem 1.5rem; color: var(--sand); font-size: 13px; }
+  footer a { color: var(--teal); text-decoration: none; }
+
+  @media (max-width: 560px) {
+    nav { padding: 0 1.25rem; }
+    .link-card { flex-direction: column; align-items: flex-start; }
+    .link-actions { width: 100%; }
+    .btn-copy, .btn-open { flex: 1; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo-icon"><span style="width:20px"></span><span></span><span style="width:20px"></span></div>
+  <div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
+  <div class="nav-badge">Internal — Links Hub</div>
+</nav>
+
+<div class="wrap">
+  <div class="page-eyebrow">Bookmark this page</div>
+  <h1>Every tool link, in one place.</h1>
+  <p class="lede">Vercel's dashboard shows deployments, not a directory of pages — so this is the easier spot to grab a link when you need one. Bookmark it and it'll always reflect what's actually live.</p>
+
+  <div class="group-title">Stack Recommendation Tools</div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Stack Builder</div>
+      <div class="link-desc">4-question quiz → personalized tool recommendations</div>
+      <div class="link-url" id="url-builder">https://elevatemy-web.vercel.app/tools/stack-builder/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-builder', this)">Copy link</button>
+      <a class="btn-open" href="https://elevatemy-web.vercel.app/tools/stack-builder/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Stack Builder — Drop-off / Re-engagement</div>
+      <div class="link-desc">Same tool, softer copy for assessment drop-offs, plus a bonus "have you heard of these?" question</div>
+      <div class="link-url" id="url-dropoff">https://elevatemy-web.vercel.app/tools/stack-builder/?ref=dropoff</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-dropoff', this)">Copy link</button>
+      <a class="btn-open" href="https://elevatemy-web.vercel.app/tools/stack-builder/?ref=dropoff" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Stack Grid (Browse All)</div>
+      <div class="link-desc">Every category & tool visible at once — for talking through live on a call</div>
+      <div class="link-url" id="url-grid">https://elevatemy-web.vercel.app/tools/stack-grid/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-grid', this)">Copy link</button>
+      <a class="btn-open" href="https://elevatemy-web.vercel.app/tools/stack-grid/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="group-title">Assessment & Site</div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">General Business Assessment</div>
+      <div class="link-desc">The main 22-question AI readiness assessment</div>
+      <div class="link-url" id="url-general">https://elevatemy-web.vercel.app/general/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-general', this)">Copy link</button>
+      <a class="btn-open" href="https://elevatemy-web.vercel.app/general/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Financial Services Assessment</div>
+      <div class="link-desc">The advisor / RIA / wealth manager version</div>
+      <div class="link-url" id="url-financial">https://elevatemy-web.vercel.app/financial/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-financial', this)">Copy link</button>
+      <a class="btn-open" href="https://elevatemy-web.vercel.app/financial/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:var(--sand);margin-top:2rem;">Swap in your custom domain here if elevatemy.ai is pointed at this Vercel project instead of the .vercel.app URL — same paths apply either way. New tool added? Just ask and it'll get a card here too.</p>
+</div>
+
+<footer>
+  Questions? Email <a href="mailto:tracy@elevatemy.ai">tracy@elevatemy.ai</a>
+</footer>
+
+<script>
+function copyLink(elId, btn){
+  const text = document.getElementById(elId).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1600);
+  });
+}
+</script>
+</body>
+</html>
