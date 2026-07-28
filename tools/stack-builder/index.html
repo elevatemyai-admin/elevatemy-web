@@ -268,7 +268,8 @@ const QUESTIONS = {
       {v:'email', label:"My email list isn't growing (or earning)", sub:'newsletter, subscribers, list revenue'},
       {v:'website', label:'My website needs work', sub:"outdated, slow to update, or doesn't exist yet"},
       {v:'chatbot', label:'Answering the same questions over and over', sub:'customer or visitor FAQs eating up your time'},
-      {v:'design', label:'Making marketing graphics takes forever', sub:'social posts, flyers, simple design work'}
+      {v:'design', label:'Making marketing graphics takes forever', sub:'social posts, flyers, simple design work'},
+      {v:'dataCollection', label:'Collecting submissions or entries from people', sub:'forms, photo uploads, sign-ups you need to review before they go public'}
     ]
   },
   budget: {
@@ -315,10 +316,14 @@ const TOOLS = {
   },
   design: {
     primary:{name:'Canva', tagline:"the easiest way to create graphics, social posts, and marketing materials", why:"No design background needed — open it, pick a template, and you're making something usable within minutes. It's the one tool on this list almost everyone already has a little familiarity with.", setup:"Minutes.", cost:"Free to start; Pro is about $13/month."}
+  },
+  dataCollection: {
+    primary:{name:'Airtable', tagline:"a spreadsheet that actually knows what a photo looks like", why:"When you need people to submit something — photos, entries, sign-ups — and you need an easy way to review and approve them, Airtable is the simplest place to do that. It shows photo thumbnails right in the grid, so approving submissions is a glance-and-click, not a folder full of attachments to open one by one.", setup:"About an hour to set up your first table.", cost:"Free to start; paid plans begin around $20/month if you outgrow it."},
+    simple:{name:'Google Forms + Sheets', tagline:"if you'd rather stay in tools you probably already know", why:"Since you'd rather keep things familiar, Google Forms feeding into a Sheet gets you most of the way there with zero new tools to learn — the tradeoff is a clunkier review process, since you won't get the photo-thumbnail view Airtable has.", setup:"Under an hour.", cost:"Free."}
   }
 };
 
-const CATEGORY_LABEL = { automation:'Automate the busywork', crm:'Track leads & customers', email:'Grow (and monetize) your list', website:'Your website', chatbot:'AI assistant for your site', design:'Design & content' };
+const CATEGORY_LABEL = { automation:'Automate the busywork', crm:'Track leads & customers', email:'Grow (and monetize) your list', website:'Your website', chatbot:'AI assistant for your site', design:'Design & content', dataCollection:'Collect & organize data' };
 const BIZ_LABEL = { service:'service-based business', retail:'retail or e-commerce business', content:'content or creator-led business', nonprofit:'nonprofit or community org' };
 const COMFORT_LABEL = { new:"still getting comfortable with new tools", somewhat:"reasonably comfortable trying new tools", expert:"very comfortable exploring new tools" };
 
@@ -413,6 +418,7 @@ function pickTool(category){
   }
   if(category === 'chatbot'){ return (answers.bizType === 'retail') ? t.retail : t.primary; }
   if(category === 'design'){ return t.primary; }
+  if(category === 'dataCollection'){ return (answers.comfort === 'new') ? t.simple : t.primary; }
 }
 
 function showResults(){
