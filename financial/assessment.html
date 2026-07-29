@@ -987,7 +987,7 @@ var rankOrder=[
 function initRank(){
   buildRankItems();
 }
-function buildRankItems(){
+function buildRankItems(reordering){
   var list=document.getElementById('rankList');
   if(!list)return;
   list.innerHTML='';
@@ -995,23 +995,49 @@ function buildRankItems(){
     var div=document.createElement('div');
     div.className='rank-item';
     div.dataset.category=item.category;
-    div.innerHTML=
-      '<div class="rank-num'+(pos===0?' top':'')+'>'+(pos+1)+'</div>'
-      +'<div class="rank-content"><strong>'+item.label+'</strong><span class="rank-sub">'+item.sub+'</span></div>'
-      +'<div class="rank-arrows">'
-      +'<button class="rank-arrow" onclick="moveFinRank('+pos+',-1)" '+(pos===0?'disabled':'')+' aria-label="Move up">▲</button>'
-      +'<button class="rank-arrow" onclick="moveFinRank('+pos+',1)" '+(pos===rankOrder.length-1?'disabled':'')+' aria-label="Move down">▼</button>'
-      +'</div>';
+    var numDiv=document.createElement('div');
+    numDiv.className='rank-num'+(pos===0?' top':'');
+    numDiv.textContent=pos+1;
+    var contentDiv=document.createElement('div');
+    contentDiv.className='rank-content';
+    var strong=document.createElement('strong');
+    strong.textContent=item.label;
+    var sub=document.createElement('span');
+    sub.className='rank-sub';
+    sub.textContent=item.sub;
+    contentDiv.appendChild(strong);
+    contentDiv.appendChild(sub);
+    var arrowDiv=document.createElement('div');
+    arrowDiv.className='rank-arrows';
+    var upBtn=document.createElement('button');
+    upBtn.className='rank-arrow';
+    upBtn.innerHTML='&#9650;';
+    upBtn.setAttribute('aria-label','Move up');
+    if(pos===0)upBtn.setAttribute('disabled','');
+    upBtn.onclick=function(){moveFinRank(pos,-1);};
+    var downBtn=document.createElement('button');
+    downBtn.className='rank-arrow';
+    downBtn.innerHTML='&#9660;';
+    downBtn.setAttribute('aria-label','Move down');
+    if(pos===rankOrder.length-1)downBtn.setAttribute('disabled','');
+    downBtn.onclick=function(){moveFinRank(pos,1);};
+    arrowDiv.appendChild(upBtn);
+    arrowDiv.appendChild(downBtn);
+    div.appendChild(numDiv);
+    div.appendChild(contentDiv);
+    div.appendChild(arrowDiv);
     list.appendChild(div);
   });
-  // Reset confirm state when reordering
-  var btn=document.querySelector('.rank-confirm-btn');
-  if(btn){btn.classList.remove('done');btn.textContent='Confirm ranking \u2713';}
-  list.querySelectorAll('.rank-item').forEach(function(i){i.classList.remove('confirmed');});
-  delete answers['q18'];
-  var statusEl=document.getElementById('rankStatus');
-  if(statusEl)statusEl.textContent='Reorder using the arrows, then confirm';
+  if(reordering){
+    var btn=document.querySelector('.rank-confirm-btn');
+    if(btn){btn.classList.remove('done');btn.textContent='Confirm ranking \u2713';}
+    list.querySelectorAll('.rank-item').forEach(function(i){i.classList.remove('confirmed');});
+    delete answers['q18'];
+    var statusEl=document.getElementById('rankStatus');
+    if(statusEl)statusEl.textContent='Reorder using the arrows, then confirm';
+  }
 }
+
 function moveFinRank(pos,dir){
   var np=pos+dir;
   if(np<0||np>=rankOrder.length)return;
