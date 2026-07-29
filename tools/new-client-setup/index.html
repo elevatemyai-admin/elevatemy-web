@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>New Client Setup — GitHub + Vercel Folder Pattern</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1B3A6B;--navy-light:#2A4E8C;
+  --teal:#00A99D;--teal-light:#5BC8C0;--teal-pale:#E1F5F4;
+  --amber:#C4773B;--amber-pale:#FAEEDA;
+  --cream:#F8F6F2;--cream-dark:#EDE9E1;
+  --white:#fff;--text-dark:#1a1a1a;--text-muted:#5a5a5a;--border:#ddd9d0;--sand:#8B7355;
+  --radius:14px;--radius-sm:9px;--radius-lg:22px;
+}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.65;font-size:16px;}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.5rem 6rem;}
+
+.progress-bar{position:sticky;top:0;z-index:50;background:var(--navy);color:var(--cream);padding:0.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+.progress-bar .label{font-size:12.5px;font-weight:600;letter-spacing:0.05em;}
+.progress-track{flex:1;max-width:260px;height:8px;background:rgba(255,255,255,0.15);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-light);width:0%;transition:width .25s;}
+.progress-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal-light);}
+.print-btn{background:var(--teal);color:#fff;border:none;padding:7px 16px;border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;}
+
+.doc-header{text-align:center;margin:2.5rem 0 2rem;padding-bottom:2rem;border-bottom:2px solid var(--cream-dark);}
+.doc-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;}
+.doc-title{font-family:'Bricolage Grotesque',serif;font-size:2.1rem;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.6rem;}
+.doc-sub{font-size:14.5px;color:var(--text-muted);max-width:640px;margin:0 auto;}
+.evergreen-badge{display:inline-block;margin-top:1rem;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:var(--teal-pale);padding:6px 16px;border-radius:20px;}
+
+.diagram{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.5rem;margin-bottom:1.2rem;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--navy);line-height:1.9;white-space:pre;overflow-x:auto;}
+.diagram .arrow{color:var(--sand);}
+.diagram .ph{color:var(--teal);}
+
+.rule-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-bottom:2rem;}
+.rule-box table{width:100%;border-collapse:collapse;font-size:13px;}
+.rule-box th{text-align:left;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--sand);padding:6px 8px;border-bottom:2px solid var(--cream-dark);}
+.rule-box td{padding:8px 8px;border-bottom:1px solid var(--cream-dark);}
+.rule-box code{background:var(--cream-dark);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;}
+
+.section-lbl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);margin-bottom:.9rem;display:flex;align-items:center;gap:8px;}
+.section-lbl .n{background:var(--navy);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+
+.step-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;overflow:hidden;}
+.step-head{display:flex;align-items:center;gap:0.9rem;padding:1.1rem 1.4rem;background:var(--navy);color:var(--white);cursor:pointer;}
+.step-head .step-num{font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:1.3rem;color:var(--teal-light);width:36px;flex-shrink:0;}
+.step-head .step-title{flex:1;font-weight:700;font-size:15.5px;}
+.step-head .step-who{font-size:11px;color:rgba(255,255,255,0.6);font-weight:500;}
+.step-toggle{font-size:0.7rem;color:rgba(255,255,255,0.6);transition:transform .2s;}
+.step-card.expanded .step-toggle{transform:rotate(180deg);}
+.step-body{display:none;padding:1.2rem 1.4rem;}
+.step-card.expanded .step-body{display:block;}
+.step-body ol,.step-body ul{padding-left:1.3rem;margin-bottom:0.9rem;}
+.step-body li{margin-bottom:0.5rem;font-size:14px;}
+.step-body p{font-size:14px;margin-bottom:0.8rem;color:var(--text-dark);}
+.step-body p:last-child{margin-bottom:0;}
+
+code{font-family:'JetBrains Mono',monospace;background:var(--cream-dark);padding:1px 6px;border-radius:4px;font-size:0.87em;color:var(--navy);}
+pre{background:var(--navy);color:var(--teal-pale);padding:1rem 1.2rem;border-radius:var(--radius-sm);overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.6;margin:0.8rem 0;}
+pre code{background:none;color:inherit;padding:0;}
+pre .ph{color:#8CE0D6;}
+
+.note-box{background:var(--teal-pale);border-left:4px solid var(--teal);border-radius:var(--radius-sm);padding:0.9rem 1.1rem;font-size:13px;color:var(--navy);margin:0.8rem 0;}
+.warn-box{background:var(--amber-pale);border-left:4px solid var(--amber);border-radius:var(--radius-sm);padding:0.9rem 1.1rem;font-size:13px;color:#7a4d15;margin:0.8rem 0;}
+
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:0.5rem 0;}
+.check-item input[type=checkbox]{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--teal);cursor:pointer;}
+.check-item label{font-size:14px;color:var(--text-dark);cursor:pointer;}
+.check-item.checked label{color:var(--sand);text-decoration:line-through;}
+
+footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--sand);}
+@media print{.progress-bar{position:static;}.step-body{display:block !important;}}
+</style>
+</head>
+<body>
+
+<div class="progress-bar">
+  <span class="label">✓ Progress</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-count" id="progressCount">0 / 0</span>
+  <button class="print-btn" onclick="window.print()">Print / Save</button>
+</div>
+
+<div class="wrap">
+
+  <div class="doc-header">
+    <div class="doc-eyebrow">Reference Doc — Reusable</div>
+    <div class="doc-title">Setting Up a New Client in GitHub + Vercel</div>
+    <div class="doc-sub">One repo per client, one folder per project inside it, one Vercel project per folder. Use this every time a new client comes on, and again whenever an existing client needs a second project.</div>
+    <span class="evergreen-badge">Keep this doc — reuse for every future client</span>
+  </div>
+
+  <div class="diagram">GitHub repo: "<span class="ph">[client-name]</span>"
+├── action-plan/                     <span class="arrow">← first project, whatever it's called</span>
+│   └── ...
+└── <span class="ph">[project-2]</span>/                     <span class="arrow">← added later, only when needed</span>
+    └── ...</div>
+
+  <div class="rule-box">
+    <table>
+      <tr><th>Thing</th><th>Naming rule</th><th>Example</th></tr>
+      <tr><td>GitHub repo</td><td>Client's name, lowercase, hyphenated</td><td><code>devon-root-to-rise</code></td></tr>
+      <tr><td>Folder inside repo</td><td>The project type, lowercase</td><td><code>action-plan</code>, <code>contest</code></td></tr>
+      <tr><td>Vercel project</td><td><code>[client]-[project-type]</code></td><td><code>devon-action-plan</code>, <code>devon-contest</code></td></tr>
+    </table>
+  </div>
+
+  <div class="note-box">Alpine Acres and Devon's action plans currently just live on their default <code>*.vercel.app</code> addresses — no custom domain involved. That means for most new clients, there's no domain step at all; just share the <code>*.vercel.app</code> link. Only add a domain-cutover step if a client specifically gets a custom domain down the line.</div>
+
+  <!-- PART A -->
+  <div class="section-lbl"><span class="n">A</span>Bringing on a brand-new client</div>
+  <div id="newClientSteps"></div>
+
+  <!-- PART B -->
+  <div class="section-lbl"><span class="n">B</span>Adding a second (or third) project to an existing client</div>
+  <div id="addProjectSteps"></div>
+
+  <footer>New Client Setup Guide · elevatemy.ai · this is the master copy — reuse it, don't recreate it per client</footer>
+</div>
+
+<script>
+const NEW_CLIENT_STEPS = [
+  {
+    title: "Create the repo",
+    who: "5 min",
+    body: `
+      <ol>
+        <li>Go to <b>github.com</b>, click <b>+</b> → <b>New repository</b></li>
+        <li>Name it after the client, lowercase and hyphenated (e.g. <code>[client-name]</code>) → <b>Private</b> → <b>Create repository</b></li>
+      </ol>
+    `
+  },
+  {
+    title: "Upload the first project into its folder",
+    who: "10 min",
+    body: `
+      <ol>
+        <li>Have the project's files ready locally (unzip if it's coming from an old repo, or use the files fresh from wherever they were built)</li>
+        <li>Navigate directly to:
+          <pre><code>github.com/[your-username]/<span class="ph">[client-name]</span>/upload/main/<span class="ph">[project-folder-name]</span></code></pre>
+        </li>
+        <li>Drag in every file — GitHub creates that folder automatically because of the URL</li>
+        <li><b>Commit changes</b></li>
+      </ol>
+      <div class="note-box">This "type the folder name straight into the upload URL" trick is the whole pattern — no git install, no command line, works every time.</div>
+    `
+  },
+  {
+    title: "Create the Vercel project",
+    who: "5 min",
+    body: `
+      <ol>
+        <li>Vercel → <b>Add New...</b> → <b>Project</b> → import the <code>[client-name]</code> repo</li>
+        <li>Before deploying: <b>Root Directory</b> → <b>Edit</b> → select/type <code>[project-folder-name]</code></li>
+        <li>Framework Preset: <b>Other</b> (unless the project specifically needs something else)</li>
+        <li>Rename the Vercel project itself to <code>[client-name]-[project-type]</code> for consistency</li>
+        <li>Deploy</li>
+      </ol>
+    `
+  },
+  {
+    title: "Verify and hand off",
+    who: "5 min",
+    isChecklist: true,
+    body: `
+      <div class="check-item"><input type="checkbox"/><label>New Vercel URL loads correctly</label></div>
+      <div class="check-item"><input type="checkbox"/><label>Any project-specific environment variables added (Airtable keys, etc. — see that project's own setup guide)</label></div>
+      <div class="check-item"><input type="checkbox"/><label>Link shared with whoever needs it — no domain work needed unless this client has a custom domain</label></div>
+    `
+  }
+];
+
+const ADD_PROJECT_STEPS = [
+  {
+    title: "Add the new folder to the client's existing repo",
+    who: "10 min",
+    body: `
+      <ol>
+        <li>No new repo — go straight to the client's existing one</li>
+        <li>Navigate to:
+          <pre><code>github.com/[your-username]/<span class="ph">[client-name]</span>/upload/main/<span class="ph">[new-project-folder]</span></code></pre>
+        </li>
+        <li>Drag in the new project's files, <b>Commit changes</b></li>
+      </ol>
+      <p>The repo now has two (or more) top-level folders, one per project — nothing about the existing folder(s) changes.</p>
+    `
+  },
+  {
+    title: "Create a second, independent Vercel project",
+    who: "5 min",
+    body: `
+      <ol>
+        <li>Vercel → <b>Add New...</b> → <b>Project</b> → import the <em>same</em> <code>[client-name]</code> repo again</li>
+        <li><b>Root Directory</b> → the new folder name</li>
+        <li>Name the Vercel project <code>[client-name]-[new-project-type]</code></li>
+        <li>Deploy</li>
+      </ol>
+      <div class="note-box">Importing the same repo into a second Vercel project is expected and correct — each project only reads its own Root Directory, so they don't interfere with each other at all.</div>
+    `
+  },
+  {
+    title: "Verify it's fully isolated from the first project",
+    who: "5 min",
+    isChecklist: true,
+    body: `
+      <div class="check-item"><input type="checkbox"/><label>New project's URL loads correctly, independent of the first project's URL</label></div>
+      <div class="check-item"><input type="checkbox"/><label>Environment variables for the new project added under its own Vercel project settings</label></div>
+      <div class="check-item"><input type="checkbox"/><label>Confirmed a change to one project's folder doesn't trigger a redeploy of the other</label></div>
+    `
+  }
+];
+
+function renderSteps(containerId, steps){
+  const container = document.getElementById(containerId);
+  steps.forEach((step, i) => {
+    const card = document.createElement('div');
+    card.className = 'step-card';
+    card.innerHTML = `
+      <div class="step-head" onclick="this.parentElement.classList.toggle('expanded')">
+        <span class="step-num">${String(i+1).padStart(2,'0')}</span>
+        <span class="step-title">${step.title}</span>
+        <span class="step-who">${step.who}</span>
+        <span class="step-toggle">▼</span>
+      </div>
+      <div class="step-body">${step.body}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+renderSteps('newClientSteps', NEW_CLIENT_STEPS);
+renderSteps('addProjectSteps', ADD_PROJECT_STEPS);
+document.getElementById('newClientSteps').firstElementChild.classList.add('expanded');
+
+function updateProgress(){
+  const boxes = document.querySelectorAll('input[type=checkbox]');
+  const checked = document.querySelectorAll('input[type=checkbox]:checked');
+  document.getElementById('progressCount').textContent = checked.length + ' / ' + boxes.length;
+  const pct = boxes.length ? (checked.length/boxes.length)*100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+document.addEventListener('change', (e) => {
+  if(e.target.matches('input[type=checkbox]')){
+    e.target.closest('.check-item')?.classList.toggle('checked', e.target.checked);
+    updateProgress();
+  }
+});
+updateProgress();
+</script>
+</body>
+</html>
