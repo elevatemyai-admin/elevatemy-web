@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- HubSpot include removed during Vercel migration -->
 <link rel="icon" type="image/png" href="https://23625222.fs1.hubspotusercontent-na1.net/hubfs/23625222/elevate/general-favicon.png"/>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -170,25 +171,25 @@ footer p{font-size:13px;color:var(--sand);}
 </head>
 <body>
 <nav>
-  <a class="nav-logo" href="https://elevatemy-web.vercel.app/general/index.html">
+  <a class="nav-logo" href="/general/index.html">
     <div class="nav-logo-icon"><span style="width:20px"></span><span></span><span style="width:20px"></span></div>
     <div><div class="wordmark"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div></div>
   </a>
   <div class="nav-links">
-    <a class="nav-link" href="https://elevatemy-web.vercel.app/general/index.html">Home</a>
-    <a class="nav-link active" href="https://elevatemy-web.vercel.app/general/assessment.html">Assessment</a>
-    <a class="nav-link" href="https://elevatemy-web.vercel.app/general/pricing.html">Pricing</a>
+    <a class="nav-link" href="/general/index.html">Home</a>
+    <a class="nav-link active" href="/general/assessment.html">Assessment</a>
+    <a class="nav-link" href="/general/pricing.html">Pricing</a>
     <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
-    <a class="nav-cta" href="https://elevatemy-web.vercel.app/general/pricing.html">View Plans</a>
+    <a class="nav-cta" href="/general/pricing.html">View Plans</a>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-drawer" id="nav-drawer">
-  <a class="nav-link" href="https://elevatemy-web.vercel.app/general/index.html">Home</a>
-  <a class="nav-link active" href="https://elevatemy-web.vercel.app/general/assessment.html">Assessment</a>
-  <a class="nav-link" href="https://elevatemy-web.vercel.app/general/pricing.html">Pricing</a>
+  <a class="nav-link" href="/general/index.html">Home</a>
+  <a class="nav-link active" href="/general/assessment.html">Assessment</a>
+  <a class="nav-link" href="/general/pricing.html">Pricing</a>
   <a class="nav-link" href="mailto:tracy@elevatemy.ai">Contact us</a>
-  <a class="nav-cta" href="https://elevatemy-web.vercel.app/general/pricing.html">View Plans</a>
+  <a class="nav-cta" href="/general/pricing.html">View Plans</a>
 </div>
 
 <!-- ASSESSMENT SCREEN -->
@@ -225,12 +226,16 @@ footer p{font-size:13px;color:var(--sand);}
   <p>© 2025 elevatemy.ai · Questions? Email <a href="mailto:tracy@elevatemy.ai" style="color:var(--teal);text-decoration:none;">tracy@elevatemy.ai</a></p>
 </footer>
 
+<!-- HubSpot include removed during Vercel migration -->
 <script>
+var HS_PORTAL_ID='23625222';
+var HS_FORM_GUID='691300bc-04ec-4dde-91f0-a4dc8c0ea910';
+
 var questions=[
   {section:'Business Foundations',type:'select',q:'How would you describe your business right now?',opts:['Early-stage startup (less than 2 years old)','Established small business (2–10 years)','Mid-size growing business (10+ years, scaling)','Larger organization with multiple locations or teams']},
   {section:'Business Foundations',type:'select',q:'How many people work in your business (including owners)?',opts:['Just me — solopreneur','2–10 people','11–50 people','More than 50 people']},
   {section:'Business Foundations',type:'select',q:"How would you rate your team's overall comfort with digital tools?",opts:['Low — most of the team prefers manual processes','Somewhat limited — we use basics but avoid complexity','Comfortable — we use standard tools well',"Very comfortable — we're heavy digital tool users"]},
-  {section:'Business Foundations',type:'rank',q:'Use the arrows to rank these business areas from most to least time-consuming to manage — top is most, bottom is least.',opts:['Operations and delivery','Sales and marketing','Admin and back-office tasks','Customer service and communications'],rankLow:'Least time',rankHigh:'Most time'},
+  {section:'Business Foundations',type:'rank',q:'Use the arrows to rank these business areas from least to most time-consuming to manage — top is least, bottom is most.',opts:['Operations and delivery','Sales and marketing','Admin and back-office tasks','Customer service and communications'],rankLow:'Least time',rankHigh:'Most time'},
   {section:'Data & Technology',type:'select',q:'How well do you currently manage your customer contacts and leads?',opts:['No formal system — we rely on memory','We track customers in spreadsheets or email',"We have a CRM but don't use it consistently","We actively use a CRM and it's up to date"]},
   {section:'Data & Technology',type:'select',q:'How do you handle business reporting and performance tracking?',opts:["We don't track business performance metrics regularly",'Ad-hoc — we check numbers when we need to','Regular reports pulled manually each week or month','Live dashboards updated automatically']},
   {section:'Data & Technology',type:'select',q:'Which best describes your current technology stack?',opts:['Minimal systems — mostly spreadsheets and email','Primarily legacy or on-premise systems','A mix of cloud and older software, not always connected','Mostly cloud-based, well-integrated tools']},
@@ -282,7 +287,7 @@ function renderRankQuestion(q,container){
 
   var labels=document.createElement('div');
   labels.style.cssText='display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--sand);margin-bottom:8px;';
-  labels.innerHTML='<span>↑ '+q.rankHigh+'</span><span>'+q.rankLow+' ↓</span>';
+  labels.innerHTML='<span>↑ '+q.rankLow+'</span><span>'+q.rankHigh+' ↓</span>';
   container.appendChild(labels);
 
   var list=document.createElement('div');
@@ -321,7 +326,7 @@ function renderRankQuestion(q,container){
 
   var hint=document.createElement('p');
   hint.style.cssText='font-size:12px;color:var(--sand);text-align:center;margin-top:10px;';
-  hint.textContent='Use the ▲ ▼ arrows to reorder — top is most time-consuming, bottom is least.';
+  hint.textContent='Use the ▲ ▼ arrows to reorder — top is least time-consuming, bottom is most.';
   container.appendChild(hint);
 }
 
@@ -349,7 +354,7 @@ function nextQuestion(){
 function getAnswerText(qi){
   var q=questions[qi],ans=answers[qi];
   if(ans===null||ans===undefined)return'';
-  if(Array.isArray(ans))return q.opts[ans[0]];
+  if(Array.isArray(ans))return q.opts[ans[ans.length-1]];
   return q.opts[ans]||'';
 }
 
@@ -531,16 +536,6 @@ function showResults(){
   window.scrollTo(0,0);
 }
 
-// -----------------------------------------------------------------------
-// SUBMIT TO CRM (was: submit to HubSpot's Forms API directly).
-// This is the fix: the General assessment page never got migrated off
-// HubSpot the way the Financial Services page was — this brings it in
-// line with the same working pattern already live on that page, POSTing
-// to the CRM's /api/assessments/submit endpoint with the flat JSON shape
-// that endpoint expects, instead of HubSpot's field-array format.
-// -----------------------------------------------------------------------
-var CRM_SUBMIT_URL='https://elevatemy-integrations.vercel.app/api/assessments/submit';
-
 function unlock(){
   var name=document.getElementById('cap-name').value.trim();
   var email=document.getElementById('cap-email').value.trim();
@@ -567,56 +562,82 @@ function unlock(){
     +'<a class="consult-btn" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Book my free consultation →</a>'
     +'</div>'
     +'<div class="cta-row">'
-    +'<a class="btn-primary" href="https://elevatemy-web.vercel.app/general/pricing.html">See recommended plans →</a>'
+    +'<a class="btn-primary" href="/general/pricing.html">See recommended plans →</a>'
     +'<button class="btn-secondary" onclick="retake()">Retake assessment</button>'
     +'</div>';
   sr.appendChild(div);
 
   document.getElementById('locked-section').scrollIntoView({behavior:'smooth',block:'start'});
 
-  // Submit to the CRM
+  // Submit to HubSpot
   var r=_results;
   var nameParts=name.split(' ');
   var firstName=nameParts[0];
   var lastName=nameParts.slice(1).join(' ');
 
-  // Build results URL for email — same page/param convention already used
-  // by the emails (general/results.html?name=...&score=...&tier=...)
+  // Build results URL for email
   var p=[];
   p.push('name='+encodeURIComponent(firstName));
   p.push('score='+r.overall);
   p.push('tier='+encodeURIComponent(r.tier));
-  var keys=['bf','dt','oa','cg','air'];
-  r.dims.forEach(function(d,i){p.push(keys[i]+'='+d.score);});
-  p.push('opp='+encodeURIComponent(r.weakest.name));
+  r.dims.forEach(function(d,i){var keys=['bf','dt','oa','cg','air'];p.push(keys[i]+'='+d.score);});
+  p.push('opp='+encodeURIComponent(r.weakest.name));  p.push('q18='+encodeURIComponent(getAnswerText(17)));
+  p.push('q19='+encodeURIComponent(getAnswerText(18)));
   var resultsURL='https://elevatemy-web.vercel.app/general/results.html?'+p.join('&');
 
-  var categories={};
-  r.dims.forEach(function(d,i){categories[keys[i]]=d.score;});
+  var qNames=['ai_assessment__business_stage','ai_assessment__team_size','ai_assessment__digital_tool_comfort',
+    'ai_assessment__most_timeconsuming_area','ai_assessment__customer_contact_management','ai_assessment__business_reporting',
+    'ai_assessment__technology_stack','ai_assessment__data_quality_confidence','ai_assessment__manual_work_volume',
+    'ai_assessment__automation_tool_experience','ai_assessment__customer_inquiry_handling','ai_assessment__content_creation_frequency',
+    'ai_assessment__customer_acquisition_method','ai_assessment__communication_personalization','ai_assessment__marketing_attribution',
+    'ai_assessment__customer_feedback_collection','ai_assessment__current_ai_tool_usage','ai_assessment__biggest_ai_adoption_blocker',
+    'ai_assessment__most_desired_ai_outcome','ai_assessment__leadership_time_commitment'];
+
+  var fullName = (firstName+' '+(lastName||'')).trim();
+  var tierValueMap={
+    'AI-Ready':'ai_ready',
+    'Emerging':'emerging',
+    'Building':'building',
+    'Exploring':'exploring'
+  };
+  var tierValue=tierValueMap[r.tier]||r.tier.toLowerCase();
+
+  var oppValueMap={
+    'Business Foundations':'business_foundations',
+    'Data & Technology':'data_technology',
+    'Operations & Automation':'operations_automation',
+    'Customer & Growth':'customer_growth',
+    'AI Readiness':'ai_readiness'
+  };
+  var oppValue=oppValueMap[r.weakest.name]||r.weakest.name;
+
+  var submissionToken = Date.now().toString();
 
   var payload={
-    firstName:firstName,
-    lastName:lastName,
-    email:email,
-    company:company,
-    phone:phone||'',
-    path:'general',
-    tier:r.tier,                    // 'Exploring' | 'Building' | 'Emerging' | 'AI-Ready' — matches CRM's tier dropdown exactly
-    overallScore:r.overall,
-    categories:categories,          // {bf,dt,oa,cg,air} — matches the CRM's general-track keys
-    topOpportunity:r.weakest.name,
-    resultsUrl:resultsURL,
-    submissionToken:Date.now().toString()
+    firstName: firstName,
+    lastName: lastName || '',
+    email: email,
+    company: company,
+    phone: phone || '',
+    path: 'general',
+    tier: r.tier, // display label ("Emerging" etc.) — matches the CRM's tier field exactly
+    overallScore: r.overall,
+    categories: {bf:r.dims[0].score, dt:r.dims[1].score, oa:r.dims[2].score, cg:r.dims[3].score, air:r.dims[4].score},
+    topOpportunity: r.weakest.name,
+    resultsUrl: resultsURL,
+    submissionToken: submissionToken
   };
+  console.log('Submitting payload:', JSON.stringify(payload));
 
-  fetch(CRM_SUBMIT_URL,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
+  fetch('https://elevatemy-integrations.vercel.app/api/assessments/submit',{
+    method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify(payload)
   }).then(function(res){
-    if(res.ok){console.log('✅ CRM submit OK');}
-    else{res.text().then(function(body){console.error('❌ CRM submit error:',res.status,body);});}
-  }).catch(function(err){console.error('❌ CRM submit error:',err);});
+    return res.text().then(function(body){
+      if(res.ok){console.log('✅ CRM OK');}
+      else{console.error('❌ CRM error:',res.status,body);}
+    });
+  }).catch(function(err){console.error('❌ CRM error:',err);});
 }
 
 function retake(){
