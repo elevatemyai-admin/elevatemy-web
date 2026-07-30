@@ -139,15 +139,25 @@ const NEW_CLIENT_STEPS = [
     title: "Upload the first project into its folder",
     who: "10 min",
     body: `
+      <p style="margin-bottom:0.75rem;"><b>What is "the first project"?</b> A project is a set of HTML/CSS/JS files built for this client — for example, their action plan page, assessment results page, or a custom tool. These files are typically built in Claude and downloaded to your computer, or they may come from a previous repo as a .zip file.</p>
       <ol>
-        <li>Have the project's files ready locally (unzip if it's coming from an old repo, or use the files fresh from wherever they were built)</li>
-        <li>Navigate directly to:
-          <pre><code>github.com/[your-username]/<span class="ph">[client-name]</span>/upload/main/<span class="ph">[project-folder-name]</span></code></pre>
+        <li><b>Get the files onto your computer first.</b> This means one of:
+          <ul style="margin-top:0.4rem;margin-bottom:0.6rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.25rem;">
+            <li>Downloading them from Claude's output (click the file link in the chat → save to your desktop or Downloads)</li>
+            <li>Unzipping a .zip if they came packaged from another source</li>
+            <li>Locating them wherever you last saved them locally</li>
+          </ul>
+          You should end up with a folder of files — typically <code>index.html</code> plus any supporting assets.
         </li>
-        <li>Drag in every file — GitHub creates that folder automatically because of the URL</li>
+        <li><b>Decide on a folder name</b> for this project inside the repo — e.g. <code>action-plan</code>, <code>assessment</code>, <code>results</code>. Lowercase, hyphenated, no spaces.</li>
+        <li><b>Navigate directly to this URL</b> in your browser (swap in the real names):
+          <pre><code>github.com/[your-username]/<span class="ph">[client-name]</span>/upload/main/<span class="ph">[project-folder-name]</span></code></pre>
+          GitHub will show an upload screen. If the folder doesn't exist yet — that's fine, GitHub creates it automatically from the URL.
+        </li>
+        <li>Drag every file from your local folder into the GitHub upload area</li>
         <li><b>Commit changes</b></li>
       </ol>
-      <div class="note-box">This "type the folder name straight into the upload URL" trick is the whole pattern — no git install, no command line, works every time.</div>
+      <div class="note-box">This "type the folder name straight into the upload URL" trick is the whole pattern — no git install, no command line, works every time. To add more projects later (a second page, a tool, etc.), repeat from step 3 with a different folder name in the URL.</div>
     `
   },
   {
