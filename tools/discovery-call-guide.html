@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Discovery Call Guide — elevatemy.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1B3A6B;--navy-light:#2A4E8C;
+  --teal:#00A99D;--teal-light:#5BC8C0;--teal-pale:#E1F5F4;
+  --amber:#C4773B;--amber-pale:#FAEEDA;
+  --cream:#F8F6F2;--cream-dark:#EDE9E1;
+  --white:#fff;--text-dark:#1a1a1a;--text-muted:#5a5a5a;--border:#ddd9d0;--sand:#8B7355;
+  --radius:14px;--radius-sm:9px;--radius-lg:22px;
+}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-dark);line-height:1.65;font-size:16px;}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.5rem 6rem;}
+
+.progress-bar{position:sticky;top:0;z-index:50;background:var(--navy);color:var(--cream);padding:0.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+.progress-bar .label{font-size:12.5px;font-weight:600;letter-spacing:0.05em;}
+.progress-track{flex:1;max-width:220px;height:8px;background:rgba(255,255,255,0.15);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal-light);width:0%;transition:width .25s;}
+.progress-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--teal-light);}
+.bar-actions{display:flex;gap:8px;}
+.print-btn,.copy-btn{background:var(--teal);color:#fff;border:none;padding:7px 16px;border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+.copy-btn{background:var(--amber);}
+.copy-btn.copied{background:var(--navy);}
+
+.doc-header{text-align:center;margin:2.5rem 0 2rem;padding-bottom:2rem;border-bottom:2px solid var(--cream-dark);}
+.doc-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;}
+.doc-title{font-family:'Bricolage Grotesque',serif;font-size:2.1rem;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.6rem;}
+.doc-sub{font-size:14.5px;color:var(--text-muted);max-width:640px;margin:0 auto;}
+.evergreen-badge{display:inline-block;margin-top:1rem;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:var(--teal-pale);padding:6px 16px;border-radius:20px;}
+
+.how-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-bottom:1.75rem;font-size:13.5px;color:var(--text-dark);}
+.how-box b{color:var(--navy);}
+.how-box ol{padding-left:1.2rem;margin-top:.5rem;}
+.how-box li{margin-bottom:.35rem;}
+
+.client-bar{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-bottom:1.75rem;display:flex;gap:1rem;flex-wrap:wrap;}
+.client-field{flex:1;min-width:180px;}
+.client-field label{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:5px;}
+.client-field input{width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text-dark);}
+.client-field input:focus{outline:none;border-color:var(--teal);}
+
+.section-lbl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);margin-bottom:.9rem;display:flex;align-items:center;gap:8px;}
+
+.csq-box{background:var(--amber-pale);border:1.5px dashed var(--amber);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-bottom:2rem;}
+.csq-box .csq-title{font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:4px;}
+.csq-box .csq-sub{font-size:13px;color:#7a4d15;margin-bottom:.8rem;}
+.csq-box textarea{width:100%;min-height:110px;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text-dark);background:var(--white);resize:vertical;}
+.csq-box textarea:focus{outline:none;border-color:var(--amber);}
+
+.step-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;overflow:hidden;}
+.step-head{display:flex;align-items:center;gap:0.9rem;padding:1.1rem 1.4rem;background:var(--navy);color:var(--white);cursor:pointer;}
+.step-head .step-num{font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:1.3rem;color:var(--teal-light);width:36px;flex-shrink:0;}
+.step-head .step-title{flex:1;font-weight:700;font-size:15.5px;}
+.step-head .step-count{font-size:11px;color:rgba(255,255,255,0.6);font-weight:500;font-family:'JetBrains Mono',monospace;}
+.step-toggle{font-size:0.7rem;color:rgba(255,255,255,0.6);transition:transform .2s;}
+.step-card.expanded .step-toggle{transform:rotate(180deg);}
+.step-body{display:none;padding:1.2rem 1.4rem;}
+.step-card.expanded .step-body{display:block;}
+
+.qrow{padding:0.9rem 0;border-bottom:1px solid var(--cream-dark);}
+.qrow:last-child{border-bottom:none;}
+.qhead{display:flex;align-items:flex-start;gap:10px;}
+.qhead input[type=checkbox]{width:18px;height:18px;margin-top:3px;flex-shrink:0;accent-color:var(--teal);cursor:pointer;}
+.qtext{font-size:14.5px;font-weight:600;color:var(--text-dark);cursor:pointer;}
+.qrow.answered .qtext{color:var(--sand);}
+.qhint{font-size:12.5px;color:var(--text-muted);font-style:italic;margin:4px 0 8px 28px;}
+.qnotes{width:100%;margin-left:0;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text-dark);resize:vertical;min-height:44px;}
+.qnotes:focus{outline:none;border-color:var(--teal);}
+.qnotes::placeholder{color:#b8b2a6;}
+
+footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--sand);}
+@media print{
+  .progress-bar{position:static;}
+  .step-body{display:block !important;}
+  .copy-btn{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar">
+  <span class="label">✓ Answered</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-count" id="progressCount">0 / 0</span>
+  <div class="bar-actions">
+    <button class="copy-btn" id="copyBtn" onclick="copyNotes()">Copy call notes</button>
+    <button class="print-btn" onclick="window.print()">Print / Save</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="doc-header">
+    <div class="doc-eyebrow">Reference Doc — Reusable</div>
+    <div class="doc-title">Discovery Call Guide</div>
+    <div class="doc-sub">The consistent, repeatable "how do you actually do this today" questions — every category, every client, every call. Pair with the client-specific questions from their assessment, which go in the box below.</div>
+    <span class="evergreen-badge">Keep this doc — reuse for every future call</span>
+  </div>
+
+  <div class="how-box">
+    <b>How this works:</b>
+    <ol>
+      <li>Fill in the client name/date, then paste this client's tailored questions (from their assessment) into the amber box.</li>
+      <li>Work through the baseline categories below on the call — these stay the same for everyone. Check a question off once it's answered, and jot the answer straight into the notes field under it.</li>
+      <li>When the call's done, hit <b>Copy call notes</b> — everything you've typed comes out as one clean block, ready to hand off for the action plan.</li>
+    </ol>
+  </div>
+
+  <div class="client-bar">
+    <div class="client-field"><label>Client</label><input type="text" id="clientName" placeholder="e.g. Devon"/></div>
+    <div class="client-field"><label>Call date</label><input type="text" id="callDate" placeholder="e.g. Aug 12, 2026"/></div>
+    <div class="client-field"><label>Business type</label><input type="text" id="clientType" placeholder="e.g. nonprofit, service-based"/></div>
+  </div>
+
+  <div class="section-lbl">Client-Specific Questions</div>
+  <div class="csq-box">
+    <div class="csq-title">Paste this client's tailored questions here</div>
+    <div class="csq-sub">Generated per-client from their assessment answers — these still happen, same as always. This box just keeps them attached to the same document as everything else.</div>
+    <textarea id="csqNotes" placeholder="Paste the client-specific question list here, and jot answers in as you go..."></textarea>
+  </div>
+
+  <div class="section-lbl">Baseline Questions — Ask Every Client, Every Time</div>
+  <div id="categorySteps"></div>
+
+  <footer>Discovery Call Guide · elevatemy.ai · this is the master copy — reuse it, don't recreate it per client</footer>
+</div>
+
+<script>
+const CATEGORIES = [
+  {
+    title: "Social & Content Creation",
+    questions: [
+      { q: "How do you currently create your social graphics or posts?", hint: "Get the actual tool name — Canva, Adobe Express, phone apps, hiring someone, or nothing at all." },
+      { q: "Once something's made, how does it actually get posted?", hint: "Manual copy/paste into each app one at a time, or a scheduler like Buffer, Later, or Meta Business Suite?" },
+      { q: "Realistically, how often are you posting right now?", hint: "Compare what they intend vs. what's actually happening — that gap is usually the real story." },
+      { q: "Where does this break down for you?", hint: "Running out of time, running out of ideas, or the posting mechanics themselves?" }
+    ]
+  },
+  {
+    title: "Website",
+    questions: [
+      { q: "Who built your site, and can you update it yourself?", hint: "Are they locked out of their own site, or just avoiding it?" },
+      { q: "When did you last update something on it — and what was it?", hint: "A real date/change beats \"I think a while ago.\"" },
+      { q: "Is there anything live on it right now you're not sure is accurate?", hint: "Old hours, old team members, outdated pricing or services." }
+    ]
+  },
+  {
+    title: "Analytics & Tracking",
+    questions: [
+      { q: "Do you have Google Analytics — or any tracking — installed on your site?", hint: "Many say yes but mean \"someone installed it once, years ago.\"" },
+      { q: "Have you ever actually opened it and looked at anything?", hint: "Installed and used are two very different answers." },
+      { q: "Do you know where your actual customers or leads come from?", hint: "Referral, social, search, word of mouth — gut feeling vs. real data." }
+    ]
+  },
+  {
+    title: "Leads & CRM",
+    questions: [
+      { q: "When someone reaches out or shows interest, where does that land?", hint: "Email inbox, DMs, a form, texts, a notebook — get specific." },
+      { q: "How do you track who you've followed up with and who's still pending?", hint: "Listen for \"I just remember\" — that's the gap to flag." },
+      { q: "What's fallen through the cracks recently?", hint: "A lead they forgot to follow up with, a client they lost track of." }
+    ]
+  },
+  {
+    title: "Email, Newsletter & Nurture",
+    questions: [
+      { q: "Do you send anything regularly to a list — newsletter, updates, promos?", hint: "\"Regularly\" is doing a lot of work in this question — press on cadence." },
+      { q: "What tool, if any, are you using to send it?", hint: "Mailchimp, a personal Gmail blast, Beehiiv, nothing." },
+      { q: "How is your list actually growing right now — or is it?", hint: "Where do new subscribers even come from today?" }
+    ]
+  },
+  {
+    title: "Data Collection & Submissions",
+    questions: [
+      { q: "Do you ever need people to submit something to you — photos, applications, entries, sign-ups?", hint: "Contests, intake forms, volunteer applications, etc." },
+      { q: "How do those come in, and how do you review or approve them right now?", hint: "Email attachments, a shared drive folder, nothing formal at all." }
+    ]
+  },
+  {
+    title: "Scheduling & Bookings",
+    questions: [
+      { q: "How does someone book time with you, or register for something?", hint: "A form, a phone call, DMs back and forth." },
+      { q: "Is that back-and-forth manual, or is a tool handling it?", hint: "Calendly-type tools vs. \"we just text until a time works.\"" }
+    ]
+  },
+  {
+    title: "Finance & Invoicing",
+    questions: [
+      { q: "How do you currently invoice and collect payment?", hint: "PayPal link, Venmo, a formal invoicing tool, paper checks." },
+      { q: "How do you know what's outstanding vs. paid?", hint: "A spreadsheet, memory, or nothing tracked at all." }
+    ]
+  },
+  {
+    title: "Customer Service & FAQs",
+    questions: [
+      { q: "What questions do you get asked over and over?", hint: "The exact repeat questions are prime chatbot/FAQ-page material." },
+      { q: "Who answers those right now, and how much time does it eat?", hint: "Owner personally? A team member? How many times a week?" }
+    ]
+  },
+  {
+    title: "Automation & Anything Else",
+    questions: [
+      { q: "Is anything already happening automatically between your tools today?", hint: "Even one small thing tells you their actual comfort level with automation." },
+      { q: "If you could wave a wand and automate one annoying task, what would it be?", hint: "Their own words here often become the headline of the action plan." }
+    ]
+  }
+];
+
+function renderCategories(){
+  const container = document.getElementById('categorySteps');
+  CATEGORIES.forEach((cat, ci) => {
+    const card = document.createElement('div');
+    card.className = 'step-card';
+    let qHtml = '';
+    cat.questions.forEach((item, qi) => {
+      const id = 'q-' + ci + '-' + qi;
+      qHtml += `
+        <div class="qrow" id="row-${id}">
+          <div class="qhead">
+            <input type="checkbox" id="chk-${id}" onchange="onCheck('${id}')"/>
+            <span class="qtext" onclick="document.getElementById('chk-${id}').click()">${item.q}</span>
+          </div>
+          <div class="qhint">${item.hint}</div>
+          <textarea class="qnotes" id="notes-${id}" placeholder="Notes / what they said..." oninput="onNotes('${id}')"></textarea>
+        </div>`;
+    });
+    card.innerHTML = `
+      <div class="step-head" onclick="this.parentElement.classList.toggle('expanded')">
+        <span class="step-num">${String(ci+1).padStart(2,'0')}</span>
+        <span class="step-title">${cat.title}</span>
+        <span class="step-count" id="count-${ci}">0/${cat.questions.length}</span>
+        <span class="step-toggle">▼</span>
+      </div>
+      <div class="step-body">${qHtml}</div>
+    `;
+    container.appendChild(card);
+  });
+  container.firstElementChild.classList.add('expanded');
+}
+
+function onCheck(id){
+  const checked = document.getElementById('chk-' + id).checked;
+  document.getElementById('row-' + id).classList.toggle('answered', checked);
+  updateProgress();
+}
+function onNotes(id){
+  const val = document.getElementById('notes-' + id).value.trim();
+  if(val && !document.getElementById('chk-' + id).checked){
+    document.getElementById('chk-' + id).checked = true;
+    document.getElementById('row-' + id).classList.add('answered');
+    updateProgress();
+  }
+}
+
+function updateProgress(){
+  const boxes = document.querySelectorAll('.qrow input[type=checkbox]');
+  const checked = document.querySelectorAll('.qrow input[type=checkbox]:checked');
+  document.getElementById('progressCount').textContent = checked.length + ' / ' + boxes.length;
+  const pct = boxes.length ? (checked.length/boxes.length)*100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+
+  CATEGORIES.forEach((cat, ci) => {
+    let done = 0;
+    cat.questions.forEach((item, qi) => {
+      if(document.getElementById('chk-q-' + ci + '-' + qi).checked) done++;
+    });
+    document.getElementById('count-' + ci).textContent = done + '/' + cat.questions.length;
+  });
+}
+
+function copyNotes(){
+  const client = document.getElementById('clientName').value.trim() || '(not set)';
+  const date = document.getElementById('callDate').value.trim() || '(not set)';
+  const type = document.getElementById('clientType').value.trim() || '(not set)';
+  const csq = document.getElementById('csqNotes').value.trim();
+
+  let out = `DISCOVERY CALL NOTES\nClient: ${client}\nDate: ${date}\nBusiness type: ${type}\n\n`;
+  out += `--- CLIENT-SPECIFIC QUESTIONS ---\n${csq || '(none pasted in)'}\n\n`;
+  out += `--- BASELINE OPS MAP ---\n`;
+
+  CATEGORIES.forEach((cat, ci) => {
+    out += `\n${cat.title.toUpperCase()}\n`;
+    cat.questions.forEach((item, qi) => {
+      const notes = document.getElementById('notes-q-' + ci + '-' + qi).value.trim();
+      out += `Q: ${item.q}\nA: ${notes || '(not answered)'}\n\n`;
+    });
+  });
+
+  navigator.clipboard.writeText(out).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+
+renderCategories();
+updateProgress();
+</script>
+</body>
+</html>
