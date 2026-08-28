@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>New Client Setup — GitHub + Vercel Folder Pattern</title>
+<title>New Client Setup — GitHub + Vercel + Airtable</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -67,6 +67,10 @@ pre .ph{color:#8CE0D6;}
 
 .note-box{background:var(--teal-pale);border-left:4px solid var(--teal);border-radius:var(--radius-sm);padding:0.9rem 1.1rem;font-size:13px;color:var(--navy);margin:0.8rem 0;}
 .warn-box{background:var(--amber-pale);border-left:4px solid var(--amber);border-radius:var(--radius-sm);padding:0.9rem 1.1rem;font-size:13px;color:#7a4d15;margin:0.8rem 0;}
+.big-note{background:var(--white);border:2px solid var(--teal);border-radius:var(--radius);padding:1.3rem 1.5rem;margin-bottom:2rem;}
+.big-note .bn-title{font-family:'Bricolage Grotesque',serif;font-weight:700;font-size:1.05rem;color:var(--navy);margin-bottom:.5rem;}
+.big-note p{font-size:14px;margin-bottom:0.6rem;}
+.big-note p:last-child{margin-bottom:0;}
 
 .check-item{display:flex;align-items:flex-start;gap:10px;padding:0.5rem 0;}
 .check-item input[type=checkbox]{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--teal);cursor:pointer;}
@@ -90,14 +94,16 @@ footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--sand);}
 
   <div class="doc-header">
     <div class="doc-eyebrow">Reference Doc — Reusable</div>
-    <div class="doc-title">Setting Up a New Client in GitHub + Vercel</div>
-    <div class="doc-sub">One repo per client, one folder per project inside it, one Vercel project per folder. Use this every time a new client comes on, and again whenever an existing client needs a second project.</div>
+    <div class="doc-title">Setting Up a New Client — GitHub + Vercel + Airtable</div>
+    <div class="doc-sub">One repo per client, one Vercel project per client, one Airtable base per client. Use this every time a new client comes on.</div>
     <span class="evergreen-badge">Keep this doc — reuse for every future client</span>
   </div>
 
   <div class="diagram">GitHub repo: "<span class="ph">[client-name]</span>"
 ├── action-plan/                     <span class="arrow">← first project, whatever it's called</span>
-│   └── ...
+│   ├── index.html                   <span class="arrow">← the page itself</span>
+│   └── api/
+│       └── tasks.js                 <span class="arrow">← same file every time, only env vars differ</span>
 └── <span class="ph">[project-2]</span>/                     <span class="arrow">← added later, only when needed</span>
     └── ...</div>
 
@@ -106,7 +112,9 @@ footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--sand);}
       <tr><th>Thing</th><th>Naming rule</th><th>Example</th></tr>
       <tr><td>GitHub repo</td><td>Client's name, lowercase, hyphenated</td><td><code>devon-root-to-rise</code></td></tr>
       <tr><td>Folder inside repo</td><td>The project type, lowercase</td><td><code>action-plan</code>, <code>contest</code></td></tr>
-      <tr><td>Vercel project</td><td><code>[client]-[project-type]</code></td><td><code>devon-action-plan</code>, <code>devon-contest</code></td></tr>
+      <tr><td>Vercel project</td><td><code>[client]-[project-type]</code></td><td><code>devon-action-plan</code></td></tr>
+      <tr><td>Airtable base</td><td>Client's name + "Action Plan"</td><td><code>[Client] - Action Plan</code></td></tr>
+      <tr><td>Airtable table inside it</td><td>Always the same name</td><td><code>Tasks</code></td></tr>
     </table>
   </div>
 
@@ -136,50 +144,80 @@ const NEW_CLIENT_STEPS = [
     `
   },
   {
-    title: "Upload the first project into its folder",
+    title: "Set up the client's Airtable base",
     who: "10 min",
     body: `
-      <p style="margin-bottom:0.75rem;"><b>What is "the first project"?</b> A project is a set of HTML/CSS/JS files built for this client — for example, their action plan page, assessment results page, or a custom tool. These files are typically built in Claude and downloaded to your computer, or they may come from a previous repo as a .zip file.</p>
       <ol>
-        <li><b>Get the files onto your computer first.</b> This means one of:
-          <ul style="margin-top:0.4rem;margin-bottom:0.6rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.25rem;">
-            <li>Downloading them from Claude's output (click the file link in the chat → save to your desktop or Downloads)</li>
-            <li>Unzipping a .zip if they came packaged from another source</li>
-            <li>Locating them wherever you last saved them locally</li>
-          </ul>
-          You should end up with a folder of files — typically <code>index.html</code> plus any supporting assets.
-        </li>
-        <li><b>Decide on a folder name</b> for this project inside the repo — e.g. <code>action-plan</code>, <code>assessment</code>, <code>results</code>. Lowercase, hyphenated, no spaces.</li>
-        <li><b>Navigate directly to this URL</b> in your browser (swap in the real names):
+        <li>In Airtable, inside the same workspace every other client's base lives in (never a new workspace — new workspaces mean new billing), click <b>Add or import</b></li>
+        <li>Name the base <code>[Client] - Action Plan</code></li>
+        <li>Build the Tasks table with these columns: <code>Task ID</code>, <code>Parent ID</code>, <code>Task</code>, <code>Phase</code>, <code>Project</code>, <code>Group</code>, <code>Order</code>, <code>Done</code>, <code>Assignee</code>, <code>AI or Human</code>, <code>Description</code>, <code>Why It Matters</code>, <code>You Give</code>, <code>You Get Back</code>, <code>Hours Saved</code>, <code>Time Now</code>, <code>Time With AI</code>, <code>Resources</code></li>
+        <li>Rename the table itself to <b>Tasks</b></li>
+        <li>Ask Claude to generate a CSV of the client's initial plan (from the first conversation) matching this schema, then import it via <b>Add or import → CSV file</b></li>
+        <li>After import, convert two fields (one-time, per base): <code>Parent ID</code> → field type <b>Link to another record</b> → this same table; <code>Done</code> → field type <b>Checkbox</b></li>
+      </ol>
+      <div class="note-box">The CSV import step is the bridge for now, since Claude can't reach Airtable's API directly. Every task after that first import gets added live on the page itself — no more CSVs, no more code.</div>
+    `
+  },
+  {
+    title: "Create a scoped Airtable token for this client",
+    who: "5 min",
+    body: `
+      <ol>
+        <li>Go to <b>airtable.com/create/tokens</b> → <b>Create new token</b></li>
+        <li>Name it <code>[client]-plan-proxy</code></li>
+        <li>Scopes: add <code>data.records:read</code> and <code>data.records:write</code></li>
+        <li>Access: add only this client's specific base — never "all current and future bases"</li>
+        <li><b>Create token</b> → copy the value immediately, it's shown once</li>
+      </ol>
+      <div class="note-box">Airtable tokens don't expire on their own — no renewal date to track, unlike GitHub's classic tokens. Scoping to one base is what keeps a single leaked token from being a problem across every client.</div>
+    `
+  },
+  {
+    title: "Upload the page and its proxy file into the client's folder",
+    who: "10 min",
+    body: `
+      <ol>
+        <li>Have the page's files ready (Claude builds the page; the <code>api/tasks.js</code> proxy file is the same reusable file every time — Claude provides it, no need to write it fresh)</li>
+        <li>Navigate directly to:
           <pre><code>github.com/[your-username]/<span class="ph">[client-name]</span>/upload/main/<span class="ph">[project-folder-name]</span></code></pre>
-          GitHub will show an upload screen. If the folder doesn't exist yet — that's fine, GitHub creates it automatically from the URL.
         </li>
-        <li>Drag every file from your local folder into the GitHub upload area</li>
+        <li>Drag in <code>index.html</code> and the <code>api</code> folder containing <code>tasks.js</code> (and <code>thoughts.js</code> too, if this client's page includes Drop a Thought or Talk it Through)</li>
         <li><b>Commit changes</b></li>
       </ol>
-      <div class="note-box">This "type the folder name straight into the upload URL" trick is the whole pattern — no git install, no command line, works every time. To add more projects later (a second page, a tool, etc.), repeat from step 3 with a different folder name in the URL.</div>
     `
   },
   {
     title: "Create the Vercel project",
-    who: "5 min",
+    who: "10 min",
     body: `
       <ol>
         <li>Vercel → <b>Add New...</b> → <b>Project</b> → import the <code>[client-name]</code> repo</li>
         <li>Before deploying: <b>Root Directory</b> → <b>Edit</b> → select/type <code>[project-folder-name]</code></li>
-        <li>Framework Preset: <b>Other</b> (unless the project specifically needs something else)</li>
-        <li>Rename the Vercel project itself to <code>[client-name]-[project-type]</code> for consistency</li>
-        <li>Deploy</li>
+        <li>Framework Preset: <b>Other</b></li>
+        <li>Rename the Vercel project to <code>[client-name]-[project-type]</code></li>
+        <li>Before or right after deploying, add these Environment Variables (Settings → Environment Variables):
+          <ul>
+            <li><code>AIRTABLE_TOKEN</code> — the token from Step 3</li>
+            <li><code>AIRTABLE_BASE_ID</code> — from the base's URL (the part starting <code>app...</code>)</li>
+            <li><code>AIRTABLE_TABLE_ID</code> — from the table's URL (the part starting <code>tbl...</code>)</li>
+            <li><code>ANTHROPIC_API_KEY</code> — paste the existing <code>elevate-shared-chat-key</code> value (never generate a new one for a new client)</li>
+          </ul>
+        </li>
+        <li>Deploy (or Redeploy, if the env vars were added after the first deploy)</li>
       </ol>
+      <div class="warn-box">If the live URL shows a <code>404: NOT_FOUND</code>, Root Directory almost certainly didn't save. Fix: <b>Settings → Build and Deployment → Root Directory</b> → set it correctly → <b>Deployments → ⋯ → Redeploy</b>.</div>
+      <div class="warn-box">These four values are real secrets. Never paste them into a doc, a chat message, or anything that lives in a <b>public</b> GitHub repo (like this one). They only ever go into Vercel's Environment Variables screen.</div>
     `
   },
   {
     title: "Verify and hand off",
-    who: "5 min",
+    who: "10 min",
     isChecklist: true,
     body: `
       <div class="check-item"><input type="checkbox"/><label>New Vercel URL loads correctly</label></div>
-      <div class="check-item"><input type="checkbox"/><label>Any project-specific environment variables added (Airtable keys, etc. — see that project's own setup guide)</label></div>
+      <div class="check-item"><input type="checkbox"/><label>Visiting <code>[url]/api/tasks</code> directly shows real task data (not an error message)</label></div>
+      <div class="check-item"><input type="checkbox"/><label>Checking a box on the live page updates that task's Done status in Airtable</label></div>
+      <div class="check-item"><input type="checkbox"/><label>If the page has a chat box, sending a message gets a real reply (confirms the shared Anthropic key is working)</label></div>
       <div class="check-item"><input type="checkbox"/><label>Link shared with whoever needs it — no domain work needed unless this client has a custom domain</label></div>
     `
   }
@@ -197,7 +235,7 @@ const ADD_PROJECT_STEPS = [
         </li>
         <li>Drag in the new project's files, <b>Commit changes</b></li>
       </ol>
-      <p>The repo now has two (or more) top-level folders, one per project — nothing about the existing folder(s) changes.</p>
+      <p>The repo now has two (or more) top-level folders, one per project — nothing about the existing folder(s) changes. If this new project also needs its own live task list, it gets its own Airtable base too, following Part A's Airtable steps.</p>
     `
   },
   {
@@ -210,7 +248,8 @@ const ADD_PROJECT_STEPS = [
         <li>Name the Vercel project <code>[client-name]-[new-project-type]</code></li>
         <li>Deploy</li>
       </ol>
-      <div class="note-box">Importing the same repo into a second Vercel project is expected and correct — each project only reads its own Root Directory, so they don't interfere with each other at all.</div>
+      <div class="warn-box"><b>Nothing carries over automatically</b> — a brand-new project starts with zero environment variables, even pointed at the same repo. If it needs its own Airtable base or the shared Anthropic key, add those explicitly, same as Part A.</div>
+      <div class="warn-box">404 after deploying almost always means Root Directory didn't save — fix via <b>Settings → Build and Deployment → Root Directory</b>, then <b>Deployments → ⋯ → Redeploy</b>.</div>
     `
   },
   {
