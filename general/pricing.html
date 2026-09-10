@@ -81,6 +81,13 @@
   .plan-btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
   .plan-btn-outline:hover { background: var(--cream-dark); }
   .pricing-note { max-width: 560px; text-align: center; font-size: 13px; color: var(--sand); line-height: 1.6; }
+  .setup-fee-line { font-size: 12px; color: var(--sand); margin-bottom: 1rem; }
+  .setup-banner { max-width: 620px; text-align: center; font-size: 13px; color: var(--navy); background: var(--teal-pale); border: 1px solid var(--teal-light); border-radius: var(--radius-sm); padding: 10px 18px; margin: 0 auto 2rem; line-height: 1.5; }
+  .addons-wrap { width: 100%; max-width: 980px; margin: 0 0 2.5rem; }
+  .addons-title-wrap { text-align: center; margin-bottom: 1.5rem; }
+  .addons-title-wrap h2 { font-family: 'Bricolage Grotesque', serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+  .addons-title-wrap p { color: var(--text-muted); font-size: 14px; }
+  .addon-single { max-width: 340px; margin: 0 auto; }
   .guarantee-row { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); max-width: 900px; width: 100%; }
   .guarantee-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
 
@@ -132,6 +139,8 @@
     <p>Every plan starts with your AI readiness report. Pick the level of support that matches where your business is right now.</p>
   </div>
 
+  <p class="setup-banner">Every plan includes a one-time setup fee (2.5× your monthly plan) to cover onboarding, account configuration, and your personalized AI action plan.</p>
+
   <div class="pricing-grid">
     <!-- Essentials -->
     <div class="pricing-card">
@@ -143,6 +152,7 @@
         <span class="price-amount">199</span>
         <span class="price-period">/ month</span>
       </div>
+      <p class="setup-fee-line">+ $497.50 one-time setup fee</p>
       <ul class="plan-features">
         <li><span class="check-icon">✓</span>Full AI readiness assessment &amp; report</li>
         <li><span class="check-icon">✓</span>Personalized 30-day AI action plan</li>
@@ -165,6 +175,7 @@
         <span class="price-amount">490</span>
         <span class="price-period">/ month</span>
       </div>
+      <p class="setup-fee-line">+ $1,225.00 one-time setup fee</p>
       <ul class="plan-features">
         <li><span class="check-icon">✓</span>Everything in Essentials</li>
         <li><span class="check-icon">✓</span>Personalized AI roadmap (90 days)</li>
@@ -191,6 +202,7 @@
         </div>
         <span class="price-starting">Custom scope &amp; team size — let's talk</span>
       </div>
+      <p class="setup-fee-line">+ Starting at $2,497.50 one-time setup fee</p>
       <ul class="plan-features">
         <li><span class="check-icon">✓</span>Everything in Growth</li>
         <li><span class="check-icon">✓</span>Dedicated AI implementation consultant</li>
@@ -206,6 +218,33 @@
   </div>
 
   <p class="pricing-note">All prices in USD. Plans billed monthly, cancel anytime. Scale pricing depends on team size and project scope. GST/VAT may apply.</p>
+
+  <div class="addons-wrap">
+    <div class="addons-title-wrap">
+      <h2>Not ready to commit? Start with a Strategy Kickoff Call</h2>
+      <p>Add-on service — available on its own, no plan required.</p>
+    </div>
+    <div class="addon-single">
+      <div class="pricing-card">
+        <div class="plan-icon-wrap" style="background:#FDF1E7;">🚀</div>
+        <div class="plan-name">Strategy Kickoff Call</div>
+        <div class="plan-tagline">60 minutes · 1 business expert + 1 marketing expert</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount">97</span>
+          <span class="price-period">one-time</span>
+        </div>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span>Live 60-minute video call</li>
+          <li><span class="check-icon">✓</span>One business/operations expert</li>
+          <li><span class="check-icon">✓</span>One marketing expert</li>
+          <li><span class="check-icon">✓</span>Personalized next-steps recommendation</li>
+          <li><span class="check-icon">✓</span>No obligation — fully credited toward any plan or service you purchase afterward</li>
+        </ul>
+        <a class="plan-btn plan-btn-outline" href="https://meetings.hubspot.com/matt-barnhart/eai-meeting" target="_blank" rel="noopener">Book your kickoff call</a>
+      </div>
+    </div>
+  </div>
 
   <div class="guarantee-row">
     <div class="guarantee-item">✅ Cancel anytime, no lock-in</div>
