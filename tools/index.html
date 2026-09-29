@@ -48,10 +48,6 @@
   .btn-copy:hover, .btn-open:hover { border-color: var(--teal); background: var(--teal-pale); }
   .btn-copy.copied { border-color: var(--teal); background: var(--teal); color: var(--white); }
 
-  .sub-group { margin: -0.35rem 0 0.85rem 1.5rem; padding-left: 1rem; border-left: 3px solid var(--teal-pale); }
-  .sub-group .link-card { padding: 1rem 1.2rem; }
-  .sub-group .link-title { font-size: 15.5px; }
-
   footer { text-align: center; padding: 2.5rem 1.5rem; color: var(--sand); font-size: 13px; }
   footer a { color: var(--teal); text-decoration: none; }
 
@@ -60,7 +56,6 @@
     .link-card { flex-direction: column; align-items: flex-start; }
     .link-actions { width: 100%; }
     .btn-copy, .btn-open { flex: 1; text-align: center; }
-    .sub-group { margin-left: 0.5rem; padding-left: 0.75rem; }
   }
 </style>
 </head>
@@ -159,19 +154,6 @@
 
   <div class="link-card">
     <div class="link-info">
-      <div class="link-title">Elevate Internal Tools</div>
-      <div class="link-desc">Start here — the full path from prospect to live client. The two guides below are its steps, in order</div>
-      <div class="link-url" id="url-internalhub">https://elevate-internal-tools.vercel.app/</div>
-    </div>
-    <div class="link-actions">
-      <button class="btn-copy" onclick="copyLink('url-internalhub', this)">Copy link</button>
-      <a class="btn-open" href="https://elevate-internal-tools.vercel.app/" target="_blank" rel="noopener">Open →</a>
-    </div>
-  </div>
-
-  <div class="sub-group">
-  <div class="link-card">
-    <div class="link-info">
       <div class="link-title">1. Prospect Through Discovery</div>
       <div class="link-desc">Prep, the call itself with the full question set and live notes, and what happens after — saved per client</div>
       <div class="link-url" id="url-prospect">https://elevate-internal-tools.vercel.app/prospect-through-discovery.html</div>
@@ -192,7 +174,6 @@
       <button class="btn-copy" onclick="copyLink('url-newclient', this)">Copy link</button>
       <a class="btn-open" href="https://elevate-internal-tools.vercel.app/new-client-setup.html" target="_blank" rel="noopener">Open →</a>
     </div>
-  </div>
   </div>
 
   <div class="link-card">
