@@ -48,6 +48,10 @@
   .btn-copy:hover, .btn-open:hover { border-color: var(--teal); background: var(--teal-pale); }
   .btn-copy.copied { border-color: var(--teal); background: var(--teal); color: var(--white); }
 
+  .sub-group { margin: -0.35rem 0 0.85rem 1.5rem; padding-left: 1rem; border-left: 3px solid var(--teal-pale); }
+  .sub-group .link-card { padding: 1rem 1.2rem; }
+  .sub-group .link-title { font-size: 15.5px; }
+
   footer { text-align: center; padding: 2.5rem 1.5rem; color: var(--sand); font-size: 13px; }
   footer a { color: var(--teal); text-decoration: none; }
 
@@ -56,6 +60,7 @@
     .link-card { flex-direction: column; align-items: flex-start; }
     .link-actions { width: 100%; }
     .btn-copy, .btn-open { flex: 1; text-align: center; }
+    .sub-group { margin-left: 0.5rem; padding-left: 0.75rem; }
   }
 </style>
 </head>
@@ -154,7 +159,20 @@
 
   <div class="link-card">
     <div class="link-info">
-      <div class="link-title">Prospect to First Call</div>
+      <div class="link-title">Elevate Internal Tools</div>
+      <div class="link-desc">Start here — the full path from prospect to live client. The three guides below are its steps, in order</div>
+      <div class="link-url" id="url-internalhub">https://elevate-internal-tools.vercel.app/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-internalhub', this)">Copy link</button>
+      <a class="btn-open" href="https://elevate-internal-tools.vercel.app/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="sub-group">
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">1. Prospect to First Call</div>
       <div class="link-desc">Everything to have ready before you book and run the first call — pairs with the two guides below</div>
       <div class="link-url" id="url-prospect">https://elevate-internal-tools.vercel.app/prospect-to-first-call.html</div>
     </div>
@@ -166,7 +184,7 @@
 
   <div class="link-card">
     <div class="link-info">
-      <div class="link-title">Discovery Call Guide</div>
+      <div class="link-title">2. Discovery Call Guide</div>
       <div class="link-desc">Baseline "how do you do this today" questions for every call, plus a spot for each client's tailored ones</div>
       <div class="link-url" id="url-discoverycall">https://elevate-internal-tools.vercel.app/discovery-call-guide.html</div>
     </div>
@@ -178,7 +196,7 @@
 
   <div class="link-card">
     <div class="link-info">
-      <div class="link-title">New Client Setup</div>
+      <div class="link-title">3. New Client Setup</div>
       <div class="link-desc">Discovery call to a live, verified action plan — GitHub, Vercel, Airtable, SOW, all of it</div>
       <div class="link-url" id="url-newclient">https://elevate-internal-tools.vercel.app/new-client-setup.html</div>
     </div>
@@ -186,6 +204,7 @@
       <button class="btn-copy" onclick="copyLink('url-newclient', this)">Copy link</button>
       <a class="btn-open" href="https://elevate-internal-tools.vercel.app/new-client-setup.html" target="_blank" rel="noopener">Open →</a>
     </div>
+  </div>
   </div>
 
   <div class="link-card">
@@ -369,6 +388,18 @@
     <div class="link-actions">
       <button class="btn-copy" onclick="copyLink('url-sdmedia', this)">Copy link</button>
       <a class="btn-open" href="https://www.sandiego.org/media/local-media" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Client Feedback Form</div>
+      <div class="link-desc">Airtable form to send clients so they can share feedback with us</div>
+      <div class="link-url" id="url-clientfeedback">https://airtable.com/appRzz0JmM3IUzjG4/pagH6ijviTbbeJQvP/form</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-clientfeedback', this)">Copy link</button>
+      <a class="btn-open" href="https://airtable.com/appRzz0JmM3IUzjG4/pagH6ijviTbbeJQvP/form" target="_blank" rel="noopener">Open →</a>
     </div>
   </div>
 </div>
