@@ -37,6 +37,12 @@
 
   .group-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin: 2rem 0 0.9rem; }
   .group-title:first-of-type { margin-top: 0; }
+  .plan-group > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; }
+  .plan-group > summary::-webkit-details-marker { display: none; }
+  .plan-group > summary::before { content: '▸'; font-size: 12px; transition: transform .15s; }
+  .plan-group[open] > summary::before { transform: rotate(90deg); }
+  .plan-group > summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+  .plan-count { background: var(--teal-pale); color: var(--teal); border-radius: 10px; padding: 1px 8px; font-size: 10.5px; letter-spacing: 0; }
 
   .link-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.3rem; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 1rem; justify-content: space-between; flex-wrap: wrap; }
   .link-info { flex: 1; min-width: 220px; }
@@ -176,17 +182,57 @@
     </div>
   </div>
 
+  <details class="plan-group">
+    <summary class="group-title">Client Action Plans <span class="plan-count">4</span></summary>
+
   <div class="link-card">
     <div class="link-info">
-      <div class="link-title">Elevation Room Plan</div>
-      <div class="link-desc">Our own CWM working plan, built as if we were an elevatemy.ai client — internal reference, not client-facing</div>
-      <div class="link-url" id="url-elevationroom">https://cwm-elevate-plus.vercel.app/</div>
+      <div class="link-title">Agnes — Alpine Acres</div>
+      <div class="link-desc">Agnes&#39;s action plan</div>
+      <div class="link-url" id="url-plan-agnes">https://alpine-acres.vercel.app/</div>
     </div>
     <div class="link-actions">
-      <button class="btn-copy" onclick="copyLink('url-elevationroom', this)">Copy link</button>
-      <a class="btn-open" href="https://cwm-elevate-plus.vercel.app/" target="_blank" rel="noopener">Open →</a>
+      <button class="btn-copy" onclick="copyLink('url-plan-agnes', this)">Copy link</button>
+      <a class="btn-open" href="https://alpine-acres.vercel.app/" target="_blank" rel="noopener">Open →</a>
     </div>
   </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Devon — Root to Rise</div>
+      <div class="link-desc">Devon&#39;s action plan</div>
+      <div class="link-url" id="url-plan-devon">https://devon-root-to-rise.vercel.app/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-plan-devon', this)">Copy link</button>
+      <a class="btn-open" href="https://devon-root-to-rise.vercel.app/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">CWM &amp; Elevate Plan</div>
+      <div class="link-desc">Our own working plan for CWM and Elevate — password-protected, internal only</div>
+      <div class="link-url" id="url-plan-cwm">https://action-plan-cwm.vercel.app/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-plan-cwm', this)">Copy link</button>
+      <a class="btn-open" href="https://action-plan-cwm.vercel.app/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Demo Plan</div>
+      <div class="link-desc">Sample plan with example tasks to show prospects — no password</div>
+      <div class="link-url" id="url-plan-demo">https://action-plan-elevate-demo.vercel.app/</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-plan-demo', this)">Copy link</button>
+      <a class="btn-open" href="https://action-plan-elevate-demo.vercel.app/" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+  </details>
 
   <div class="group-title">Platform Logins</div>
 
