@@ -81,8 +81,9 @@
   .plan-btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
   .plan-btn-outline:hover { background: var(--cream-dark); }
   .pricing-note { max-width: 560px; text-align: center; font-size: 13px; color: var(--sand); line-height: 1.6; }
-  .setup-fee-line { font-size: 12px; color: var(--sand); margin-bottom: 1rem; }
-  .setup-banner { max-width: 620px; text-align: center; font-size: 13px; color: var(--navy); background: var(--teal-pale); border: 1px solid var(--teal-light); border-radius: var(--radius-sm); padding: 10px 18px; margin: 0 auto 2rem; line-height: 1.5; }
+  .setup-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 1.1rem; margin-bottom: 0.6rem; }
+  .setup-label { font-size: 13px; color: var(--sand); }
+  .setup-val { font-size: 14px; font-weight: 600; color: var(--navy); }
   .addons-wrap { width: 100%; max-width: 980px; margin: 0 0 2.5rem; }
   .addons-title-wrap { text-align: center; margin-bottom: 1.5rem; }
   .addons-title-wrap h2 { font-family: 'Bricolage Grotesque', serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
@@ -139,20 +140,18 @@
     <p>Every plan starts with your AI readiness report. Pick the level of support that matches where your business is right now.</p>
   </div>
 
-  <p class="setup-banner">Every plan includes a one-time setup fee (2.5× your monthly plan) to cover onboarding, account configuration, and your personalized AI action plan.</p>
-
   <div class="pricing-grid">
     <!-- Essentials -->
     <div class="pricing-card">
       <div class="plan-icon-wrap" style="background:#F0FBF9;">🌱</div>
       <div class="plan-name">Essentials</div>
       <div class="plan-tagline">Get started with AI — guided and supported</div>
+      <div class="setup-row"><span class="setup-label">Setup fee</span><span class="setup-val">$497.50</span></div>
       <div class="plan-price">
         <span class="price-currency">$</span>
         <span class="price-amount">199</span>
         <span class="price-period">/ month</span>
       </div>
-      <p class="setup-fee-line">+ $497.50 one-time setup fee</p>
       <ul class="plan-features">
         <li><span class="check-icon">✓</span>Full AI readiness assessment &amp; report</li>
         <li><span class="check-icon">✓</span>Personalized 30-day AI action plan</li>
@@ -170,12 +169,12 @@
       <div class="plan-icon-wrap" style="background:#E1F5F4;">📈</div>
       <div class="plan-name">Growth</div>
       <div class="plan-tagline">Guided implementation &amp; ongoing support</div>
+      <div class="setup-row"><span class="setup-label">Setup fee</span><span class="setup-val">$1,225</span></div>
       <div class="plan-price">
         <span class="price-currency">$</span>
         <span class="price-amount">490</span>
         <span class="price-period">/ month</span>
       </div>
-      <p class="setup-fee-line">+ $1,225.00 one-time setup fee</p>
       <ul class="plan-features">
         <li><span class="check-icon">✓</span>Everything in Essentials</li>
         <li><span class="check-icon">✓</span>Personalized AI roadmap (90 days)</li>
@@ -193,6 +192,7 @@
       <div class="plan-icon-wrap" style="background:#EEF3FB;">🏢</div>
       <div class="plan-name">Scale</div>
       <div class="plan-tagline">Full-service AI transformation</div>
+      <div class="setup-row"><span class="setup-label">Setup fee (starting at)</span><span class="setup-val">$2,497.50</span></div>
       <div class="plan-price" style="flex-direction:column;align-items:flex-start;gap:4px;">
         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--sand);margin-bottom:2px;">Starting at</div>
         <div style="display:flex;align-items:baseline;gap:4px;">
@@ -202,7 +202,6 @@
         </div>
         <span class="price-starting">Custom scope &amp; team size — let's talk</span>
       </div>
-      <p class="setup-fee-line">+ Starting at $2,497.50 one-time setup fee</p>
       <ul class="plan-features">
         <li><span class="check-icon">✓</span>Everything in Growth</li>
         <li><span class="check-icon">✓</span>Dedicated AI implementation consultant</li>
