@@ -346,7 +346,9 @@ function scoreColor(pct){
 
 // ── Render ────────────────────────────────────────────────────
 function render(d) {
-  const tierCfg = TIERS[d.tier] || TIERS['developing'];
+  // The assessment sends tiers as 'Early Stage', 'Developing', etc.; match them to the keys above.
+  const tierKey = String(d.tier || '').trim().toLowerCase().replace(/[\s-]+/g, '_');
+  const tierCfg = TIERS[tierKey] || TIERS['developing'];
   const tc = tierCfg.color;
   const rgb = hexToRgb(tc);
   const firstName = d.name ? d.name.split(' ')[0] : null;
@@ -482,9 +484,10 @@ function renderError() {
       s_score:'5', s_pct:'38', d_score:'7', d_pct:'44', p_score:'6', p_pct:'38',
       u_score:'7', u_pct:'50', r_score:'6', r_pct:'27'
     };
-    // Comment out the line below and uncomment renderError() when live
-    render(demo);
-    // renderError();
+    // Live: a link with no scores shows the "Results not found" message.
+    // To preview the layout, add ?preview=1 to the URL.
+    if(new URLSearchParams(window.location.search).get('preview')) render(demo);
+    else renderError();
     return;
   }
   render(d);
