@@ -955,7 +955,7 @@ function startWithEmail(){
   submitToHubSpot(false).then(function(){
     window.location.href=buildResultsURL(fname);
   }).catch(function(){
-    window.location.href='https://elevatemy-web.vercel.app/financial/results.html';
+    window.location.href=buildResultsURL(fname);
   });
 }
 
