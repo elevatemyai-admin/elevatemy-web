@@ -625,11 +625,12 @@ function unlock(){
     categories: {bf:r.dims[0].score, dt:r.dims[1].score, oa:r.dims[2].score, cg:r.dims[3].score, air:r.dims[4].score},
     topOpportunity: r.weakest.name,
     resultsUrl: resultsURL,
-    submissionToken: submissionToken
+    submissionToken: submissionToken,
+    completedDate: new Date().toISOString().split('T')[0]
   };
   console.log('Submitting payload:', JSON.stringify(payload));
 
-  fetch('https://elevatemy-integrations.vercel.app/api/assessments/submit',{
+  fetch('https://services.leadconnectorhq.com/hooks/d0tXIVqvFtHLHV0U581p/webhook-trigger/a03171fe-239c-444f-960e-f2ab95bf5adf',{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify(payload)
   }).then(function(res){
