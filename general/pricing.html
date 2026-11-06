@@ -103,6 +103,9 @@
 
   .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--navy); color: var(--white); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; }
   .toast.show { opacity: 1; }
+  footer .social{display:flex;gap:1rem;flex-wrap:wrap;font-size:13px;}
+  footer .social a{color:var(--teal);text-decoration:none;}
+  footer .social a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -262,6 +265,13 @@
 <footer>
   <div class="wordmark" style="font-size:17px"><span class="elevate">elevate</span><span class="my">my</span><span class="dot">.</span><span class="ai">ai</span></div>
   <p>© 2025 elevatemy.ai · AI Solutions for Growing Businesses · Questions? Email <a href="mailto:tracy@elevatemy.ai" style="color:var(--teal);text-decoration:none;">tracy@elevatemy.ai</a></p>
+  <div class="social" role="navigation" aria-label="elevatemy.ai on social media">
+    <a href="https://www.facebook.com/elevatemyai/" target="_blank" rel="noopener" aria-label="elevatemy.ai on Facebook">Facebook</a>
+    <a href="https://www.instagram.com/elevatemy.ai/" target="_blank" rel="noopener" aria-label="elevatemy.ai on Instagram">Instagram</a>
+    <a href="https://www.linkedin.com/company/elevatemy-ai/" target="_blank" rel="noopener" aria-label="elevatemy.ai on LinkedIn">LinkedIn</a>
+    <a href="https://www.pinterest.com/elevatemyai/" target="_blank" rel="noopener" aria-label="elevatemy.ai on Pinterest">Pinterest</a>
+    <a href="https://www.youtube.com/@ElevateMydotAI" target="_blank" rel="noopener" aria-label="elevatemy.ai on YouTube">YouTube</a>
+  </div>
 </footer>
 
 <div class="toast" id="toast"></div>
