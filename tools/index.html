@@ -28,13 +28,10 @@
   .wordmark .dot { color: var(--amber); font-weight: 300; font-family: 'Inter', sans-serif; }
   .wordmark .ai { color: var(--navy); font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 18px; }
   .nav-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); background: var(--cream-dark); padding: 4px 10px; border-radius: 12px; margin-left: auto; }
-
   .wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
   .page-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 0.75rem; }
   h1 { font-family: 'Bricolage Grotesque', Georgia, serif; font-size: 2rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
   .lede { color: var(--text-muted); max-width: 560px; margin-bottom: 2.5rem; font-size: 15.5px; }
-  .lede strong { color: var(--navy); }
-
   .group-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin: 2rem 0 0.9rem; }
   .group-title:first-of-type { margin-top: 0; }
   .plan-group > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; }
@@ -43,7 +40,6 @@
   .plan-group[open] > summary::before { transform: rotate(90deg); }
   .plan-group > summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
   .plan-count { background: var(--teal-pale); color: var(--teal); border-radius: 10px; padding: 1px 8px; font-size: 10.5px; letter-spacing: 0; }
-
   .link-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.3rem; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 1rem; justify-content: space-between; flex-wrap: wrap; }
   .link-info { flex: 1; min-width: 220px; }
   .link-title { font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 700; font-size: 17px; color: var(--navy); margin-bottom: 2px; }
@@ -53,10 +49,9 @@
   .btn-copy, .btn-open { border: 1.5px solid var(--border); background: var(--white); border-radius: var(--radius-sm); padding: 9px 16px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; color: var(--navy); text-decoration: none; transition: border-color .15s, background .15s; white-space: nowrap; }
   .btn-copy:hover, .btn-open:hover { border-color: var(--teal); background: var(--teal-pale); }
   .btn-copy.copied { border-color: var(--teal); background: var(--teal); color: var(--white); }
-
+  .note { font-size: 13px; color: var(--sand); margin-top: 2rem; }
   footer { text-align: center; padding: 2.5rem 1.5rem; color: var(--sand); font-size: 13px; }
   footer a { color: var(--teal); text-decoration: none; }
-
   @media (max-width: 560px) {
     nav { padding: 0 1.25rem; }
     .link-card { flex-direction: column; align-items: flex-start; }
@@ -107,7 +102,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Stack Grid (Browse All)</div>
-      <div class="link-desc">Every category & tool visible at once — for talking through live on a call</div>
+      <div class="link-desc">Every category &amp; tool visible at once — for talking through live on a call</div>
       <div class="link-url" id="url-grid">https://elevatemy-web.vercel.app/tools/stack-grid/</div>
     </div>
     <div class="link-actions">
@@ -116,7 +111,7 @@
     </div>
   </div>
 
-  <div class="group-title">Assessment & Site</div>
+  <div class="group-title">Assessment &amp; Site</div>
 
   <div class="link-card">
     <div class="link-info">
@@ -154,7 +149,7 @@
     </div>
   </div>
 
-  <p style="font-size:13px;color:var(--sand);margin-top:2rem;">Swap in your custom domain here if elevatemy.ai is pointed at this Vercel project instead of the .vercel.app URL — same paths apply either way. New tool added? Just ask and it'll get a card here too.</p>
+  <p class="note">Swap in your custom domain here if elevatemy.ai is pointed at this Vercel project instead of the .vercel.app URL — same paths apply either way. New tool added? Just ask and it'll get a card here too.</p>
 
   <div class="group-title">Internal Ops Guides</div>
 
@@ -173,7 +168,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">2. New Client Setup</div>
-      <div class="link-desc">Discovery call to a live, verified action plan — GitHub, Vercel, Airtable, deliverables, all of it</div>
+      <div class="link-desc">Discovery call to a live, verified action plan — now created in the Plans Admin instead of a new repo and Airtable base</div>
       <div class="link-url" id="url-newclient">https://elevate-internal-tools.vercel.app/new-client-setup.html</div>
     </div>
     <div class="link-actions">
@@ -182,13 +177,25 @@
     </div>
   </div>
 
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">3. Client Plans Admin</div>
+      <div class="link-desc">Password-protected. Edit any client's projects and steps, see what they have ticked or added, add a new client, download a backup. Changes show on the client's page within about 30 seconds.</div>
+      <div class="link-url" id="url-plansadmin">https://elevate-plans.vercel.app/admin</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-plansadmin', this)">Copy link</button>
+      <a class="btn-open" href="https://elevate-plans.vercel.app/admin" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
   <details class="plan-group">
-    <summary class="group-title">Client Action Plans <span class="plan-count">6</span></summary>
+    <summary class="group-title">Client Action Plans <span class="plan-count">5</span></summary>
 
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Agnes — Alpine Acres</div>
-      <div class="link-desc">Agnes&#39;s action plan</div>
+      <div class="link-desc">Agnes&#39;s action plan (new design, edited in Plans Admin)</div>
       <div class="link-url" id="url-plan-agnes">https://alpine-acres.vercel.app/</div>
     </div>
     <div class="link-actions">
@@ -200,7 +207,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Devon — Root to Rise</div>
-      <div class="link-desc">Devon&#39;s action plan</div>
+      <div class="link-desc">Devon&#39;s action plan (new design, edited in Plans Admin)</div>
       <div class="link-url" id="url-plan-devon">https://devon-root-to-rise.vercel.app/</div>
     </div>
     <div class="link-actions">
@@ -212,7 +219,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Janel</div>
-      <div class="link-desc">Janel&#39;s action plan</div>
+      <div class="link-desc">Janel&#39;s action plan (new design, edited in Plans Admin)</div>
       <div class="link-url" id="url-plan-janel">https://action-plan-janel.vercel.app/</div>
     </div>
     <div class="link-actions">
@@ -224,7 +231,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Tracy: Tracespective Creations</div>
-      <div class="link-desc">Tracespective&#39;s action plan (live case study)</div>
+      <div class="link-desc">Tracespective&#39;s action plan (live case study; still on the old design until it is moved to Plans Admin)</div>
       <div class="link-url" id="url-plan-tracespective">https://action-plan-tracespective.vercel.app/</div>
     </div>
     <div class="link-actions">
@@ -235,20 +242,8 @@
 
   <div class="link-card">
     <div class="link-info">
-      <div class="link-title">CWM &amp; Elevate Plan</div>
-      <div class="link-desc">Our own working plan for CWM and Elevate — password-protected, internal only</div>
-      <div class="link-url" id="url-plan-cwm">https://action-plan-cwm.vercel.app/</div>
-    </div>
-    <div class="link-actions">
-      <button class="btn-copy" onclick="copyLink('url-plan-cwm', this)">Copy link</button>
-      <a class="btn-open" href="https://action-plan-cwm.vercel.app/" target="_blank" rel="noopener">Open →</a>
-    </div>
-  </div>
-
-  <div class="link-card">
-    <div class="link-info">
       <div class="link-title">Demo Plan</div>
-      <div class="link-desc">Sample plan with example tasks to show prospects — no password</div>
+      <div class="link-desc">The new design with sample projects and steps, to show prospects — no password, nothing saves</div>
       <div class="link-url" id="url-plan-demo">https://action-plan-elevate-demo.vercel.app/</div>
     </div>
     <div class="link-actions">
@@ -263,12 +258,24 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Airtable</div>
-      <div class="link-desc">Bases for client intake, review & data collection</div>
+      <div class="link-desc">Bases for client intake, review &amp; data collection (no longer used for action plans)</div>
       <div class="link-url" id="url-airtable">https://airtable.com</div>
     </div>
     <div class="link-actions">
       <button class="btn-copy" onclick="copyLink('url-airtable', this)">Copy link</button>
       <a class="btn-open" href="https://airtable.com" target="_blank" rel="noopener">Open →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-info">
+      <div class="link-title">Upstash</div>
+      <div class="link-desc">The database behind every client plan (opened from Vercel &gt; Storage)</div>
+      <div class="link-url" id="url-upstash">https://console.upstash.com</div>
+    </div>
+    <div class="link-actions">
+      <button class="btn-copy" onclick="copyLink('url-upstash', this)">Copy link</button>
+      <a class="btn-open" href="https://console.upstash.com" target="_blank" rel="noopener">Open →</a>
     </div>
   </div>
 
@@ -299,7 +306,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Beehiiv Elevate Live Site</div>
-      <div class="link-desc">Public elevatemyai.beehiiv.com site — newsletters & white papers</div>
+      <div class="link-desc">Public elevatemyai.beehiiv.com site — newsletters &amp; white papers</div>
       <div class="link-url" id="url-beehiivsite">https://elevatemyai.beehiiv.com/</div>
     </div>
     <div class="link-actions">
@@ -322,8 +329,8 @@
 
   <div class="link-card">
     <div class="link-info">
-      <div class="link-title">Beehiiv R&R Live Site</div>
-      <div class="link-desc">Public cwm-roots-and-resources.beehiiv.com site — Roots & Resources newsletter</div>
+      <div class="link-title">Beehiiv R&amp;R Live Site</div>
+      <div class="link-desc">Public cwm-roots-and-resources.beehiiv.com site — Roots &amp; Resources newsletter</div>
       <div class="link-url" id="url-beehiivrr">https://cwm-roots-and-resources.beehiiv.com/</div>
     </div>
     <div class="link-actions">
@@ -335,7 +342,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Canva</div>
-      <div class="link-desc">Design & marketing graphics</div>
+      <div class="link-desc">Design &amp; marketing graphics</div>
       <div class="link-url" id="url-canva">https://www.canva.com</div>
     </div>
     <div class="link-actions">
@@ -347,7 +354,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Claude</div>
-      <div class="link-desc">Chat, projects & memory — Elevate and CWM work</div>
+      <div class="link-desc">Chat, projects &amp; memory — Elevate and CWM work</div>
       <div class="link-url" id="url-claude">https://claude.ai</div>
     </div>
     <div class="link-actions">
@@ -383,7 +390,7 @@
   <div class="link-card">
     <div class="link-info">
       <div class="link-title">Vercel</div>
-      <div class="link-desc">Deployments & project dashboard</div>
+      <div class="link-desc">Deployments &amp; project dashboard</div>
       <div class="link-url" id="url-vercel">https://vercel.com/dashboard</div>
     </div>
     <div class="link-actions">
